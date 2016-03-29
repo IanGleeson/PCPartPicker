@@ -50,7 +50,7 @@ public class SQLdao {
 
     public ResultSet logIn(String user, char[] pass) {
         try {
-            pst = conn.prepareStatement("SELECT * FROM USERS WHERE USERNAME LIKE '" + user
+            pst = conn.prepareStatement("SELECT * FROM USERNAME.USERS WHERE USERNAME LIKE '" + user
                     + "' AND PASSWORD LIKE '" + Arrays.toString(pass) + "'", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             rst = pst.executeQuery();
         } catch (SQLException d) {
