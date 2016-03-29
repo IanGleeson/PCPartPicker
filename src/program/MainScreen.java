@@ -52,6 +52,12 @@ public class MainScreen extends javax.swing.JFrame {
 
         jLabelSearch.setText("Search");
 
+        jTextFieldSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldSearchKeyTyped(evt);
+            }
+        });
+
         jButtonOrder.setText("Order");
         jButtonOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +130,10 @@ public class MainScreen extends javax.swing.JFrame {
     private void jButtonOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOrderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonOrderActionPerformed
+
+    private void jTextFieldSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchKeyTyped
+        
+    }//GEN-LAST:event_jTextFieldSearchKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
