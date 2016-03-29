@@ -2,16 +2,18 @@ package program;
 
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class LogInScreen extends javax.swing.JFrame {
 
     SQLdao dao = new SQLdao();
-    
+
     public LogInScreen() {
         initComponents();
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computer.png"));
         this.setIconImage(ii.getImage());
+        jLabelError.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -100,15 +102,16 @@ public class LogInScreen extends javax.swing.JFrame {
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
 
         try {
-            if (dao.logIn(JtxtLogIn.getText(), JtxtPassword.getText()).next()) {
+            dao.connect();
+            if (dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword()).next()) {
                 this.setVisible(false);
                 MainScreen ms = new MainScreen();
                 ms.setVisible(true);
             } else {
-                
+                jLabelError.setVisible(true);
             }
-        }catch(SQLException e){
-            
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, this, "Error accessing database.", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonLogInActionPerformed
 
@@ -127,7 +130,7 @@ public class LogInScreen extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LogInScreen().setVisible(true);
-                
+
             }
         });
     }
