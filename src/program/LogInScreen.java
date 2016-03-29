@@ -103,15 +103,19 @@ public class LogInScreen extends javax.swing.JFrame {
 
         try {
             dao.connect();
-            if (dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword()).next()) {
-                this.setVisible(false);
-                MainScreen ms = new MainScreen();
-                ms.setVisible(true);
-            } else {
-                jLabelError.setVisible(true);
+            if (JtxtPassword.getPassword() != null) {
+                if (dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword()).next()) {
+                    this.setVisible(false);
+                    MainScreen ms = new MainScreen();
+                    ms.setVisible(true);
+                } else {
+                    jLabelError.setVisible(true);
+                }
             }
         } catch (SQLException e) {
-             JOptionPane.showMessageDialog(null, this, "Error accessing database.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, this, "Error accessing database.", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            JtxtPassword.setText("");
         }
     }//GEN-LAST:event_jButtonLogInActionPerformed
 
