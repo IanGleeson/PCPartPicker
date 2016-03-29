@@ -114,8 +114,8 @@ public class LogInScreen extends javax.swing.JFrame {
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, this, "Error accessing database.", JOptionPane.ERROR_MESSAGE);
-        } catch(Exception d){
-            
+        } catch(NullPointerException d){
+            JOptionPane.showMessageDialog(null, this, "Please enter a username and password.", JOptionPane.ERROR_MESSAGE);
         }finally {
             JtxtPassword.setText("");
         }
