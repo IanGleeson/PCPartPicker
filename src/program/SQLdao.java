@@ -8,7 +8,9 @@ public class SQLdao {
 
     private String user = "username";
     private String pass = "password";
-    private final String dbURL = "jdbc:derby:\\localhost:1527\\PCPartPicker";
+    private final String dbURL = "jdbc:derby:\\localhost:1527\\PCPartPicker";       //String url = "jdbc:odbc:Driver={SQL Server};"
+                                                                                    //"server=SD-00\\MSSQLSERVER1;"
+                                                                                    //+ "Database=JavaPizzaStore";
     private String query;
     private PreparedStatement pst;
     private ResultSet rst;
