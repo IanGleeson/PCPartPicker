@@ -100,11 +100,13 @@ public class LogInScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
-
+        MainScreen x = new MainScreen();
+        this.setVisible(false);
+        x.setVisible(true);
         //temporary bypass for testing
-        char[] pass = {'p','a','s','s','w','o','r','d'};
-        dao.connect();
-        dao.logIn("username", pass);
+//        char[] pass = {'p','a','s','s','w','o','r','d'};
+//        dao.connect();
+//        dao.logIn("username", pass);
         
 //        try {
 //            dao.connect();
