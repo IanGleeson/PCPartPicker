@@ -11,7 +11,10 @@ package program;
  */
 public class Methods {
     
-    
+    public String search(String strSearch){
+        strSearch = "Testing!!!";
+        return strSearch;
+    }
     
     
     

@@ -18,6 +18,10 @@ public class MainScreen extends javax.swing.JFrame {
         this.setIconImage(ii.getImage());
     }
 
+    //Methods object
+    Methods meth = new Methods();
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -226,7 +230,7 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
         if(evt.getKeyCode()== KeyEvent.VK_ENTER){
-            
+            txtaDescription.setText(meth.search(txtSearch.getText()));
         }
     }//GEN-LAST:event_txtSearchKeyPressed
 
