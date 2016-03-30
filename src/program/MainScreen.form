@@ -72,7 +72,7 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtfSearch" min="-2" pref="162" max="-2" attributes="0"/>
+                                  <Component id="txtSearch" min="-2" pref="162" max="-2" attributes="0"/>
                                   <Component id="btnOrder" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
                                   <Component id="lblDescription" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jScrollPane3" min="-2" pref="193" max="-2" attributes="0"/>
@@ -97,7 +97,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="txtfSearch" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtSearch" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="lblDescription" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -121,11 +121,11 @@
                 <Property name="text" type="java.lang.String" value="Search"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtfSearch">
+            <Component class="javax.swing.JTextField" name="txtSearch">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfSearchActionPerformed"/>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtfSearchKeyPressed"/>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtfSearchKeyTyped"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSearchActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSearchKeyPressed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSearchKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnOrder">

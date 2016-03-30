@@ -26,7 +26,7 @@ public class MainScreen extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lblSearch = new javax.swing.JLabel();
-        txtfSearch = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         btnOrder = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -52,17 +52,17 @@ public class MainScreen extends javax.swing.JFrame {
         lblSearch.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblSearch.setText("Search");
 
-        txtfSearch.addActionListener(new java.awt.event.ActionListener() {
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfSearchActionPerformed(evt);
+                txtSearchActionPerformed(evt);
             }
         });
-        txtfSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtfSearchKeyPressed(evt);
+                txtSearchKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtfSearchKeyTyped(evt);
+                txtSearchKeyTyped(evt);
             }
         });
 
@@ -116,7 +116,7 @@ public class MainScreen extends javax.swing.JFrame {
                         .addComponent(cboxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblDescription)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -135,7 +135,7 @@ public class MainScreen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addComponent(lblDescription)
                         .addGap(18, 18, 18)
@@ -216,19 +216,19 @@ public class MainScreen extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Under Construction!");
     }//GEN-LAST:event_btnOrderActionPerformed
 
-    private void txtfSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfSearchKeyTyped
+    private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
         
-    }//GEN-LAST:event_txtfSearchKeyTyped
+    }//GEN-LAST:event_txtSearchKeyTyped
 
-    private void txtfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfSearchActionPerformed
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
        
-    }//GEN-LAST:event_txtfSearchActionPerformed
+    }//GEN-LAST:event_txtSearchActionPerformed
 
-    private void txtfSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfSearchKeyPressed
+    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
         if(evt.getKeyCode()== KeyEvent.VK_ENTER){
             
         }
-    }//GEN-LAST:event_txtfSearchKeyPressed
+    }//GEN-LAST:event_txtSearchKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -249,7 +249,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel lblCategory;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblSearch;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextArea txtaDescription;
-    private javax.swing.JTextField txtfSearch;
     // End of variables declaration//GEN-END:variables
 }
