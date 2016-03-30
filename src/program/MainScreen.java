@@ -1,6 +1,7 @@
 package program;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -21,6 +22,8 @@ public class MainScreen extends javax.swing.JFrame {
     //Methods object
     Methods meth = new Methods();
     
+    //orders ArrayList
+    ArrayList<String> orderList = new ArrayList();
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -217,7 +220,10 @@ public class MainScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-        JOptionPane.showMessageDialog(this, "Under Construction!");
+        //orderList.add(jTable2);
+        meth.order(orderList);
+        txtaDescription.setText(orderList.toString());
+        //JOptionPane.showMessageDialog(this, "Under Construction!");
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped

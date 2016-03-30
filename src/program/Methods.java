@@ -5,6 +5,8 @@
  */
 package program;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author dsd08
@@ -16,7 +18,10 @@ public class Methods {
         return strSearch;
     }
     
-    
+    public ArrayList order(ArrayList<String> orderList){
+        orderList.add("Lots of stuff!");
+        return orderList;
+    }
     
     
     
