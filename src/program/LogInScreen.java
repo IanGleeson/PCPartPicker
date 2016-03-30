@@ -101,24 +101,29 @@ public class LogInScreen extends javax.swing.JFrame {
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
 
-        try {
-            dao.connect();
-            if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
-                if (dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword()).next()) {
-                    this.setVisible(false);
-                    MainScreen ms = new MainScreen();
-                    ms.setVisible(true);
-                } else {
-                    jLabelError.setVisible(true);
-                }
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, this, "Error accessing database.", JOptionPane.ERROR_MESSAGE);
-        } catch(NullPointerException d){
-            JOptionPane.showMessageDialog(null, this, "Please enter a username and password.", JOptionPane.ERROR_MESSAGE);
-        }finally {
-            JtxtPassword.setText("");
-        }
+        //temporary bypass for testing
+        char[] pass = {'p','a','s','s','w','o','r','d'};
+        dao.connect();
+        dao.logIn("username", pass);
+        
+//        try {
+//            dao.connect();
+//            if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
+//                if (dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword()).next()) {
+//                    this.setVisible(false);
+//                    MainScreen ms = new MainScreen();
+//                    ms.setVisible(true);
+//                } else {
+//                    jLabelError.setVisible(true);
+//                }
+//            }
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, this, "Error accessing database.", JOptionPane.ERROR_MESSAGE);
+//        } catch(NullPointerException d){
+//            JOptionPane.showMessageDialog(null, this, "Please enter a username and password.", JOptionPane.ERROR_MESSAGE);
+//        }finally {
+//            JtxtPassword.setText("");
+//        }
     }//GEN-LAST:event_jButtonLogInActionPerformed
 
     private void JtxtLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtxtLogInActionPerformed
