@@ -1,5 +1,6 @@
 package program;
 
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -60,7 +61,15 @@ public class MainScreen extends javax.swing.JFrame {
         lblSearch.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblSearch.setText("Search");
 
+        txtfSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfSearchActionPerformed(evt);
+            }
+        });
         txtfSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtfSearchKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtfSearchKeyTyped(evt);
             }
@@ -224,6 +233,16 @@ public class MainScreen extends javax.swing.JFrame {
     private void txtfSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfSearchKeyTyped
         
     }//GEN-LAST:event_txtfSearchKeyTyped
+
+    private void txtfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfSearchActionPerformed
+       
+    }//GEN-LAST:event_txtfSearchActionPerformed
+
+    private void txtfSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfSearchKeyPressed
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+            
+        }
+    }//GEN-LAST:event_txtfSearchKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
