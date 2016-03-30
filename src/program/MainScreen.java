@@ -22,42 +22,48 @@ public class MainScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPaneSplash = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        lblSearch = new javax.swing.JLabel();
-        txtSearch = new javax.swing.JTextField();
-        btnOrder = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        lblCategory = new javax.swing.JLabel();
-        cboxCategory = new javax.swing.JComboBox();
-        lblDescription = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtaDescription = new javax.swing.JTextArea();
+        jTabbedPaneSplash2 = new javax.swing.JTabbedPane();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        lblSearch2 = new javax.swing.JLabel();
+        txtSearch2 = new javax.swing.JTextField();
+        btnOrder2 = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        lblCategory2 = new javax.swing.JLabel();
+        cboxCategory2 = new javax.swing.JComboBox();
+        lblDescription2 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        txtaDescription2 = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
+        btnProceed = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        lblUser = new javax.swing.JLabel();
+        btnSignout = new javax.swing.JButton();
+        lblWallet = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPaneSplash.setName(""); // NOI18N
+        jTabbedPaneSplash2.setName(""); // NOI18N
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jTabbedPaneSplash.addTab("Splash", jPanel1);
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jTabbedPaneSplash2.addTab("Splash", jPanel5);
 
-        lblSearch.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        lblSearch.setText("Search");
+        lblSearch2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lblSearch2.setText("Search");
 
-        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+        txtSearch2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSearchActionPerformed(evt);
             }
         });
-        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSearch2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSearchKeyPressed(evt);
             }
@@ -66,14 +72,14 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
-        btnOrder.setText("Order");
-        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+        btnOrder2.setText("Order");
+        btnOrder2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOrderActionPerformed(evt);
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -84,69 +90,69 @@ public class MainScreen extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane6.setViewportView(jTable4);
 
-        lblCategory.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        lblCategory.setText("Category:");
+        lblCategory2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lblCategory2.setText("Category:");
 
-        cboxCategory.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboxCategory2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        lblDescription.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        lblDescription.setText("Description:");
+        lblDescription2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lblDescription2.setText("Description:");
 
-        txtaDescription.setColumns(20);
-        txtaDescription.setLineWrap(true);
-        txtaDescription.setRows(5);
-        txtaDescription.setText("Click a product to view description.");
-        txtaDescription.setWrapStyleWord(true);
-        jScrollPane3.setViewportView(txtaDescription);
+        txtaDescription2.setColumns(20);
+        txtaDescription2.setLineWrap(true);
+        txtaDescription2.setRows(5);
+        txtaDescription2.setText("Click a product to view description.");
+        txtaDescription2.setWrapStyleWord(true);
+        jScrollPane7.setViewportView(txtaDescription2);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(lblSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblCategory)
+                        .addComponent(lblCategory2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDescription)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cboxCategory2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnOrder2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDescription2)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSearch)
-                    .addComponent(lblCategory)
-                    .addComponent(cboxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSearch2)
+                    .addComponent(lblCategory2)
+                    .addComponent(cboxCategory2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(txtSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addComponent(lblDescription)
+                        .addComponent(lblDescription2)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnOrder))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE))
+                        .addComponent(btnOrder2))
+                    .addComponent(jScrollPane6))
                 .addContainerGap())
         );
 
-        jTabbedPaneSplash.addTab("Inventory", jPanel2);
+        jTabbedPaneSplash2.addTab("Inventory", jPanel9);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -156,10 +162,10 @@ public class MainScreen extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 537, Short.MAX_VALUE)
+            .addGap(0, 488, Short.MAX_VALUE)
         );
 
-        jTabbedPaneSplash.addTab("tab4", jPanel4);
+        jTabbedPaneSplash2.addTab("tab4", jPanel4);
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -188,26 +194,55 @@ public class MainScreen extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jPanel6);
 
+        btnProceed.setText("Proceed");
+
+        btnClear.setText("Clear");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(323, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(118, 118, 118))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(153, 153, 153))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
 
-        jTabbedPaneSplash.addTab("Order", jPanel3);
+        jTabbedPaneSplash2.addTab("Order", jPanel3);
 
-        getContentPane().add(jTabbedPaneSplash, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(jTabbedPaneSplash2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, 520));
+
+        lblUser.setText("Username");
+        getContentPane().add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, -1, -1));
+
+        btnSignout.setText("Sign-out");
+        btnSignout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignoutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSignout, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 70, 30));
+
+        lblWallet.setText("€0.00");
+        getContentPane().add(lblWallet, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -217,39 +252,74 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
-        
-    }//GEN-LAST:event_txtSearchKeyTyped
 
-    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
-       
-    }//GEN-LAST:event_txtSearchActionPerformed
+    }//GEN-LAST:event_txtSearchKeyTyped
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
         if(evt.getKeyCode()== KeyEvent.VK_ENTER){
-            
+
         }
     }//GEN-LAST:event_txtSearchKeyPressed
 
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void btnSignoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignoutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSignoutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnOrder;
+    private javax.swing.JButton btnOrder1;
+    private javax.swing.JButton btnOrder2;
+    private javax.swing.JButton btnProceed;
+    private javax.swing.JButton btnSignout;
     private javax.swing.JComboBox cboxCategory;
+    private javax.swing.JComboBox cboxCategory1;
+    private javax.swing.JComboBox cboxCategory2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPaneSplash;
+    private javax.swing.JTabbedPane jTabbedPaneSplash1;
+    private javax.swing.JTabbedPane jTabbedPaneSplash2;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
     private javax.swing.JLabel lblCategory;
+    private javax.swing.JLabel lblCategory1;
+    private javax.swing.JLabel lblCategory2;
     private javax.swing.JLabel lblDescription;
+    private javax.swing.JLabel lblDescription1;
+    private javax.swing.JLabel lblDescription2;
     private javax.swing.JLabel lblSearch;
+    private javax.swing.JLabel lblSearch1;
+    private javax.swing.JLabel lblSearch2;
+    private javax.swing.JLabel lblUser;
+    private javax.swing.JLabel lblWallet;
     private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField txtSearch1;
+    private javax.swing.JTextField txtSearch2;
     private javax.swing.JTextArea txtaDescription;
+    private javax.swing.JTextArea txtaDescription1;
+    private javax.swing.JTextArea txtaDescription2;
     // End of variables declaration//GEN-END:variables
 }
