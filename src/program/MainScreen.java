@@ -1,6 +1,7 @@
 package program;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class MainScreen extends javax.swing.JFrame {
@@ -180,7 +181,7 @@ public class MainScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Under Construction!");
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void txtfSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfSearchKeyTyped
