@@ -231,6 +231,11 @@ public class MainScreen extends javax.swing.JFrame {
         btnProceed.setText("Proceed");
 
         btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -304,6 +309,15 @@ public class MainScreen extends javax.swing.JFrame {
     private void btnSignoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignoutActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSignoutActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        JOptionPane.showConfirmDialog(this, "Are you sure you want to clear the order?");
+        if(true){
+            orderList.clear();
+            orderList.add("Order empty!");
+        }
+        
+    }//GEN-LAST:event_btnClearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
