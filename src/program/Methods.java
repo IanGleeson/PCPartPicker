@@ -5,16 +5,33 @@
  */
 package program;
 
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author dsd08
  */
 public class Methods {
+    
+    //returns a set of data from the sql Server
+    public ResultSet displayAllProducts(){
+       SQLdao dao = new SQLdao();
 
+        return dao.displayAllProducts();
+       
+   }
+   
+    
     public String search(String strSearch) {
-        strSearch = "Testing!!!";
+        SQLdao dao = new SQLdao();
+        
+        dao.search();
+        strSearch = "";
         return strSearch;
     }
 
@@ -22,11 +39,34 @@ public class Methods {
         orderList.add("Lots of stuff!");
         return orderList;
     }
-    
-   public void populateOrderArray(){
-       
-   }
-   
+    //This method exists solely for the purpose of interpreting the query results into some readable in the JTable
+    public DefaultTableModel buildTableModel(ResultSet rs)
+        throws SQLException {
+
+    ResultSetMetaData metaData = rs.getMetaData();
+
+    // names of columns
+    Vector<String> columnNames = new Vector<>();
+    int columnCount = metaData.getColumnCount();
+    for (int column = 1; column <= columnCount; column++) {
+        columnNames.add(metaData.getColumnName(column));
+    }
+
+    // data of the table
+    Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+    while (rs.next()) {
+        Vector<Object> vector = new Vector<Object>();
+        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+            vector.add(rs.getObject(columnIndex));
+        }
+        data.add(vector);
+    }
+
+    return new DefaultTableModel(data, columnNames);
+
+}
+     
+
    public void generateImage(){
        
    }
