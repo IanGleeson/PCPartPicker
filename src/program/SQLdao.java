@@ -10,7 +10,7 @@ public class SQLdao {
 
     private String user = "root";
     private String pass = "password";
-    private final String dbURL = "jdbc:mysql://localhost:3306/production";       //String url = "jdbc:odbc:Driver={SQL Server};"
+    private final String dbURL = "jdbc:mysql://192.168.103.114:3306/production?autoReconnect=true&useSSL=false";       //String url = "jdbc:odbc:Driver={SQL Server};"
                                                                                     //"server=SD-00\\MSSQLSERVER1;"
                                                                                     //+ "Database=JavaPizzaStore";
     private String query;
@@ -58,7 +58,7 @@ public class SQLdao {
 
     public ResultSet logIn(String user, char[] pass) {
         try {
-            pst = conn.prepareStatement("SELECT * FROM USERNAME.USERS WHERE USERNAME LIKE '" + user
+            pst = conn.prepareStatement("SELECT * FROM production.customers WHERE USERNAME LIKE '" + user
                     + "' AND PASSWORD LIKE '" + Arrays.toString(pass) + "'", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             rst = pst.executeQuery();
         } catch (SQLException d) {
@@ -79,7 +79,7 @@ public class SQLdao {
 
     public ResultSet search() {
         try {
-            pst = conn.prepareStatement("SELECT * INVENTORY WHERE productname LIKE " + "'" + query + "%'", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            pst = conn.prepareStatement("SELECT * INVENTORY WHERE prodName LIKE " + "'" + query + "%'", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             rst = pst.executeQuery();
         } catch (SQLException d) {
             JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
