@@ -1,6 +1,7 @@
 package program;
 
 import java.sql.SQLException;
+import java.time.Clock;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -64,12 +65,14 @@ public class LogInScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
-        MainScreen x = new MainScreen();
-        this.setVisible(false);
-        x.setVisible(true);
+        dao.connect();
+        System.out.print("working");
+//        MainScreen x = new MainScreen();
+//        this.setVisible(false);
+//        x.setVisible(true);
         //temporary bypass for testing
 //        char[] pass = {'p','a','s','s','w','o','r','d'};
-        //dao.connect();
+        
 //        dao.logIn("username", pass);
         
 //        try {
