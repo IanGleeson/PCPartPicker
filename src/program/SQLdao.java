@@ -71,8 +71,8 @@ public class SQLdao {
         }
         return LogIn;
     }
-    
-        public ResultSet displayAllProducts() {
+
+    public ResultSet displayAllProducts() {
         try {
             pst = conn.prepareStatement("SELECT * FROM production.inventory", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             rst = pst.executeQuery();

@@ -2,6 +2,8 @@ package program;
 
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -28,15 +30,19 @@ public class LogInScreen extends javax.swing.JFrame {
         jLabelUser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         JtxtLogIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JtxtLogInActionPerformed(evt);
             }
         });
+        getContentPane().add(JtxtLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 89, 139, -1));
+        getContentPane().add(JtxtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 135, 139, -1));
 
         jLabelHeader.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelHeader.setText("PC Part Picker");
+        getContentPane().add(jLabelHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 33, -1, -1));
 
         jButtonLogIn.setText("Log In");
         jButtonLogIn.addActionListener(new java.awt.event.ActionListener() {
@@ -44,51 +50,13 @@ public class LogInScreen extends javax.swing.JFrame {
                 jButtonLogInActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 196, -1, -1));
 
         jLabelPass.setText("Password");
+        getContentPane().add(jLabelPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 114, -1, -1));
 
         jLabelUser.setText("Username");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(JtxtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(53, 53, 53)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabelUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelPass)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
-                                        .addComponent(jLabelHeader)))
-                                .addComponent(JtxtLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(86, 86, 86)
-                            .addComponent(jButtonLogIn))))
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabelHeader)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JtxtLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelPass)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JtxtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(jButtonLogIn)
-                .addGap(32, 32, 32))
-        );
+        getContentPane().add(jLabelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 68, 113, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -117,6 +85,8 @@ public class LogInScreen extends javax.swing.JFrame {
             }
         } catch(NullPointerException d){
             JOptionPane.showMessageDialog(null, this, "Please enter a username and password.", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
         }finally {
             JtxtPassword.setText("");
         }
