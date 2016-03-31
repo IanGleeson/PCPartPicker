@@ -53,9 +53,9 @@ public class Methods {
     }
 
     // data of the table
-    Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+    Vector<Vector<Object>> data = new Vector<>();
     while (rs.next()) {
-        Vector<Object> vector = new Vector<Object>();
+        Vector<Object> vector = new Vector<>();
         for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
             vector.add(rs.getObject(columnIndex));
         }
