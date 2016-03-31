@@ -388,6 +388,4 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JTextArea txtaDescription2;
     // End of variables declaration//GEN-END:variables
 
-
-
-
+}
