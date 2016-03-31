@@ -30,6 +30,7 @@ public class LogInScreen extends javax.swing.JFrame {
         jLabelUser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         JtxtLogIn.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +59,8 @@ public class LogInScreen extends javax.swing.JFrame {
         jLabelUser.setText("Username");
         getContentPane().add(jLabelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 68, 113, -1));
 
-        pack();
+        setSize(new java.awt.Dimension(258, 303));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
