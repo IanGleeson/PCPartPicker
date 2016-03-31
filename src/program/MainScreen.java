@@ -311,9 +311,8 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSignoutActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        //JOptionPane.showConfirmDialog(this, "Are you sure you want to clear the order?");
         int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to clear the order?", 
-       "Title", JOptionPane.INFORMATION_MESSAGE);
+       "Warning", JOptionPane.WARNING_MESSAGE);
         if(result == JOptionPane.OK_OPTION){
             JOptionPane.showMessageDialog(this, "Order basket has been emptied!");
             orderList.clear();
