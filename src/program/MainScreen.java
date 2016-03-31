@@ -176,6 +176,11 @@ public class MainScreen extends javax.swing.JFrame {
         jTabbedPanes.addTab("Inventory", jPanelInventory);
 
         btnReturn.setText("Return selected");
+        btnReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -356,6 +361,10 @@ public class MainScreen extends javax.swing.JFrame {
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
         JOptionPane.showMessageDialog(this, "LOC monitor 21``   ---->   220$" );
     }//GEN-LAST:event_btnProceedActionPerformed
+
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
+        // returns selected items to returned items table in the SQL universe :P
+    }//GEN-LAST:event_btnReturnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
