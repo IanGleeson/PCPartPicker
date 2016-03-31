@@ -38,9 +38,9 @@ public class MainScreen extends javax.swing.JFrame {
         //This needs to be changed to a dynamic reference 
         ImageIcon icon = new ImageIcon("C:/Users/Dsd06/Documents/tech.jpg"); 
         lbltech.setIcon(icon);
-      */  
+      */ 
        //Populate the List with Data Entries
-      //  jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
+        jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
         
     }
 
