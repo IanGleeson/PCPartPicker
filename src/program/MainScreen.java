@@ -2,10 +2,12 @@ package program;
 
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.UIManager;
 
 public class MainScreen extends javax.swing.JFrame {
@@ -15,7 +17,7 @@ public class MainScreen extends javax.swing.JFrame {
     //orders ArrayList
     ArrayList<String> orderList;
 
-    public MainScreen() {
+    public MainScreen() throws SQLException {
 
         meth = new Methods();
 
@@ -31,13 +33,15 @@ public class MainScreen extends javax.swing.JFrame {
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computer.png"));
         this.setIconImage(ii.getImage());
         
-        //More Custom Code Here
+     /*   //More Custom Code Here
         //Vanity Code
         //
         ImageIcon icon = new ImageIcon("C:/Users/Dsd06/Documents/tech.jpg"); 
         lbltech.setIcon(icon);
+      */  
+       //Populate the List with Data Entries
+        jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
         
-       //Populate the
     }
 
     @SuppressWarnings("unchecked")
@@ -82,8 +86,11 @@ public class MainScreen extends javax.swing.JFrame {
 
         jTabbedPaneSplash2.addTab("Splash", pnlSplash);
 
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         lblSearch2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblSearch2.setText("Search");
+        jPanel9.add(lblSearch2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 16, 47, -1));
 
         txtSearch2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +105,7 @@ public class MainScreen extends javax.swing.JFrame {
                 txtSearchKeyTyped(evt);
             }
         });
+        jPanel9.add(txtSearch2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 42, 162, -1));
 
         btnOrder2.setText("Order");
         btnOrder2.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +113,7 @@ public class MainScreen extends javax.swing.JFrame {
                 btnOrderActionPerformed(evt);
             }
         });
+        jPanel9.add(btnOrder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 476, 122, -1));
 
         jTblData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -141,13 +150,18 @@ public class MainScreen extends javax.swing.JFrame {
         ));
         jScrollPane6.setViewportView(jTblData);
 
+        jPanel9.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 42, 581, 459));
+
         lblCategory2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblCategory2.setText("Category:");
+        jPanel9.add(lblCategory2, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 16, -1, -1));
 
         cboxCategory2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel9.add(cboxCategory2, new org.netbeans.lib.awtextra.AbsoluteConstraints(757, 12, -1, -1));
 
         lblDescription2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblDescription2.setText("Description:");
+        jPanel9.add(lblDescription2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 92, -1, -1));
 
         txtaDescription2.setColumns(20);
         txtaDescription2.setLineWrap(true);
@@ -156,50 +170,7 @@ public class MainScreen extends javax.swing.JFrame {
         txtaDescription2.setWrapStyleWord(true);
         jScrollPane7.setViewportView(txtaDescription2);
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(lblSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblCategory2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboxCategory2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnOrder2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDescription2)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSearch2)
-                    .addComponent(lblCategory2)
-                    .addComponent(cboxCategory2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(txtSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(lblDescription2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnOrder2))
-                    .addComponent(jScrollPane6))
-                .addContainerGap())
-        );
+        jPanel9.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 126, 193, 344));
 
         jTabbedPaneSplash2.addTab("Inventory", jPanel9);
 
