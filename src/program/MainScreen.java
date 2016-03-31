@@ -199,7 +199,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addGap(0, 503, Short.MAX_VALUE)
         );
 
-        jTabbedPaneSplash2.addTab("tab4", jPanel4);
+        jTabbedPaneSplash2.addTab("Returns", jPanel4);
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -229,6 +229,11 @@ public class MainScreen extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jPanel6);
 
         btnProceed.setText("Proceed");
+        btnProceed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProceedActionPerformed(evt);
+            }
+        });
 
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -320,6 +325,10 @@ public class MainScreen extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
+        JOptionPane.showMessageDialog(this, "LOC monitor 21``   ----   220$" );
+    }//GEN-LAST:event_btnProceedActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
