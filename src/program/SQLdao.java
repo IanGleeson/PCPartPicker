@@ -10,14 +10,7 @@ public class SQLdao {
 
     private String user = "root";
     private String pass = "password";
-
-    //"server=SD-00\\MSSQLSERVER1;"
-    //+ "Database=JavaPizzaStore";
-
-    //private final String dbURL = "jdbc:mysql://localhost:3306/production";       //String url = "jdbc:odbc:Driver={SQL Server}
-
     private final String dbURL = "jdbc:mysql://192.168.103.114:3306/production?autoReconnect=true&useSSL=false";       //String url = "jdbc:odbc:Driver={SQL Server};"
-
                                                                                     //"server=SD-00\\MSSQLSERVER1;"
                                                                                     //+ "Database=JavaPizzaStore";
 
