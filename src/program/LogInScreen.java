@@ -1,7 +1,7 @@
 package program;
 
 import java.sql.SQLException;
-import java.time.Clock;
+import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -14,7 +14,6 @@ public class LogInScreen extends javax.swing.JFrame {
         initComponents();
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computer.png"));
         this.setIconImage(ii.getImage());
-        jLabelError.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -27,7 +26,6 @@ public class LogInScreen extends javax.swing.JFrame {
         jButtonLogIn = new javax.swing.JButton();
         jLabelPass = new javax.swing.JLabel();
         jLabelUser = new javax.swing.JLabel();
-        jLabelError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,15 +49,12 @@ public class LogInScreen extends javax.swing.JFrame {
 
         jLabelUser.setText("Username");
 
-        jLabelError.setText("User/Pass Wrong. Try again");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelError, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JtxtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
@@ -90,9 +85,7 @@ public class LogInScreen extends javax.swing.JFrame {
                 .addComponent(jLabelPass)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JtxtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelError)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(jButtonLogIn)
                 .addGap(32, 32, 32))
         );
@@ -101,8 +94,8 @@ public class LogInScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
-        dao.connect();
-        System.out.print("working");
+//        dao.connect();
+//        System.out.print("working");
 //        MainScreen x = new MainScreen();
 //        this.setVisible(false);
 //        x.setVisible(true);
@@ -111,24 +104,22 @@ public class LogInScreen extends javax.swing.JFrame {
         
 //        dao.logIn("username", pass);
         
-//        try {
-//            dao.connect();
-//            if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
-//                if (dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword()).next()) {
-//                    this.setVisible(false);
-//                    MainScreen ms = new MainScreen();
-//                    ms.setVisible(true);
-//                } else {
-//                    jLabelError.setVisible(true);
-//                }
-//            }
-//        } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, this, "Error accessing database.", JOptionPane.ERROR_MESSAGE);
-//        } catch(NullPointerException d){
-//            JOptionPane.showMessageDialog(null, this, "Please enter a username and password.", JOptionPane.ERROR_MESSAGE);
-//        }finally {
-//            JtxtPassword.setText("");
-//        }
+        try {
+            dao.connect();
+            if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
+                String [] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
+                if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(Arrays.toString(JtxtPassword.getPassword()))) {
+                    System.out.print("working");
+                    this.setVisible(false);
+                    MainScreen ms = new MainScreen();
+                    ms.setVisible(true);
+                }
+            }
+        } catch(NullPointerException d){
+            JOptionPane.showMessageDialog(null, this, "Please enter a username and password.", JOptionPane.ERROR_MESSAGE);
+        }finally {
+            JtxtPassword.setText("");
+        }
     }//GEN-LAST:event_jButtonLogInActionPerformed
 
     private void JtxtLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtxtLogInActionPerformed
@@ -143,10 +134,9 @@ public class LogInScreen extends javax.swing.JFrame {
         }
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable(){
+            public void run(){
                 new LogInScreen().setVisible(true);
-
             }
         });
     }
@@ -155,7 +145,6 @@ public class LogInScreen extends javax.swing.JFrame {
     private javax.swing.JTextField JtxtLogIn;
     private javax.swing.JPasswordField JtxtPassword;
     private javax.swing.JButton jButtonLogIn;
-    private javax.swing.JLabel jLabelError;
     private javax.swing.JLabel jLabelHeader;
     private javax.swing.JLabel jLabelPass;
     private javax.swing.JLabel jLabelUser;

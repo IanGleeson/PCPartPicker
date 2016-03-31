@@ -25,7 +25,6 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLabelError" alignment="1" min="-2" pref="139" max="-2" attributes="0"/>
                   <Component id="JtxtPassword" alignment="1" min="-2" pref="139" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -65,9 +64,7 @@
               <Component id="jLabelPass" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="JtxtPassword" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jLabelError" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
               <Component id="jButtonLogIn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
@@ -106,11 +103,6 @@
     <Component class="javax.swing.JLabel" name="jLabelUser">
       <Properties>
         <Property name="text" type="java.lang.String" value="Username"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabelError">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="User/Pass Wrong. Try again"/>
       </Properties>
     </Component>
   </SubComponents>
