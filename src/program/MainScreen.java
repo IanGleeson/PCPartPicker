@@ -327,7 +327,7 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-        JOptionPane.showMessageDialog(this, "LOC monitor 21``   ----   220$" );
+        JOptionPane.showMessageDialog(this, "LOC monitor 21``   ---->   220$" );
     }//GEN-LAST:event_btnProceedActionPerformed
 
 
