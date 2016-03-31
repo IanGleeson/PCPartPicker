@@ -12,22 +12,23 @@ import java.util.ArrayList;
  * @author dsd08
  */
 public class Methods {
-    
-    public String search(String strSearch){
+
+    public String search(String strSearch) {
         strSearch = "Testing!!!";
         return strSearch;
     }
-    
-    public ArrayList order(ArrayList<String> orderList){
+
+    public ArrayList order(ArrayList<String> orderList) {
         orderList.add("Lots of stuff!");
         return orderList;
     }
     
-    
-    
-    
-    
-    
-    
-    
+   public void populateOrderArray(){
+       
+   }
+   
+   public void generateImage(){
+       
+   }
+
 }

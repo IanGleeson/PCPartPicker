@@ -9,8 +9,8 @@ public class SQLdao {
     private String user = "root";
     private String pass = "password";
     private final String dbURL = "jdbc:mysql:\\localhost:3306\\production";       //String url = "jdbc:odbc:Driver={SQL Server};"
-                                                                                    //"server=SD-00\\MSSQLSERVER1;"
-                                                                                    //+ "Database=JavaPizzaStore";
+    //"server=SD-00\\MSSQLSERVER1;"
+    //+ "Database=JavaPizzaStore";
     private String query;
     private PreparedStatement pst;
     private ResultSet rst;
@@ -61,8 +61,8 @@ public class SQLdao {
         }
         return rst;
     }
-    
-        public ResultSet displayAllProducts() {
+
+    public ResultSet displayAllProducts() {
         try {
             pst = conn.prepareStatement("SELECT * INVENTORY", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             rst = pst.executeQuery();

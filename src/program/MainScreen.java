@@ -1,8 +1,10 @@
 package program;
 
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -28,6 +30,14 @@ public class MainScreen extends javax.swing.JFrame {
         }
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computer.png"));
         this.setIconImage(ii.getImage());
+        
+        //More Custom Code Here
+        //Vanity Code
+        //
+        ImageIcon icon = new ImageIcon("C:/Users/Dsd06/Documents/tech.jpg"); 
+        lbltech.setIcon(icon);
+        
+       //Populate the
     }
 
     @SuppressWarnings("unchecked")
@@ -36,12 +46,13 @@ public class MainScreen extends javax.swing.JFrame {
 
         jTabbedPaneSplash2 = new javax.swing.JTabbedPane();
         pnlSplash = new javax.swing.JPanel();
+        lbltech = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         lblSearch2 = new javax.swing.JLabel();
         txtSearch2 = new javax.swing.JTextField();
         btnOrder2 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        jTblData = new javax.swing.JTable();
         lblCategory2 = new javax.swing.JLabel();
         cboxCategory2 = new javax.swing.JComboBox();
         lblDescription2 = new javax.swing.JLabel();
@@ -65,6 +76,10 @@ public class MainScreen extends javax.swing.JFrame {
         jTabbedPaneSplash2.setName(""); // NOI18N
 
         pnlSplash.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbltech.setBackground(new java.awt.Color(0, 0, 255));
+        pnlSplash.add(lbltech, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 400, 300));
+
         jTabbedPaneSplash2.addTab("Splash", pnlSplash);
 
         lblSearch2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -91,7 +106,7 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        jTblData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -124,7 +139,7 @@ public class MainScreen extends javax.swing.JFrame {
                 "Product Name", "Type", "Quantity In Stock"
             }
         ));
-        jScrollPane6.setViewportView(jTable4);
+        jScrollPane6.setViewportView(jTblData);
 
         lblCategory2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblCategory2.setText("Category:");
@@ -303,7 +318,9 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSearchKeyPressed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
-
+        //When text is entered here the list will be filtered
+        
+        
     }//GEN-LAST:event_txtSearchActionPerformed
 
     private void btnSignoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignoutActionPerformed
@@ -339,12 +356,13 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPaneSplash2;
-    private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTblData;
     private javax.swing.JLabel lblCategory2;
     private javax.swing.JLabel lblDescription2;
     private javax.swing.JLabel lblSearch2;
     private javax.swing.JLabel lblUser;
     private javax.swing.JLabel lblWallet;
+    private javax.swing.JLabel lbltech;
     private javax.swing.JPanel pnlSplash;
     private javax.swing.JTextField txtSearch2;
     private javax.swing.JTextArea txtaDescription2;
