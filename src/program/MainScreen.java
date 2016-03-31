@@ -8,7 +8,18 @@ import javax.swing.UIManager;
 
 public class MainScreen extends javax.swing.JFrame {
 
+    //Methods object
+    Methods meth;
+    //orders ArrayList
+    ArrayList<String> orderList;
+
     public MainScreen() {
+
+        meth = new Methods();
+
+        orderList = new ArrayList();
+        
+
         initComponents();
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -19,12 +30,6 @@ public class MainScreen extends javax.swing.JFrame {
         this.setIconImage(ii.getImage());
     }
 
-    //Methods object
-    Methods meth = new Methods();
-    
-    //orders ArrayList
-    ArrayList<String> orderList = new ArrayList();
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -133,7 +138,7 @@ public class MainScreen extends javax.swing.JFrame {
                             .addComponent(btnOrder2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblDescription2)
                             .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -165,11 +170,11 @@ public class MainScreen extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 827, Short.MAX_VALUE)
+            .addGap(0, 825, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 488, Short.MAX_VALUE)
+            .addGap(0, 503, Short.MAX_VALUE)
         );
 
         jTabbedPaneSplash2.addTab("tab4", jPanel4);
@@ -210,7 +215,7 @@ public class MainScreen extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(323, Short.MAX_VALUE)
+                .addContainerGap(321, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,7 +231,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -235,7 +240,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         jTabbedPaneSplash2.addTab("Order", jPanel3);
 
-        getContentPane().add(jTabbedPaneSplash2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, 520));
+        getContentPane().add(jTabbedPaneSplash2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 830, 530));
 
         lblUser.setText("Username");
         getContentPane().add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, -1, -1));
@@ -246,7 +251,7 @@ public class MainScreen extends javax.swing.JFrame {
                 btnSignoutActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSignout, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 70, 30));
+        getContentPane().add(btnSignout, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 30, 80, 30));
 
         lblWallet.setText("€0.00");
         getContentPane().add(lblWallet, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, -1, -1));
@@ -255,10 +260,9 @@ public class MainScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-        //orderList.add(jTable2);
+        orderList.clear();
         meth.order(orderList);
-        txtaDescription.setText(orderList.toString());
-        //JOptionPane.showMessageDialog(this, "Under Construction!");
+        txtaDescription2.setText(orderList.toString());
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
@@ -266,8 +270,8 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSearchKeyTyped
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
-        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
-            txtaDescription.setText(meth.search(txtSearch.getText()));
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txtaDescription2.setText(meth.search(txtSearch2.getText()));
         }
     }//GEN-LAST:event_txtSearchKeyPressed
 
@@ -282,54 +286,28 @@ public class MainScreen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnOrder;
-    private javax.swing.JButton btnOrder1;
     private javax.swing.JButton btnOrder2;
     private javax.swing.JButton btnProceed;
     private javax.swing.JButton btnSignout;
-    private javax.swing.JComboBox cboxCategory;
-    private javax.swing.JComboBox cboxCategory1;
     private javax.swing.JComboBox cboxCategory2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTabbedPane jTabbedPaneSplash;
-    private javax.swing.JTabbedPane jTabbedPaneSplash1;
     private javax.swing.JTabbedPane jTabbedPaneSplash2;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
-    private javax.swing.JLabel lblCategory;
-    private javax.swing.JLabel lblCategory1;
     private javax.swing.JLabel lblCategory2;
-    private javax.swing.JLabel lblDescription;
-    private javax.swing.JLabel lblDescription1;
     private javax.swing.JLabel lblDescription2;
-    private javax.swing.JLabel lblSearch;
-    private javax.swing.JLabel lblSearch1;
     private javax.swing.JLabel lblSearch2;
     private javax.swing.JLabel lblUser;
     private javax.swing.JLabel lblWallet;
-    private javax.swing.JTextField txtSearch;
-    private javax.swing.JTextField txtSearch1;
     private javax.swing.JTextField txtSearch2;
-    private javax.swing.JTextArea txtaDescription;
-    private javax.swing.JTextArea txtaDescription1;
     private javax.swing.JTextArea txtaDescription2;
     // End of variables declaration//GEN-END:variables
 }
