@@ -35,7 +35,7 @@ public class MainScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPaneSplash2 = new javax.swing.JTabbedPane();
-        jPanel5 = new javax.swing.JPanel();
+        pnlSplash = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         lblSearch2 = new javax.swing.JLabel();
         txtSearch2 = new javax.swing.JTextField();
@@ -64,8 +64,8 @@ public class MainScreen extends javax.swing.JFrame {
 
         jTabbedPaneSplash2.setName(""); // NOI18N
 
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jTabbedPaneSplash2.addTab("Splash", jPanel5);
+        pnlSplash.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jTabbedPaneSplash2.addTab("Splash", pnlSplash);
 
         lblSearch2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblSearch2.setText("Search");
@@ -96,10 +96,32 @@ public class MainScreen extends javax.swing.JFrame {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
                 {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
+                "Product Name", "Type", "Quantity In Stock"
             }
         ));
         jScrollPane6.setViewportView(jTable4);
@@ -251,7 +273,7 @@ public class MainScreen extends javax.swing.JFrame {
                 btnSignoutActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSignout, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 30, 80, 30));
+        getContentPane().add(btnSignout, new org.netbeans.lib.awtextra.AbsoluteConstraints(746, 30, -1, 30));
 
         lblWallet.setText("€0.00");
         getContentPane().add(lblWallet, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, -1, -1));
@@ -294,7 +316,6 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -307,6 +328,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel lblSearch2;
     private javax.swing.JLabel lblUser;
     private javax.swing.JLabel lblWallet;
+    private javax.swing.JPanel pnlSplash;
     private javax.swing.JTextField txtSearch2;
     private javax.swing.JTextArea txtaDescription2;
     // End of variables declaration//GEN-END:variables
