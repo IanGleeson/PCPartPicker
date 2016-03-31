@@ -6,9 +6,9 @@ import javax.swing.JOptionPane;
 
 public class SQLdao {
 
-    private String user = "username";
+    private String user = "root";
     private String pass = "password";
-    private final String dbURL = "jdbc:derby:\\localhost:1527\\PCPartPicker";       //String url = "jdbc:odbc:Driver={SQL Server};"
+    private final String dbURL = "jdbc:mysql:\\localhost:3306\\production";       //String url = "jdbc:odbc:Driver={SQL Server};"
                                                                                     //"server=SD-00\\MSSQLSERVER1;"
                                                                                     //+ "Database=JavaPizzaStore";
     private String query;
@@ -36,7 +36,8 @@ public class SQLdao {
         try {
             conn = DriverManager.getConnection(dbURL, user, pass);
         } catch (SQLException c) {
-            JOptionPane.showMessageDialog(null, this, "Could not connect to database.", JOptionPane.ERROR_MESSAGE);
+            c.printStackTrace();
+            //JOptionPane.showMessageDialog(null, this, "Could not connect to database.", JOptionPane.ERROR_MESSAGE);
         }
     }
 
