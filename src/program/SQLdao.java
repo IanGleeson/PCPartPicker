@@ -2,15 +2,23 @@ package program;
 
 import java.sql.*;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class SQLdao {
 
     private String user = "root";
     private String pass = "password";
+
     private final String dbURL = "jdbc:mysql:\\localhost:3306\\production";       //String url = "jdbc:odbc:Driver={SQL Server};"
     //"server=SD-00\\MSSQLSERVER1;"
     //+ "Database=JavaPizzaStore";
+
+    //private final String dbURL = "jdbc:mysql://localhost:3306/production";       //String url = "jdbc:odbc:Driver={SQL Server}
+                                                                                    //"server=SD-00\\MSSQLSERVER1;"
+                                                                                    //+ "Database=JavaPizzaStore";
+
     private String query;
     private PreparedStatement pst;
     private ResultSet rst;
@@ -34,10 +42,13 @@ public class SQLdao {
 
     public void connect() {
         try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
             conn = DriverManager.getConnection(dbURL, user, pass);
         } catch (SQLException c) {
             c.printStackTrace();
             //JOptionPane.showMessageDialog(null, this, "Could not connect to database.", JOptionPane.ERROR_MESSAGE);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(SQLdao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
