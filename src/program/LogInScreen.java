@@ -28,7 +28,6 @@ public class LogInScreen extends javax.swing.JFrame {
         jLabelPass = new javax.swing.JLabel();
         jLabelUser = new javax.swing.JLabel();
         jLabelError = new javax.swing.JLabel();
-        pnlFocus = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,7 +60,6 @@ public class LogInScreen extends javax.swing.JFrame {
 
         jLabelError.setText("User/Pass Wrong. Try again");
         getContentPane().add(jLabelError, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 166, 139, -1));
-        getContentPane().add(pnlFocus, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -125,6 +123,5 @@ public class LogInScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelHeader;
     private javax.swing.JLabel jLabelPass;
     private javax.swing.JLabel jLabelUser;
-    private javax.swing.JPanel pnlFocus;
     // End of variables declaration//GEN-END:variables
 }
