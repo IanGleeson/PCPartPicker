@@ -74,24 +74,24 @@ public class LogInScreen extends javax.swing.JFrame {
         
 //        dao.logIn("username", pass);
         
-        try {
-            dao.connect();
-            if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
-                String [] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
-                if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(Arrays.toString(JtxtPassword.getPassword()))) {
-                    System.out.print("working");
-                    this.setVisible(false);
-                    MainScreen ms = new MainScreen();
-                    ms.setVisible(true);
-                }
-            }
-        } catch(NullPointerException d){
-            JOptionPane.showMessageDialog(null, this, "Please enter a username and password.", JOptionPane.ERROR_MESSAGE);
-        } catch (SQLException ex) {
-            Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
-        }finally {
-            JtxtPassword.setText("");
-        }
+//        try {
+////            dao.connect();
+////            if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
+////                String [] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
+////                if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(Arrays.toString(JtxtPassword.getPassword()))) {
+////                    System.out.print("working");
+//                    this.setVisible(false);
+//                    MainScreen ms = new MainScreen();
+//                    ms.setVisible(true);
+////                }
+////            }
+//        } catch(NullPointerException d){
+//            JOptionPane.showMessageDialog(null, this, "Please enter a username and password.", JOptionPane.ERROR_MESSAGE);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
+//        }finally {
+//            JtxtPassword.setText("");
+//        }
     }//GEN-LAST:event_jButtonLogInActionPerformed
 
     private void JtxtLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtxtLogInActionPerformed
