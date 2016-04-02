@@ -40,8 +40,8 @@ public class SQLdao {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
         } catch (SQLException c) {
-            c.printStackTrace();
-            //JOptionPane.showMessageDialog(null, this, "Could not connect to database.", JOptionPane.ERROR_MESSAGE);
+            //c.printStackTrace();
+            JOptionPane.showMessageDialog(null, this, "Could not connect to database.", JOptionPane.ERROR_MESSAGE);
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(SQLdao.class.getName()).log(Level.SEVERE, null, ex);
         }

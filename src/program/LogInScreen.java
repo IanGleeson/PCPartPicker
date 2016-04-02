@@ -14,7 +14,7 @@ public class LogInScreen extends javax.swing.JFrame {
 
     public LogInScreen() {
         initComponents();
-        ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computer.png"));
+        ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());
     }
 
@@ -66,32 +66,37 @@ public class LogInScreen extends javax.swing.JFrame {
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
 //        dao.connect();
 //        System.out.print("working");
-//        MainScreen x = new MainScreen();
-//        this.setVisible(false);
-//        x.setVisible(true);
-        //temporary bypass for testing
+        MainScreen x;
+        try {
+            x = new MainScreen();
+            x.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.setVisible(false);
+        
+//        temporary bypass for testing
 //        char[] pass = {'p','a','s','s','w','o','r','d'};
-        
+
 //        dao.logIn("username", pass);
-        
-//        try {
-////            dao.connect();
-////            if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
-////                String [] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
-////                if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(Arrays.toString(JtxtPassword.getPassword()))) {
-////                    System.out.print("working");
-//                    this.setVisible(false);
-//                    MainScreen ms = new MainScreen();
-//                    ms.setVisible(true);
-////                }
-////            }
-//        } catch(NullPointerException d){
-//            JOptionPane.showMessageDialog(null, this, "Please enter a username and password.", JOptionPane.ERROR_MESSAGE);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
-//        }finally {
-//            JtxtPassword.setText("");
-//        }
+        try {
+            dao.connect();
+            if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
+                String[] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
+                if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(Arrays.toString(JtxtPassword.getPassword()))) {
+                    System.out.print("working");
+                    this.setVisible(false);
+                    MainScreen ms = new MainScreen();
+                    ms.setVisible(true);
+                }
+            }
+        } catch (NullPointerException d) {
+            JOptionPane.showMessageDialog(null, this, "Please enter a username and password.", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            JtxtPassword.setText("");
+        }
     }//GEN-LAST:event_jButtonLogInActionPerformed
 
     private void JtxtLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtxtLogInActionPerformed
@@ -106,8 +111,8 @@ public class LogInScreen extends javax.swing.JFrame {
         }
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable(){
-            public void run(){
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new LogInScreen().setVisible(true);
             }
         });
