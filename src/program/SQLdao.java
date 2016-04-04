@@ -81,8 +81,8 @@ public class SQLdao {
         }
         return rst;
     }
-
-    public ResultSet search() {
+    //Not Really Sure how this method is supposed to Work
+    public ResultSet search(String query) {
         try {
             pst = conn.prepareStatement("SELECT * FROM production.inventory WHERE prodName LIKE " + "'" + query + "%'", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             rst = pst.executeQuery();

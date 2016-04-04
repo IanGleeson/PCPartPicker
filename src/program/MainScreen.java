@@ -22,18 +22,20 @@ public class MainScreen extends javax.swing.JFrame {
         orderList = new ArrayList();
 
         initComponents();
+        
+        
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LogInScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //Icon Graphical code
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());
     
-        //More Custom Code Here
-        //Vanity Code
-        //This needs to be changed to a dynamic reference 
-        ImageIcon icon = new ImageIcon(this.getClass().getResource("resources/tech.jpg")); 
+        
+        //Main Graphical Stuff
+        ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/tech.jpg")); 
         lbltech.setIcon(icon);
       
       
@@ -84,7 +86,7 @@ public class MainScreen extends javax.swing.JFrame {
         jPanelSplash.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbltech.setBackground(new java.awt.Color(0, 0, 255));
-        jPanelSplash.add(lbltech, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 400, 300));
+        jPanelSplash.add(lbltech, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 780, 400));
 
         jTabbedPanes.addTab("Splash", jPanelSplash);
 
@@ -203,10 +205,6 @@ public class MainScreen extends javax.swing.JFrame {
         jPanelReturns.setLayout(jPanelReturnsLayout);
         jPanelReturnsLayout.setHorizontalGroup(
             jPanelReturnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelReturnsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(299, 299, 299))
             .addGroup(jPanelReturnsLayout.createSequentialGroup()
                 .addGroup(jPanelReturnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelReturnsLayout.createSequentialGroup()
@@ -214,8 +212,11 @@ public class MainScreen extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelReturnsLayout.createSequentialGroup()
                         .addGap(303, 303, 303)
-                        .addComponent(lblOrderHistory)))
-                .addContainerGap(259, Short.MAX_VALUE))
+                        .addComponent(lblOrderHistory))
+                    .addGroup(jPanelReturnsLayout.createSequentialGroup()
+                        .addGap(300, 300, 300)
+                        .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         jPanelReturnsLayout.setVerticalGroup(
             jPanelReturnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,9 +225,9 @@ public class MainScreen extends javax.swing.JFrame {
                 .addComponent(lblOrderHistory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(39, 39, 39)
                 .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         jTabbedPanes.addTab("Returns", jPanelReturns);
@@ -340,12 +341,17 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         //When text is entered here the list will be filtered
-        
+        String query = txtSearch.getText();
+            meth.search(query);
         
     }//GEN-LAST:event_txtSearchActionPerformed
 
     private void btnSignoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignoutActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        super.setVisible(true);
+        
+        
     }//GEN-LAST:event_btnSignoutActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed

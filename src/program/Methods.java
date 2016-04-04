@@ -82,11 +82,11 @@ public class Methods {
     }
     
     public String search(String strSearch) {
-        SQLdao dao = new SQLdao();
         
-        dao.search();
-        strSearch = "";
-        return strSearch;
+        SQLdao dao = new SQLdao();
+        dao.search(strSearch);
+        
+            return strSearch;
     }
 
     public ArrayList order(ArrayList<String> orderList) {
@@ -99,14 +99,14 @@ public class Methods {
 
     ResultSetMetaData metaData = rs.getMetaData();
 
-    // names of columns
+        // names of columns
     Vector<String> columnNames = new Vector<>();
     int columnCount = metaData.getColumnCount();
     for (int column = 1; column <= columnCount; column++) {
         columnNames.add(metaData.getColumnName(column));
     }
 
-    // data of the table
+        // data of the table
     Vector<Vector<Object>> data = new Vector<>();
     while (rs.next()) {
         Vector<Object> vector = new Vector<>();
@@ -120,9 +120,4 @@ public class Methods {
 
 }
      
-
-   public void generateImage(){
-       
-   }
-
 }
