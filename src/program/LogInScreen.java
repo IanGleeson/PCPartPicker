@@ -67,13 +67,26 @@ public class LogInScreen extends javax.swing.JFrame {
 //        dao.connect();
 //        System.out.print("working");
         MainScreen x;
-        try {
+        try{
             x = new MainScreen();
+            this.setVisible(false);
             x.setVisible(true);
-        } catch (SQLException ex) {
+        }catch (SQLException ex) {
             Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e){
+            
         }
-        this.setVisible(false);
+        
+        
+        
+//        MainScreen x;
+//        try {
+//            x = new MainScreen();
+//            x.setVisible(true);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        this.setVisible(false);
         
         //temporary bypass for testing
 //        char[] pass = {'p','a','s','s','w','o','r','d'};

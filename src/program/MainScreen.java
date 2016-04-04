@@ -30,13 +30,14 @@ public class MainScreen extends javax.swing.JFrame {
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());
     
-     /*   //More Custom Code Here
+        //More Custom Code Here
         //Vanity Code
         //This needs to be changed to a dynamic reference 
-        ImageIcon icon = new ImageIcon("C:/Users/Dsd06/Documents/tech.jpg"); 
+        ImageIcon icon = new ImageIcon(this.getClass().getResource("resources/tech.jpg")); 
         lbltech.setIcon(icon);
-      */ 
-       //Populate the List with Data Entries
+      
+      
+        //Populate the List with Data Entries - Note: Crashes the program
         //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
         
     }
