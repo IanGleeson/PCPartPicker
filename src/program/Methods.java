@@ -46,6 +46,7 @@ public class Methods {
         //setting spinner values---> starting value / min value / max value / increment value
         SpinnerModel sm = new SpinnerNumberModel(1, 1, 99, 1);
         JSpinner spinner = new JSpinner(sm);
+        spinner.setEditor(new JSpinner.DefaultEditor(spinner));
         //value = (int)spinner.getValue();
         spinner.setBounds(x + 220, y - 49, 50, 30);
         return spinner;
