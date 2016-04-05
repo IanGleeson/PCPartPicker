@@ -11,25 +11,16 @@ import javax.swing.UIManager;
 
 public class MainScreen extends javax.swing.JFrame {
 
-    //Methods object
     Methods meth;
-    //orders ArrayList
     ArrayList<String> orderList;
 
     public MainScreen() throws SQLException {
 
         meth = new Methods();
-
         orderList = new ArrayList();
 
         initComponents();
         
-        
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LogInScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
         //Icon Graphical code
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());
