@@ -11,25 +11,16 @@ import javax.swing.UIManager;
 
 public class MainScreen extends javax.swing.JFrame {
 
-    //Methods object
     Methods meth;
-    //orders ArrayList
     ArrayList<String> orderList;
 
     public MainScreen() throws SQLException {
 
         meth = new Methods();
-
         orderList = new ArrayList();
 
         initComponents();
         
-        
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LogInScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
         //Icon Graphical code
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());
@@ -381,6 +372,8 @@ public class MainScreen extends javax.swing.JFrame {
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
         //pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
         pnlOrder.setLayout(new BoxLayout(pnlOrder, BoxLayout.Y_AXIS)); // <---Top to bottom
+        pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
+        //pnlOrder.setLayout(new BoxLayout(pnlOrder, BoxLayout.Y_AXIS)); // <---Top to bottom
 
         pnlOrder.add(meth.returnCheckBox());
         pnlOrder.add(meth.returnSpinner());

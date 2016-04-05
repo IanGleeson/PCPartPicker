@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author dsd08
+ * @author Gints Gavars
  */
 public class Methods {
 //----------------------------------------------------------------------------------------------------------    
@@ -29,6 +29,7 @@ public class Methods {
    }
 //----------------------------------------------------------------------------------------------------------   
 //returns checkbox to be added to panel
+
     public JCheckBox returnCheckBox(){
         int x = 50;
         int y = 50;
@@ -48,7 +49,7 @@ public class Methods {
     }
 //----------------------------------------------------------------------------------------------------------    
     //dinamic generation of spinners for returns list depending on number of purchases made
-    public void returnsList(){
+//    public void returnsList(){
 //        private SimpleCursorAdapter mSpots;
 //
 //    @Override
@@ -98,9 +99,9 @@ public class Methods {
 //        }
 //
 //    }
+//    )
+//----------------------------------------------------------------------------------------------------------    
 
-    }
-//----------------------------------------------------------------------------------------------------------
     
     public String search(String strSearch) {
         
