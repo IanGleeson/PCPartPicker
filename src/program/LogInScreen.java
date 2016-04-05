@@ -61,6 +61,11 @@ public class LogInScreen extends javax.swing.JFrame {
         getContentPane().add(jLabelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 68, 113, -1));
 
         btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         setSize(new java.awt.Dimension(258, 303));
@@ -119,6 +124,12 @@ public class LogInScreen extends javax.swing.JFrame {
     private void JtxtLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtxtLogInActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JtxtLogInActionPerformed
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        Register reg = new Register();
+        this.setVisible(false);
+        reg.setVisible(true);
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
     public static void main(String args[]) {
         try {
