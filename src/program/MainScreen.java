@@ -3,6 +3,7 @@ package program;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -350,8 +351,8 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-        pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
-        //pnlOrder.setLayout(new BoxLayout(pnlOrder, BoxLayout.Y_AXIS)); // <---Top to bottom
+        //pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
+        pnlOrder.setLayout(new BoxLayout(pnlOrder, BoxLayout.Y_AXIS)); // <---Top to bottom
 
         pnlOrder.add(meth.returnCheckBox());
         pnlOrder.add(meth.returnSpinner());
