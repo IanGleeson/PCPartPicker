@@ -109,7 +109,7 @@ public class MainScreen extends javax.swing.JFrame {
                 btnOrderActionPerformed(evt);
             }
         });
-        jPanelInventory.add(btnOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 476, 122, -1));
+        jPanelInventory.add(btnOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 120, 50));
 
         jTblData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -184,7 +184,7 @@ public class MainScreen extends javax.swing.JFrame {
         txtaDescription.setWrapStyleWord(true);
         jScrollPaneDescription.setViewportView(txtaDescription);
 
-        jPanelInventory.add(jScrollPaneDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 126, 193, 344));
+        jPanelInventory.add(jScrollPaneDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 126, 193, 320));
 
         jTabbedPanes.addTab("Inventory", jPanelInventory);
 
@@ -237,10 +237,14 @@ public class MainScreen extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         jTabbedPanes.addTab("Returns", jPanelReturns);
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setToolTipText("");
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         javax.swing.GroupLayout pnlOrderLayout = new javax.swing.GroupLayout(pnlOrder);
         pnlOrder.setLayout(pnlOrderLayout);
@@ -250,7 +254,7 @@ public class MainScreen extends javax.swing.JFrame {
         );
         pnlOrderLayout.setVerticalGroup(
             pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 343, Short.MAX_VALUE)
+            .addGap(0, 345, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(pnlOrder);
@@ -290,7 +294,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(jPanelOrderLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addGroup(jPanelOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -299,7 +303,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         jTabbedPanes.addTab("Order", jPanelOrder);
 
-        getContentPane().add(jTabbedPanes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 830, 510));
+        getContentPane().add(jTabbedPanes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 830, 570));
 
         lblUser.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblUser.setText("Username");
@@ -369,9 +373,8 @@ public class MainScreen extends javax.swing.JFrame {
       
     }//GEN-LAST:event_btnClearActionPerformed
 
+
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-        //pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
-        pnlOrder.setLayout(new BoxLayout(pnlOrder, BoxLayout.Y_AXIS)); // <---Top to bottom
         pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
         //pnlOrder.setLayout(new BoxLayout(pnlOrder, BoxLayout.Y_AXIS)); // <---Top to bottom
 

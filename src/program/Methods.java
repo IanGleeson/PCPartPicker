@@ -29,10 +29,10 @@ public class Methods {
    }
 //----------------------------------------------------------------------------------------------------------   
 //returns checkbox to be added to panel
-
+    static int y = 50;
     public JCheckBox returnCheckBox(){
         int x = 50;
-        int y = 50;
+        
         JCheckBox checkBox = new JCheckBox("Testing");
         checkBox.setSelected(true);
         checkBox.setBounds(x, y, 130, 35);
@@ -46,60 +46,7 @@ public class Methods {
         //value = (int)spinner.getValue();
         //spinner.setBounds(x + 150, y, 40, 30);
         return spinner;
-    }
-//----------------------------------------------------------------------------------------------------------    
-    //dinamic generation of spinners for returns list depending on number of purchases made
-//    public void returnsList(){
-//        private SimpleCursorAdapter mSpots;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState)
-//    {
-//        // TODO Auto-generated method stub
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.reminder_manage_activity);
-//
-//        Button add_new_button = (Button) findViewById(R.id.add_new_spot_button);
-//        add_new_button.setOnClickListener(new ButtonOnClickListener());
-//
-//    }
-//
-//    @Override
-//    public void onClick(View v)
-//    {
-//    	addSpinner();
-//    }
-//
-//
-//    public class ButtonOnClickListener implements View.OnClickListener
-//    {
-//        
-//        private void addSpinner()
-//        {
-//            LinearLayout layoutHolder = 
-//                (LinearLayout) findViewById(R.id.layout_holder);
-//
-//            LinearLayout spinnerHolder = new LinearLayout(getApplicationContext());
-//            spinnerHolder.setOrientation(LinearLayout.HORIZONTAL);
-//
-//            spinnerHolder.setLayoutParams(
-//                new LinearLayout.LayoutParams(
-//                    LinearLayout.LayoutParams.FILL_PARENT, 
-//                    LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
-//            Spinner newSpinner = new Spinner(this);
-//            newSpinner.setLayoutParams(
-//                new Spinner.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, 
-//                    ViewGroup.LayoutParams.WRAP_CONTENT));
-//            newSpinner.setAdapter(mSpots);
-//
-//            layoutHolder.addView(spinnerHolder);
-//            spinnerHolder.addView(newSpinner);
-//
-//            // A non-internal spot was selected
-//        }
-//
-//    }
-//    )
+    }  
 //----------------------------------------------------------------------------------------------------------    
 
     
