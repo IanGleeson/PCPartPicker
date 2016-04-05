@@ -74,22 +74,22 @@ public class LogInScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
+//testing
         dao.connect();
-        this.setVisible(false);
         MainScreen ms;
         char[] pass = {'a', 'd', 'm', 'i', 'n'};
         try {
             dao.logIn("admin", pass);
             ms = new MainScreen();
+            this.setVisible(false);
             ms.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-//        String[] LogIn = dao.logIn("admin", pass );
-//        if(LogIn[0].isEmpty()){
-//            System.out.print("knew it");
-//        }
+        
+        //String[] LogIn = dao.logIn("admin", pass );
+        //System.out.println(LogIn[0]);
         //System.out.println(LogIn[0]);
 //        //System.out.println(LogIn[1]);
 //    try {
@@ -133,10 +133,8 @@ public class LogInScreen extends javax.swing.JFrame {
         }
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LogInScreen().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new LogInScreen().setVisible(true);
         });
     }
 

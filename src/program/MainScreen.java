@@ -20,20 +20,17 @@ public class MainScreen extends javax.swing.JFrame {
         orderList = new ArrayList();
 
         initComponents();
-        
+
         //Icon Graphical code
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());
-    
-        
+
         //Main Graphical Stuff
-        ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/tech.jpg")); 
+        ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/tech.jpg"));
         lbltech.setIcon(icon);
-      
-      
+
         //Populate the List with Data Entries - Note: Crashes the program
         //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -88,17 +85,9 @@ public class MainScreen extends javax.swing.JFrame {
         lblSearch.setText("Search");
         jPanelInventory.add(lblSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 16, 47, -1));
 
-        txtSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchActionPerformed(evt);
-            }
-        });
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSearchKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtSearchKeyTyped(evt);
             }
         });
         jPanelInventory.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 42, 162, -1));
@@ -336,45 +325,33 @@ public class MainScreen extends javax.swing.JFrame {
         txtaDescription.setText(orderList.toString());
     }//GEN-LAST:event_btnOrderActionPerformed
 
-    private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
-
-    }//GEN-LAST:event_txtSearchKeyTyped
-
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            if(!txtSearch.getText().equals("")){
+            if (!txtSearch.getText().equals("")) {
                 txtaDescription.setText(meth.search(txtSearch.getText()));
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Please enter something to search for!");
             }
         }
-
     }//GEN-LAST:event_txtSearchKeyPressed
-
-    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
-        //When text is entered here the list will be filtered
-        String query = txtSearch.getText();
-            meth.search(query);
-        
-    }//GEN-LAST:event_txtSearchActionPerformed
 
     private void btnSignoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignoutActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         super.setVisible(true);
-        
-        
+
+
     }//GEN-LAST:event_btnSignoutActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to clear the order?", 
-       "Warning", JOptionPane.WARNING_MESSAGE);
-        if(result == JOptionPane.OK_OPTION){
+        int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to clear the order?",
+                "Warning", JOptionPane.WARNING_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
             JOptionPane.showMessageDialog(this, "Order basket has been emptied!");
             orderList.clear();
             orderList.add("Order empty!");
-}
-      
+        }
+
     }//GEN-LAST:event_btnClearActionPerformed
 
 
@@ -384,7 +361,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         pnlOrder.add(meth.returnCheckBox());
         pnlOrder.add(meth.returnSpinner());
-        
+
         pnlOrder.repaint();
         pnlOrder.revalidate();
     }//GEN-LAST:event_btnProceedActionPerformed
