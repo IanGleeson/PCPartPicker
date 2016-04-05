@@ -27,7 +27,8 @@ public class MainScreen extends javax.swing.JFrame {
         
         try {
             for(javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()){
-                if("Metal".equals(info.getName())){
+                System.out.println(info);
+                if("Nimbus".equals(info.getName())){
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
