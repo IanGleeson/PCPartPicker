@@ -29,9 +29,10 @@ public class Methods {
    }
 //----------------------------------------------------------------------------------------------------------   
 //returns checkbox to be added to panel
+    static int y = 50;
     public JCheckBox returnCheckBox(){
+        
         int x = 50;
-        int y = 50;
         JCheckBox checkBox = new JCheckBox("Testing");
         checkBox.setSelected(true);
         checkBox.setBounds(x, y, 130, 35);
