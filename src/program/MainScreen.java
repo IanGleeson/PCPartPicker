@@ -342,7 +342,11 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            txtaDescription.setText(meth.search(txtSearch.getText()));
+            if(!txtSearch.getText().equals("")){
+                txtaDescription.setText(meth.search(txtSearch.getText()));
+            }else{
+                JOptionPane.showMessageDialog(null, "Please enter something to search for!");
+            }
         }
 
     }//GEN-LAST:event_txtSearchKeyPressed
