@@ -3,6 +3,7 @@ package program;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -69,7 +70,7 @@ public class MainScreen extends javax.swing.JFrame {
         lblOrderHistory = new javax.swing.JLabel();
         jPanelOrder = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel6 = new javax.swing.JPanel();
+        pnlOrder = new javax.swing.JPanel();
         btnProceed = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         lblUser = new javax.swing.JLabel();
@@ -78,6 +79,7 @@ public class MainScreen extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPanes.setName(""); // NOI18N
@@ -249,18 +251,18 @@ public class MainScreen extends javax.swing.JFrame {
 
         jTabbedPanes.addTab("Returns", jPanelReturns);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 407, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlOrderLayout = new javax.swing.GroupLayout(pnlOrder);
+        pnlOrder.setLayout(pnlOrderLayout);
+        pnlOrderLayout.setHorizontalGroup(
+            pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 399, Short.MAX_VALUE)
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 359, Short.MAX_VALUE)
+        pnlOrderLayout.setVerticalGroup(
+            pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 343, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setViewportView(jPanel6);
+        jScrollPane1.setViewportView(pnlOrder);
 
         btnProceed.setText("Proceed");
         btnProceed.addActionListener(new java.awt.event.ActionListener() {
@@ -328,7 +330,7 @@ public class MainScreen extends javax.swing.JFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/10AML4VB_alt.jpg"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, 50, 50));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 50, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -377,7 +379,14 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-        JOptionPane.showMessageDialog(this, "LOC monitor 21``   ---->   220$" );
+        //pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
+        pnlOrder.setLayout(new BoxLayout(pnlOrder, BoxLayout.Y_AXIS)); // <---Top to bottom
+
+        pnlOrder.add(meth.returnCheckBox());
+        pnlOrder.add(meth.returnSpinner());
+        
+        pnlOrder.repaint();
+        pnlOrder.revalidate();
     }//GEN-LAST:event_btnProceedActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
@@ -394,7 +403,6 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JComboBox cboxCategory;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanelInventory;
     private javax.swing.JPanel jPanelOrder;
     private javax.swing.JPanel jPanelReturns;
@@ -412,6 +420,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel lblUser;
     private javax.swing.JLabel lblWallet;
     private javax.swing.JLabel lbltech;
+    private javax.swing.JPanel pnlOrder;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextArea txtaDescription;
     // End of variables declaration//GEN-END:variables

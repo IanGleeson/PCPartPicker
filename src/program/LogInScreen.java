@@ -28,6 +28,7 @@ public class LogInScreen extends javax.swing.JFrame {
         jButtonLogIn = new javax.swing.JButton();
         jLabelPass = new javax.swing.JLabel();
         jLabelUser = new javax.swing.JLabel();
+        btnRegister = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -51,13 +52,16 @@ public class LogInScreen extends javax.swing.JFrame {
                 jButtonLogInActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 196, -1, -1));
+        getContentPane().add(jButtonLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, -1));
 
         jLabelPass.setText("Password");
         getContentPane().add(jLabelPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 114, -1, -1));
 
         jLabelUser.setText("Username");
         getContentPane().add(jLabelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 68, 113, -1));
+
+        btnRegister.setText("Register");
+        getContentPane().add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         setSize(new java.awt.Dimension(258, 303));
         setLocationRelativeTo(null);
@@ -134,6 +138,7 @@ public class LogInScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JtxtLogIn;
     private javax.swing.JPasswordField JtxtPassword;
+    private javax.swing.JButton btnRegister;
     private javax.swing.JButton jButtonLogIn;
     private javax.swing.JLabel jLabelHeader;
     private javax.swing.JLabel jLabelPass;
