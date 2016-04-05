@@ -2,6 +2,7 @@ package program;
 
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -64,52 +65,40 @@ public class LogInScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
-//        dao.connect();
-//        System.out.print("working");
-        MainScreen x;
-        try{
-            x = new MainScreen();
-            this.setVisible(false);
-            x.setVisible(true);
-        }catch (SQLException ex) {
+        dao.connect();
+        this.setVisible(false);
+        MainScreen ms;
+        char[] pass = {'a', 'd', 'm', 'i', 'n'};
+        try {
+            dao.logIn("admin", pass);
+            ms = new MainScreen();
+            ms.setVisible(true);
+        } catch (SQLException ex) {
             Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
-        }catch(Exception e){
-            
         }
-        
-        
-        
-//        MainScreen x;
-//        try {
-//            x = new MainScreen();
-//            x.setVisible(true);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        this.setVisible(false);
-        
-        //temporary bypass for testing
-//        char[] pass = {'p','a','s','s','w','o','r','d'};
 
-//        dao.logIn("username", pass);
-//        try {
-//            dao.connect();
-//            if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
-//                String[] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
-//                if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(Arrays.toString(JtxtPassword.getPassword()))) {
-//                    System.out.print("working");
-//                    this.setVisible(false);
-//                    MainScreen ms = new MainScreen();
-//                    ms.setVisible(true);
-//                }
-//            }
-//        } catch (NullPointerException d) {
-//            JOptionPane.showMessageDialog(null, this, "Please enter a username and password.", JOptionPane.ERROR_MESSAGE);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            JtxtPassword.setText("");
+//        String[] LogIn = dao.logIn("admin", pass );
+//        if(LogIn[0].isEmpty()){
+//            System.out.print("knew it");
 //        }
+        //System.out.println(LogIn[0]);
+//        //System.out.println(LogIn[1]);
+//    try {
+//        dao.connect();
+//        if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
+//            String[] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
+//            if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(Arrays.toString(JtxtPassword.getPassword()))) {
+//                System.out.print("working");
+//                this.setVisible(false);
+//                MainScreen ms = new MainScreen();
+//                ms.setVisible(true);
+//            }
+//        }
+//    } catch (NullPointerException | SQLException d) {
+//        Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, d);
+//    } finally {
+//        JtxtPassword.setText("");
+//    }
     }//GEN-LAST:event_jButtonLogInActionPerformed
 
     private void JtxtLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtxtLogInActionPerformed

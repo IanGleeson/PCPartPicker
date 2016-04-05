@@ -11,8 +11,7 @@ public class SQLdao {
     private String dbUser = "root";
     private String dbPass = "password";
     private final String dbURL = "jdbc:mysql://192.168.103.114:3306/production?autoReconnect=true&useSSL=false";
-    
-    String[] LogIn;
+    private String[] LogIn;
     
     private String query;
     private PreparedStatement pst;

@@ -11,19 +11,16 @@ import javax.swing.UIManager;
 
 public class MainScreen extends javax.swing.JFrame {
 
-    //Methods object
     Methods meth;
-    //orders ArrayList
     ArrayList<String> orderList;
 
     public MainScreen() throws SQLException {
 
         meth = new Methods();
-
         orderList = new ArrayList();
 
         initComponents();
-      
+        
         //Icon Graphical code
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());
