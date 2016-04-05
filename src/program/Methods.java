@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JCheckBox;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,9 +32,8 @@ public class Methods {
 //----------------------------------------------------------------------------------------------------------   
 //returns checkbox to be added to panel
     static int y = 50;
+    static int x = 50;
     public JCheckBox returnCheckBox(){
-        int x = 50;
-        
         JCheckBox checkBox = new JCheckBox("Testing");
         checkBox.setSelected(true);
         checkBox.setBounds(x, y, 130, 35);
@@ -42,9 +43,11 @@ public class Methods {
 //----------------------------------------------------------------------------------------------------------
     //returns spinner to be added to panel
     public JSpinner returnSpinner(){
-        JSpinner spinner = new JSpinner();
+        //setting spinner values---> starting value / min value / max value / increment value
+        SpinnerModel sm = new SpinnerNumberModel(1, 1, 99, 1);
+        JSpinner spinner = new JSpinner(sm);
         //value = (int)spinner.getValue();
-        //spinner.setBounds(x + 150, y, 40, 30);
+        spinner.setBounds(x + 220, y - 49, 50, 30);
         return spinner;
     }  
 //----------------------------------------------------------------------------------------------------------    
