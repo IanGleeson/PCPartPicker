@@ -347,17 +347,22 @@ public class MainScreen extends javax.swing.JFrame {
         int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to clear the order?",
                 "Warning", JOptionPane.WARNING_MESSAGE);
         if (result == JOptionPane.OK_OPTION) {
+            //removing CheckBoxes and Spinners from panel
+            pnlOrder.removeAll();
+            meth.y = 50;
+            meth.x = 50;
+            pnlOrder.repaint();
+            pnlOrder.revalidate();
             JOptionPane.showMessageDialog(this, "Order basket has been emptied!");
             orderList.clear();
             orderList.add("Order empty!");
+            pnlOrder.removeAll();
         }
-
     }//GEN-LAST:event_btnClearActionPerformed
 
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
         pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
-        //pnlOrder.setLayout(new BoxLayout(pnlOrder, BoxLayout.Y_AXIS)); // <---Top to bottom
 
         pnlOrder.add(meth.returnCheckBox());
         pnlOrder.add(meth.returnSpinner());
