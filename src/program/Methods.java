@@ -62,13 +62,13 @@ public class Methods {
             return strSearch;
     }
 //----------------------------------------------------------------------------------------------------------
-    
+    //Obselete / Unused Method
     public ArrayList order(ArrayList<String> orderList) {
         orderList.add("Lots of stuff!");
         return orderList;
     }
 //----------------------------------------------------------------------------------------------------------    
-    //This method exists solely for the purpose of interpreting the query results into some readable in the JTable
+    //Converts the result set into a suitable type for the JTable
     public DefaultTableModel buildTableModel(ResultSet rs)
         throws SQLException {
 
