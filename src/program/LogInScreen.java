@@ -1,17 +1,18 @@
 package program;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 
 public class LogInScreen extends javax.swing.JFrame {
 
     SQLdao dao = new SQLdao();
+    MainScreen ms;
 
     public LogInScreen() {
         initComponents();
@@ -75,11 +76,16 @@ public class LogInScreen extends javax.swing.JFrame {
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
 //testing
-        dao.connect();
-        MainScreen ms;
         char[] pass = {'a', 'd', 'm', 'i', 'n'};
+        dao.connect();
+
+        //String s = dao.test("admin");
+        //System.out.println(s);
         try {
-            dao.logIn("admin", pass);
+            ArrayList<String> s = dao.logIn("admin", pass);
+            for(String string : s){
+                System.out.println(string);
+            }
             ms = new MainScreen();
             this.setVisible(false);
             ms.setVisible(true);
@@ -87,11 +93,8 @@ public class LogInScreen extends javax.swing.JFrame {
             Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
         //String[] LogIn = dao.logIn("admin", pass );
         //System.out.println(LogIn[0]);
-        //System.out.println(LogIn[0]);
-//        //System.out.println(LogIn[1]);
 //    try {
 //        dao.connect();
 //        if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
@@ -122,8 +125,8 @@ public class LogInScreen extends javax.swing.JFrame {
 
     public static void main(String args[]) {
         try {
-            for(javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()){
-                if("Nimbus".equals(info.getName())){
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

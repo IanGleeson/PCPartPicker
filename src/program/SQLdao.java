@@ -1,6 +1,7 @@
 package program;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,35 +10,20 @@ import javax.swing.JOptionPane;
 public class SQLdao {
 
     private String dbUser = "root";
-    private String dbPass = "password";
+    private final String dbPass = "password";
     private final String dbURL = "jdbc:mysql://192.168.103.114:3306/production?autoReconnect=true&useSSL=false";
-    private String[] LogIn;
-    
+    private ArrayList<String> LogIn = new ArrayList<>();
+
     private String query;
     private PreparedStatement pst;
     private ResultSet rst;
     private Connection conn;
 
-    public String getQuery() {
-        return query;
-    }
-
-    public void setQuery(String query) {
-        this.query = query;
-    }
-
-    public String getUser() {
-        return dbUser;
-    }
-
-    public void setUser(String user) {
-        this.dbUser = user;
-    }
-
     public void connect() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
+            LogIn.add(0, null);
         } catch (SQLException c) {
             //c.printStackTrace();
             JOptionPane.showMessageDialog(null, this, "Could not connect to database.", JOptionPane.ERROR_MESSAGE);
@@ -56,17 +42,17 @@ public class SQLdao {
         }
     }
 
-    public String[] logIn(String user, char[] pass) {
+    public ArrayList logIn(String user, char[] pass) {
         try {
-            pst = conn.prepareStatement("SELECT * FROM production.customers WHERE USERNAME LIKE '" + user
-                    + "' AND PASSWORD LIKE '" + Arrays.toString(pass) + "'", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            pst = conn.prepareStatement("SELECT Username, Password FROM production.customers WHERE USERNAME LIKE '" + user
+                    + "' AND PASSWORD LIKE '" + Arrays.toString(pass) + "'");
             rst = pst.executeQuery();
-            while(rst.next()){
-                LogIn[0] = rst.getString("Username");
-                LogIn[1] = rst.getString("Password");
+            while (rst.next()) {
+                LogIn.add(rst.getString("Username"));
+                LogIn.add(rst.getString("Password"));
             }
         } catch (SQLException d) {
-            JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, this, "Error executing statement.", JOptionPane.ERROR_MESSAGE);
         }
         return LogIn;
     }
@@ -80,6 +66,7 @@ public class SQLdao {
         }
         return rst;
     }
+
     //Not Really Sure how this method is supposed to Work
     public ResultSet search(String query) {
         try {
