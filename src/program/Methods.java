@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Gints Gavars
  */
 public class Methods {
-//----------------------------------------------------------------------------------------------------------    
+//----------------------------------------------------------------------------------------------------------
     //returns a set of data from the sql Server
     public ResultSet displayAllProducts(){
        SQLdao dao = new SQLdao();
@@ -29,7 +29,7 @@ public class Methods {
         return dao.displayAllProducts();
        
    }
-//----------------------------------------------------------------------------------------------------------   
+//----------------------------------------------------------------------------------------------------------
 //returns checkbox to be added to panel
     static int y = 50;
     static int x = 50;

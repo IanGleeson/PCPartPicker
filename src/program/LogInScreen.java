@@ -75,18 +75,31 @@ public class LogInScreen extends javax.swing.JFrame {
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
 //testing
-        dao.connect();
+//        dao.connect();
+//        MainScreen ms;
+//        char[] pass = {'a', 'd', 'm', 'i', 'n'};
+//        try {
+//            dao.logIn("admin", pass);
+//            ms = new MainScreen();
+//            this.setVisible(false);
+//            ms.setVisible(true);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//----------------------------------------------------------------------------------------------------------
+        
+        
+        //Temporary access to app without database
+        try{
         MainScreen ms;
-        char[] pass = {'a', 'd', 'm', 'i', 'n'};
-        try {
-            dao.logIn("admin", pass);
-            ms = new MainScreen();
-            this.setVisible(false);
-            ms.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
+        ms = new MainScreen();
+        this.setVisible(false);
+        ms.setVisible(true);
+        }catch(Exception e){
+            
         }
-
+//----------------------------------------------------------------------------------------------------------        
+        
         
         //String[] LogIn = dao.logIn("admin", pass );
         //System.out.println(LogIn[0]);
