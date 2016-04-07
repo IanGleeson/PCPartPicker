@@ -35,7 +35,7 @@ public class MainScreen extends javax.swing.JFrame {
         lbltech.setIcon(icon);
         
         //Populate the Table with entries
-        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
+        jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
         
         
     }
@@ -346,7 +346,8 @@ public class MainScreen extends javax.swing.JFrame {
 //        txtaDescription.setText(orderList.toString());
         
         pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
-
+        
+        jTblData.getValueAt(jTblData.getSelectedRow(), jTblData.getSelectedColumn());
         pnlOrder.add(meth.returnCheckBox());
         pnlOrder.add(meth.returnSpinner());
 
@@ -403,6 +404,7 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
+        meth.search(txtSearch.getText());
     }//GEN-LAST:event_txtSearchActionPerformed
 
     private void btnWalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWalletActionPerformed
