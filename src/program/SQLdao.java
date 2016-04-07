@@ -14,7 +14,6 @@ public class SQLdao {
 
     private String[] LogIn = new String[2];
     private ArrayList<String> Inventory = new ArrayList();
-    private ArrayList<String> Description = new ArrayList();
     private ArrayList<String> SearchResults = new ArrayList();
 
     private PreparedStatement pst;
@@ -60,13 +59,13 @@ public class SQLdao {
         return Inventory;
     }
 
-    public ArrayList getDescription(String ProdID) {
+    public String getDescription(String ProdName) {
+        String Description = "";
         try {
-            Description.clear();
-            pst = conn.prepareStatement("SELECT Description FROM production.inventory WHERE prod_ID LIKE '" + ProdID + "'");
+            pst = conn.prepareStatement("SELECT Description FROM production.inventory WHERE prod_ID LIKE '" + ProdName + "'");
             rst = pst.executeQuery();
             while (rst.next()) {
-                Description.add(rst.getString("Description"));
+                Description = rst.getString("Description");
             }
         } catch (SQLException d) {
             JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
@@ -74,18 +73,18 @@ public class SQLdao {
         return Description;
     }
 
-    public void Checkout(int ProdID, int quantity) {
+    public void Checkout(String ProdName, int quantity) {
         try {
-            pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock - '" + quantity + "' WHERE Prod_ID = '" + ProdID + "'");
+            pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock - '" + quantity + "' WHERE Prod_ID = '" + ProdName + "'");
             rst = pst.executeQuery();
         } catch (SQLException d) {
             JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public void AddInventory(int ProdID, int quantity) {
+    public void AddInventory(String ProdName, int quantity) {
         try {
-            pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock + '" + quantity + "' WHERE Prod_ID = '" + ProdID + "'");
+            pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock + '" + quantity + "' WHERE Prod_ID = '" + ProdName + "'");
             rst = pst.executeQuery();
         } catch (SQLException d) {
             JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);

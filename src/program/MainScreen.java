@@ -11,11 +11,13 @@ import javax.swing.JOptionPane;
 public class MainScreen extends javax.swing.JFrame {
 
     Methods meth;
+    SQLdao dao;
     ArrayList<String> orderList;
     ArrayList<JComponent> checkoutList;
     
     public MainScreen() throws SQLException {
 
+        dao = new SQLdao();
         meth = new Methods();
         orderList = new ArrayList();
 
@@ -144,7 +146,7 @@ public class MainScreen extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -157,6 +159,11 @@ public class MainScreen extends javax.swing.JFrame {
         });
         jTblData.setColumnSelectionAllowed(true);
         jTblData.getTableHeader().setReorderingAllowed(false);
+        jTblData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTblDataMouseClicked(evt);
+            }
+        });
         jScrollPane6.setViewportView(jTblData);
         jTblData.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
@@ -399,6 +406,12 @@ public class MainScreen extends javax.swing.JFrame {
         Wallet w = new Wallet();
         w.setVisible(true);
     }//GEN-LAST:event_btnWalletActionPerformed
+
+    private void jTblDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblDataMouseClicked
+        if(jTblData.getValueAt(jTblData.getSelectedRow(), 1) != null){
+            txtaDescription.setText(dao.getDescription((String)jTblData.getValueAt(jTblData.getSelectedRow(), 1)));
+        }
+    }//GEN-LAST:event_jTblDataMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

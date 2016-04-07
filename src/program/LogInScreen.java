@@ -1,5 +1,6 @@
 package program;
 
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -80,7 +81,9 @@ public class LogInScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void JtxtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JtxtPasswordKeyPressed
-        LogIn();
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+            LogIn();
+        }
     }//GEN-LAST:event_JtxtPasswordKeyPressed
 
     private void LogIn() {
