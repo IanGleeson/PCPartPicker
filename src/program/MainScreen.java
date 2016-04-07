@@ -27,7 +27,7 @@ public class MainScreen extends javax.swing.JFrame {
         initComponents();
         
         lblUser.setText(User);
-        
+        lblWallet.setText(java.text.NumberFormat.getCurrencyInstance().format(dao));
         //Icon Graphical code
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());
