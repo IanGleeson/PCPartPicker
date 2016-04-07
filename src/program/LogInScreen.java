@@ -85,7 +85,7 @@ public class LogInScreen extends javax.swing.JFrame {
 //            ms.setVisible(true);
 //        } catch (SQLException ex) {
 //            Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+//       }
 //----------------------------------------------------------------------------------------------------------
         
         
@@ -128,7 +128,7 @@ public class LogInScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_JtxtLogInActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        //Test method to bypass login via SQL Database
+        //Test method to bypass login 
         Register reg = new Register();
         this.setVisible(false);
         reg.setVisible(true);

@@ -22,19 +22,21 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Methods {
 //----------------------------------------------------------------------------------------------------------
-    //returns a set of data from the sql Server
+    //returns a set of data from the sql Server - this is interpreted into a table model in buildTableModel()
     public ResultSet displayAllProducts(){
-       SQLdao dao = new SQLdao();
-
-        return dao.displayAllProducts();
+       
+        SQLdao dao = new SQLdao();
+            return dao.displayAllProducts();
        
    }
 //----------------------------------------------------------------------------------------------------------
+// needs a method to remove these -
 //returns checkbox to be added to panel
     String[] ordersString = {"Monitor", "Mouse", "Keyboard"};
     static int stringValue;
     static int y = 50;
     static int x = 50;
+    
     public JCheckBox returnCheckBox(){
         if(stringValue == 3) stringValue = 0;
         JCheckBox checkBox = new JCheckBox(ordersString[stringValue]);
@@ -49,6 +51,7 @@ public class Methods {
     String[] ordersInt = {"1", "3", "2"};
     static int intValue;
     public JSpinner returnSpinner(){
+        
         //setting spinner values---> starting value / min value / max value / increment value
         SpinnerModel sm = new SpinnerNumberModel(1, 1, 99, 1);
         JSpinner spinner = new JSpinner(sm);
@@ -73,11 +76,10 @@ public class Methods {
         
         SQLdao dao = new SQLdao();
         dao.search(strSearch);
-        
             return strSearch;
     }
 //----------------------------------------------------------------------------------------------------------
-    //Obselete / Unused Method
+    //Adds new
     public ArrayList order(ArrayList<String> orderList) {
         orderList.add("Lots of stuff!");
         return orderList;
@@ -91,6 +93,7 @@ public class Methods {
 
         // names of columns
     Vector<String> columnNames = new Vector<>();
+    
     int columnCount = metaData.getColumnCount();
     for (int column = 1; column <= columnCount; column++) {
         columnNames.add(metaData.getColumnName(column));
@@ -98,6 +101,7 @@ public class Methods {
 
         // data of the table
     Vector<Vector<Object>> data = new Vector<>();
+    
     while (rs.next()) {
         Vector<Object> vector = new Vector<>();
         for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
