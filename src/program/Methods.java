@@ -5,6 +5,7 @@
  */
 package program;
 
+import java.awt.Component;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -80,24 +81,18 @@ public class Methods {
     }  
 //----------------------------------------------------------------------------------------------------------
     //sends bought items to be taken out from inventory
-    public void checkoutProd(ArrayList<JComponent> checkoutList){
+    public void checkoutProd(Component[] componentArr){
         int count = 0;
-
-        for(JComponent c : checkoutList){
-            if(c instanceof JCheckBox){
-                
-                soldItem = (String)((JCheckBox)c).getText();
-            }
-            else if(c instanceof JSpinner){
-                
-                soldItemQuantity = (int)((JSpinner)c).getValue();
-            }
+        //loop through components and save theyre values into variables to be passed to SqlDao method
+        for (Component c : componentArr) {
+            if (c instanceof JCheckBox) 
+                soldItem = ((JCheckBox) c).getText();
+             else if (c instanceof JSpinner) 
+                soldItemQuantity = (int) ((JSpinner) c).getValue();
             count++;
-            if(count == 2){
-                System.out.println("sent across " + soldItem + " " +  soldItemQuantity);
-                dao.Checkout(soldItem, soldItemQuantity);
-                System.out.println("sent across " + soldItem + " " +  soldItemQuantity);
-                count = 0;
+            if (count == 2) {
+            dao.Checkout(soldItem, soldItemQuantity);
+            count = 0;
             }
         }
     }

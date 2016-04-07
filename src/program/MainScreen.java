@@ -5,8 +5,10 @@ import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
 import static program.Methods.checkoutList;
 
@@ -15,7 +17,8 @@ public class MainScreen extends javax.swing.JFrame {
     Methods meth;
     SQLdao dao;
     ArrayList<String> orderList;
-    
+    Component[] componentArr;
+
     public MainScreen() throws SQLException {
 
         dao = new SQLdao();
@@ -31,11 +34,9 @@ public class MainScreen extends javax.swing.JFrame {
         //Main Graphical Stuff
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/tech.jpg"));
         lbltech.setIcon(icon);
-        
+
         //Populate the Table with entries
         //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
-        
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -342,7 +343,7 @@ public class MainScreen extends javax.swing.JFrame {
 //        orderList.clear();
 //        meth.order(orderList);
 //        txtaDescription.setText(orderList.toString());
-        
+
         pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
 
         pnlOrder.add(meth.returnCheckBox());
@@ -392,7 +393,8 @@ public class MainScreen extends javax.swing.JFrame {
 
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-        meth.checkoutProd(checkoutList);
+        componentArr = pnlOrder.getComponents();
+        meth.checkoutProd(componentArr);
     }//GEN-LAST:event_btnProceedActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
@@ -409,8 +411,8 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnWalletActionPerformed
 
     private void jTblDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblDataMouseClicked
-        if(jTblData.getValueAt(jTblData.getSelectedRow(), 1) != null){
-            txtaDescription.setText(dao.getDescription((String)jTblData.getValueAt(jTblData.getSelectedRow(), 1)));
+        if (jTblData.getValueAt(jTblData.getSelectedRow(), 1) != null) {
+            txtaDescription.setText(dao.getDescription((String) jTblData.getValueAt(jTblData.getSelectedRow(), 1)));
         }
     }//GEN-LAST:event_jTblDataMouseClicked
 
