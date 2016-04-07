@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
@@ -21,15 +22,13 @@ import javax.swing.table.DefaultTableModel;
  * @author Gints Gavars
  */
 public class Methods {
+    SQLdao dao = new SQLdao();
+    static ArrayList<JComponent> checkoutList;
 //----------------------------------------------------------------------------------------------------------
     //returns a set of data from the sql Server - this is interpreted into a table model in buildTableModel()
-
-//    public ResultSet displayAllProducts() {
-//
-//        SQLdao dao = new SQLdao();
-//            return dao.getInventory();
-//       
-//   }
+    public ResultSet displayAllProducts(){
+            return dao.displayAllProducts();
+    }
 //----------------------------------------------------------------------------------------------------------
 // needs a method to remove these -
 //returns checkbox to be added to panel
@@ -47,6 +46,7 @@ public class Methods {
         checkBox.setSelected(true);
         checkBox.setBounds(x, y, 130, 35);
         y += 50;
+        checkoutList.add(checkBox);
         return checkBox;
     }
 //----------------------------------------------------------------------------------------------------------
@@ -73,14 +73,27 @@ public class Methods {
         spinner.setValue(Integer.parseInt(ordersInt[intValue]));
         intValue++;
         spinner.setBounds(x + 220, y - 49, 50, 30);
+        checkoutList.add(spinner);
         return spinner;
+    }  
+//----------------------------------------------------------------------------------------------------------
+    //sends bought items to be taken out from inventory
+    public void checkoutProd(ArrayList<JComponent> checkoutList){
+        
     }
-//----------------------------------------------------------------------------------------------------------    
-
-//    public String search(String strSearch) {
-//        dao.search(strSearch);
-//            return strSearch;
-//    }
+//----------------------------------------------------------------------------------------------------------
+    //sends bought items to be taken out from inventory
+    public void sold(){
+        checkoutProd(checkoutList);
+    }
+//----------------------------------------------------------------------------------------------------------
+    
+    public String search(String strSearch) {
+        
+        SQLdao dao = new SQLdao();
+        dao.search(strSearch);
+            return strSearch;
+    }
 //----------------------------------------------------------------------------------------------------------
     //Adds new
     public ArrayList order(ArrayList<String> orderList) {

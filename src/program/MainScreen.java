@@ -1,16 +1,19 @@
 package program;
 
+import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 public class MainScreen extends javax.swing.JFrame {
 
     Methods meth;
     ArrayList<String> orderList;
-
+    ArrayList<JComponent> checkoutList;
+    
     public MainScreen() throws SQLException {
 
         meth = new Methods();
@@ -379,7 +382,7 @@ public class MainScreen extends javax.swing.JFrame {
 
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-        
+        //meth.sold();
     }//GEN-LAST:event_btnProceedActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
