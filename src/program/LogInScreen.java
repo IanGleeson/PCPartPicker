@@ -75,12 +75,13 @@ public class LogInScreen extends javax.swing.JFrame {
                 String[] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
                 if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(new String(JtxtPassword.getPassword()))) {
                     System.out.print("working");
-                    this.setVisible(false);
                     MainScreen ms = new MainScreen();
                     ms.setVisible(true);
+                    this.setVisible(false);
                 }
             }
         } catch (NullPointerException e) {
+            //e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Please enter a valid username and password", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (SQLException d) {
             JOptionPane.showMessageDialog(null, "Error accessing database", "Error", JOptionPane.ERROR_MESSAGE);

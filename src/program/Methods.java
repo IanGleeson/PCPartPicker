@@ -32,13 +32,15 @@ public class Methods {
 //----------------------------------------------------------------------------------------------------------
 // needs a method to remove these -
 //returns checkbox to be added to panel
-    String[] ordersString = {"Monitor", "Mouse", "Keyboard"};
+        String[] ordersString = {"Monitor", "Mouse", "Keyboard"};
     static int stringValue;
     static int y = 50;
     static int x = 50;
-    
-    public JCheckBox returnCheckBox(){
-        if(stringValue == 3) stringValue = 0;
+
+    public JCheckBox returnCheckBox() {
+        if (stringValue == 3) {
+            stringValue = 0;
+        }
         JCheckBox checkBox = new JCheckBox(ordersString[stringValue]);
         stringValue++;
         checkBox.setSelected(true);
@@ -51,14 +53,17 @@ public class Methods {
     //returns spinner to be added to panel
     String[] ordersInt = {"1", "3", "2"};
     static int intValue;
-    public JSpinner returnSpinner(){
-        
+
+    public JSpinner returnSpinner() {
+
         //setting spinner values---> starting value / min value / max value / increment value
         SpinnerModel sm = new SpinnerNumberModel(1, 1, 99, 1);
         JSpinner spinner = new JSpinner(sm);
         spinner.setEditor(new JSpinner.DefaultEditor(spinner));
         //value = (int)spinner.getValue();
-        if(intValue == 3) intValue = 0;
+        if (intValue == 3) {
+            intValue = 0;
+        }
 //        for (int i = 0; i < ordersInt.length; i++) {
 //            value = Integer.parseInt(ordersInt[i]);
 //            if(value == ordersInt.length){
@@ -97,32 +102,33 @@ public class Methods {
     }
 //----------------------------------------------------------------------------------------------------------    
     //Converts the result set into a suitable type for the JTable
-    public DefaultTableModel buildTableModel(ResultSet rs)
-        throws SQLException {
 
-    ResultSetMetaData metaData = rs.getMetaData();
+    public DefaultTableModel buildTableModel(ResultSet rs)
+            throws SQLException {
+
+        ResultSetMetaData metaData = rs.getMetaData();
 
         // names of columns
-    Vector<String> columnNames = new Vector<>();
-    
-    int columnCount = metaData.getColumnCount();
-    for (int column = 1; column <= columnCount; column++) {
-        columnNames.add(metaData.getColumnName(column));
-    }
+        Vector<String> columnNames = new Vector<>();
+
+        int columnCount = metaData.getColumnCount();
+        for (int column = 1; column <= columnCount; column++) {
+            columnNames.add(metaData.getColumnName(column));
+        }
 
         // data of the table
-    Vector<Vector<Object>> data = new Vector<>();
-    
-    while (rs.next()) {
-        Vector<Object> vector = new Vector<>();
-        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
-            vector.add(rs.getObject(columnIndex));
-        }
-        data.add(vector);
-    }
-//----------------------------------------------------------------------------------------------------------
-    return new DefaultTableModel(data, columnNames);
+        Vector<Vector<Object>> data = new Vector<>();
 
-}
-     
+        while (rs.next()) {
+            Vector<Object> vector = new Vector<>();
+            for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+                vector.add(rs.getObject(columnIndex));
+            }
+            data.add(vector);
+        }
+//----------------------------------------------------------------------------------------------------------
+        return new DefaultTableModel(data, columnNames);
+
+    }
+
 }
