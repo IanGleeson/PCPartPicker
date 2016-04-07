@@ -1,18 +1,12 @@
 package program;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class LogInScreen extends javax.swing.JFrame {
 
     SQLdao dao = new SQLdao();
-    MainScreen ms;
 
     public LogInScreen() {
         initComponents();
@@ -75,42 +69,24 @@ public class LogInScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
-//testing
-        char[] pass = {'a', 'd', 'm', 'i', 'n'};
-        dao.connect();
-
-        //String s = dao.test("admin");
-        //System.out.println(s);
         try {
-            ArrayList<String> s = dao.logIn("admin", pass);
-            for(String string : s){
-                System.out.println(string);
+            dao.connect();
+            if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
+                String[] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
+                if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(new String(JtxtPassword.getPassword()))) {
+                    System.out.print("working");
+                    this.setVisible(false);
+                    MainScreen ms = new MainScreen();
+                    ms.setVisible(true);
+                }
             }
-            ms = new MainScreen();
-            this.setVisible(false);
-            ms.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid username and password", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException d) {
+            JOptionPane.showMessageDialog(null, "Error accessing database", "Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            JtxtPassword.setText("");
         }
-
-        //String[] LogIn = dao.logIn("admin", pass );
-        //System.out.println(LogIn[0]);
-//    try {
-//        dao.connect();
-//        if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
-//            String[] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
-//            if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(Arrays.toString(JtxtPassword.getPassword()))) {
-//                System.out.print("working");
-//                this.setVisible(false);
-//                MainScreen ms = new MainScreen();
-//                ms.setVisible(true);
-//            }
-//        }
-//    } catch (NullPointerException | SQLException d) {
-//        Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, d);
-//    } finally {
-//        JtxtPassword.setText("");
-//    }
     }//GEN-LAST:event_jButtonLogInActionPerformed
 
     private void JtxtLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtxtLogInActionPerformed
@@ -118,6 +94,7 @@ public class LogInScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_JtxtLogInActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        //Test method to bypass login 
         Register reg = new Register();
         this.setVisible(false);
         reg.setVisible(true);

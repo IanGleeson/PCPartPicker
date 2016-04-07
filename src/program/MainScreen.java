@@ -28,9 +28,9 @@ public class MainScreen extends javax.swing.JFrame {
         //Main Graphical Stuff
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/tech.jpg"));
         lbltech.setIcon(icon);
-
-        //Populate the List with Data Entries - Note: Crashes the program
-        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
+        
+        //Populate the Table with entries
+        jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
     }
 
     @SuppressWarnings("unchecked")
@@ -53,7 +53,7 @@ public class MainScreen extends javax.swing.JFrame {
         txtaDescription = new javax.swing.JTextArea();
         jPanelReturns = new javax.swing.JPanel();
         btnReturn = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollOrderHistory = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         lblOrderHistory = new javax.swing.JLabel();
         jPanelOrder = new javax.swing.JPanel();
@@ -85,6 +85,11 @@ public class MainScreen extends javax.swing.JFrame {
         lblSearch.setText("Search");
         jPanelInventory.add(lblSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 16, 47, -1));
 
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSearchKeyPressed(evt);
@@ -195,7 +200,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addGap(0, 323, Short.MAX_VALUE)
         );
 
-        jScrollPane2.setViewportView(jPanel1);
+        jScrollOrderHistory.setViewportView(jPanel1);
 
         lblOrderHistory.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblOrderHistory.setText("Order History");
@@ -208,7 +213,7 @@ public class MainScreen extends javax.swing.JFrame {
                 .addGroup(jPanelReturnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelReturnsLayout.createSequentialGroup()
                         .addGap(183, 183, 183)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollOrderHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelReturnsLayout.createSequentialGroup()
                         .addGap(303, 303, 303)
                         .addComponent(lblOrderHistory))
@@ -223,7 +228,7 @@ public class MainScreen extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(lblOrderHistory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollOrderHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(74, Short.MAX_VALUE))
@@ -312,7 +317,6 @@ public class MainScreen extends javax.swing.JFrame {
         getContentPane().add(lblWallet, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 40, 30));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/10AML4VB_alt.jpg"))); // NOI18N
-        jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 50, 50));
 
@@ -320,15 +324,24 @@ public class MainScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+       
+        //
         orderList.clear();
+        //Add selected order to the runnung arraylist
         meth.order(orderList);
+        //Add to Returns
+        //Add to Orders
+        //sets the description for the product 
         txtaDescription.setText(orderList.toString());
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             if (!txtSearch.getText().equals("")) {
-                txtaDescription.setText(meth.search(txtSearch.getText()));
+                //Updates the table based on the query
+                meth.search(txtSearch.getText());
+                txtaDescription.setText("This is a description");
+                //txtaDescription.setText(meth.search(rst))
             } else {
                 JOptionPane.showMessageDialog(null, "Please enter something to search for!");
             }
@@ -374,6 +387,10 @@ public class MainScreen extends javax.swing.JFrame {
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         // returns selected items to returned items table in the SQL universe :P
     }//GEN-LAST:event_btnReturnActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
