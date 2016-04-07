@@ -28,9 +28,9 @@ public class MainScreen extends javax.swing.JFrame {
         //Main Graphical Stuff
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/tech.jpg"));
         lbltech.setIcon(icon);
-
-        //Populate the List with Data Entries - Note: Crashes the program
-        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
+        
+        //Populate the Table with entries
+        jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
     }
 
     @SuppressWarnings("unchecked")
@@ -53,11 +53,11 @@ public class MainScreen extends javax.swing.JFrame {
         txtaDescription = new javax.swing.JTextArea();
         jPanelReturns = new javax.swing.JPanel();
         btnReturn = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollOrderHistory = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         lblOrderHistory = new javax.swing.JLabel();
         jPanelOrder = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPaneOrder = new javax.swing.JScrollPane();
         pnlOrder = new javax.swing.JPanel();
         btnProceed = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
@@ -85,6 +85,11 @@ public class MainScreen extends javax.swing.JFrame {
         lblSearch.setText("Search");
         jPanelInventory.add(lblSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 16, 47, -1));
 
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSearchKeyPressed(evt);
@@ -195,7 +200,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addGap(0, 323, Short.MAX_VALUE)
         );
 
-        jScrollPane2.setViewportView(jPanel1);
+        jScrollOrderHistory.setViewportView(jPanel1);
 
         lblOrderHistory.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblOrderHistory.setText("Order History");
@@ -208,7 +213,7 @@ public class MainScreen extends javax.swing.JFrame {
                 .addGroup(jPanelReturnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelReturnsLayout.createSequentialGroup()
                         .addGap(183, 183, 183)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollOrderHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelReturnsLayout.createSequentialGroup()
                         .addGap(303, 303, 303)
                         .addComponent(lblOrderHistory))
@@ -223,7 +228,7 @@ public class MainScreen extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(lblOrderHistory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollOrderHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(74, Short.MAX_VALUE))
@@ -231,9 +236,9 @@ public class MainScreen extends javax.swing.JFrame {
 
         jTabbedPanes.addTab("Returns", jPanelReturns);
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setToolTipText("");
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPaneOrder.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPaneOrder.setToolTipText("");
+        jScrollPaneOrder.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         javax.swing.GroupLayout pnlOrderLayout = new javax.swing.GroupLayout(pnlOrder);
         pnlOrder.setLayout(pnlOrderLayout);
@@ -246,7 +251,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addGap(0, 345, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setViewportView(pnlOrder);
+        jScrollPaneOrder.setViewportView(pnlOrder);
 
         btnProceed.setText("Proceed");
         btnProceed.addActionListener(new java.awt.event.ActionListener() {
@@ -270,7 +275,7 @@ public class MainScreen extends javax.swing.JFrame {
                 .addContainerGap(321, Short.MAX_VALUE)
                 .addGroup(jPanelOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOrderLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPaneOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(118, 118, 118))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOrderLayout.createSequentialGroup()
                         .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,7 +287,7 @@ public class MainScreen extends javax.swing.JFrame {
             jPanelOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelOrderLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPaneOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addGroup(jPanelOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -324,15 +329,26 @@ public class MainScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-        orderList.clear();
-        meth.order(orderList);
-        txtaDescription.setText(orderList.toString());
+//        orderList.clear();
+//        meth.order(orderList);
+//        txtaDescription.setText(orderList.toString());
+        
+        pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
+
+        pnlOrder.add(meth.returnCheckBox());
+        pnlOrder.add(meth.returnSpinner());
+
+        pnlOrder.repaint();
+        pnlOrder.revalidate();
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             if (!txtSearch.getText().equals("")) {
-                txtaDescription.setText(meth.search(txtSearch.getText()));
+                //Updates the table based on the query
+                meth.search(txtSearch.getText());
+                txtaDescription.setText("This is a description");
+                //txtaDescription.setText(meth.search(rst))
             } else {
                 JOptionPane.showMessageDialog(null, "Please enter something to search for!");
             }
@@ -366,18 +382,16 @@ public class MainScreen extends javax.swing.JFrame {
 
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-        pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
-
-        pnlOrder.add(meth.returnCheckBox());
-        pnlOrder.add(meth.returnSpinner());
-
-        pnlOrder.repaint();
-        pnlOrder.revalidate();
+        
     }//GEN-LAST:event_btnProceedActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         // returns selected items to returned items table in the SQL universe :P
     }//GEN-LAST:event_btnReturnActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
 
     private void btnWalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWalletActionPerformed
         Wallet w = new Wallet();
@@ -398,10 +412,11 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelOrder;
     private javax.swing.JPanel jPanelReturns;
     private javax.swing.JPanel jPanelSplash;
+    private javax.swing.JScrollPane jScrollOrderHistory;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPaneDescription;
+    private javax.swing.JScrollPane jScrollPaneOrder;
     private javax.swing.JTabbedPane jTabbedPanes;
     private javax.swing.JTable jTblData;
     private javax.swing.JLabel lblCategory;

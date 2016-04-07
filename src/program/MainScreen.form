@@ -93,6 +93,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtSearch">
               <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSearchActionPerformed"/>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSearchKeyPressed"/>
               </Events>
               <Constraints>
@@ -258,7 +259,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" pref="384" max="-2" attributes="0"/>
+                              <Component id="jScrollOrderHistory" min="-2" pref="384" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="303" max="-2" attributes="0"/>
@@ -279,7 +280,7 @@
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="lblOrderHistory" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="325" max="-2" attributes="0"/>
+                      <Component id="jScrollOrderHistory" min="-2" pref="325" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="btnReturn" min="-2" pref="53" max="-2" attributes="0"/>
                       <EmptySpace pref="74" max="32767" attributes="0"/>
@@ -296,7 +297,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReturnActionPerformed"/>
               </Events>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+            <Container class="javax.swing.JScrollPane" name="jScrollOrderHistory">
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
@@ -343,7 +344,7 @@
                       <EmptySpace pref="321" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jScrollPane1" min="-2" pref="386" max="-2" attributes="0"/>
+                              <Component id="jScrollPaneOrder" min="-2" pref="386" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -360,7 +361,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="347" max="-2" attributes="0"/>
+                      <Component id="jScrollPaneOrder" min="-2" pref="347" max="-2" attributes="0"/>
                       <EmptySpace pref="86" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnProceed" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
@@ -372,7 +373,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+            <Container class="javax.swing.JScrollPane" name="jScrollPaneOrder">
               <Properties>
                 <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>

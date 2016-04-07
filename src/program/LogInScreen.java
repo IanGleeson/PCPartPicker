@@ -1,13 +1,8 @@
 package program;
 
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 
 public class LogInScreen extends javax.swing.JFrame {
 
@@ -74,53 +69,24 @@ public class LogInScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
-//testing
-//        dao.connect();
-//        MainScreen ms;
-//        char[] pass = {'a', 'd', 'm', 'i', 'n'};
-//        try {
-//            dao.logIn("admin", pass);
-//            ms = new MainScreen();
-//            this.setVisible(false);
-//            ms.setVisible(true);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//----------------------------------------------------------------------------------------------------------
-        
-        
-        //Temporary access to app without database
-        try{
-        MainScreen ms;
-        ms = new MainScreen();
-        this.setVisible(false);
-        ms.setVisible(true);
-        }catch(Exception e){
-            
+        try {
+            dao.connect();
+            if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
+                String[] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
+                if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(new String(JtxtPassword.getPassword()))) {
+                    System.out.print("working");
+                    this.setVisible(false);
+                    MainScreen ms = new MainScreen();
+                    ms.setVisible(true);
+                }
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid username and password", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException d) {
+            JOptionPane.showMessageDialog(null, "Error accessing database", "Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            JtxtPassword.setText("");
         }
-//----------------------------------------------------------------------------------------------------------        
-        
-        
-        //String[] LogIn = dao.logIn("admin", pass );
-        //System.out.println(LogIn[0]);
-        //System.out.println(LogIn[0]);
-//        //System.out.println(LogIn[1]);
-//    try {
-//        dao.connect();
-//        if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
-//            String[] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
-//            if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(Arrays.toString(JtxtPassword.getPassword()))) {
-//                System.out.print("working");
-//                this.setVisible(false);
-//                MainScreen ms = new MainScreen();
-//                ms.setVisible(true);
-//            }
-//        }
-//    } catch (NullPointerException | SQLException d) {
-//        Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, d);
-//    } finally {
-//        JtxtPassword.setText("");
-//    }
     }//GEN-LAST:event_jButtonLogInActionPerformed
 
     private void JtxtLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtxtLogInActionPerformed
@@ -128,7 +94,7 @@ public class LogInScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_JtxtLogInActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        //Test method to bypass login via SQL Database
+        //Test method to bypass login 
         Register reg = new Register();
         this.setVisible(false);
         reg.setVisible(true);
@@ -136,8 +102,8 @@ public class LogInScreen extends javax.swing.JFrame {
 
     public static void main(String args[]) {
         try {
-            for(javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()){
-                if("Nimbus".equals(info.getName())){
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
