@@ -34,7 +34,7 @@ public class Methods {
 //----------------------------------------------------------------------------------------------------------
 // needs a method to remove these -
 //returns checkbox to be added to panel
-        String[] ordersString = {"Monitor", "Mouse", "Keyboard"};
+        String[] ordersString = {"GTX 960", "Radeon 380 r9", "UM212E"};
     static int stringValue;
     static int y = 50;
     static int x = 50;
@@ -81,18 +81,24 @@ public class Methods {
 //----------------------------------------------------------------------------------------------------------
     //sends bought items to be taken out from inventory
     public void checkoutProd(ArrayList<JComponent> checkoutList){
-        
+        int count = 0;
+
         for(JComponent c : checkoutList){
             if(c instanceof JCheckBox){
                 
-                soldItem = ((JCheckBox)c).getText();
+                soldItem = (String)((JCheckBox)c).getText();
             }
             else if(c instanceof JSpinner){
                 
                 soldItemQuantity = (int)((JSpinner)c).getValue();
             }
-             dao.Checkout(soldItem, soldItemQuantity);
-             System.out.println("sent across " + soldItem + " " +  soldItemQuantity);
+            count++;
+            if(count == 2){
+                System.out.println("sent across " + soldItem + " " +  soldItemQuantity);
+                dao.Checkout(soldItem, soldItemQuantity);
+                System.out.println("sent across " + soldItem + " " +  soldItemQuantity);
+                count = 0;
+            }
         }
     }
 //----------------------------------------------------------------------------------------------------------

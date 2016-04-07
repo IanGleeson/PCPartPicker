@@ -2,6 +2,8 @@ package program;
 
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -70,7 +72,16 @@ public class LogInScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
-        LogIn();
+        MainScreen ms;
+        try {
+            ms = new MainScreen();
+            ms.setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        //LogIn();
     }//GEN-LAST:event_jButtonLogInActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
@@ -81,7 +92,7 @@ public class LogInScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void JtxtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JtxtPasswordKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             LogIn();
         }
     }//GEN-LAST:event_JtxtPasswordKeyPressed
