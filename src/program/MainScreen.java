@@ -406,7 +406,8 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelOrder;
     private javax.swing.JPanel jPanelReturns;
     private javax.swing.JPanel jPanelSplash;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollOrderHistory;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPaneDescription;
     private javax.swing.JScrollPane jScrollPaneOrder;
