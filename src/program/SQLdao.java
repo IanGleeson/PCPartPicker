@@ -117,14 +117,5 @@ public class SQLdao {
 //        return SearchResults;
 //    }
 //----------------------------------------------------------------------------------------------------------
-    public void disconnect() {
-        try {
-            pst.close();
-            conn.close();
-            rst.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, this, "Error disconnecting from database.", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
+    
 }
