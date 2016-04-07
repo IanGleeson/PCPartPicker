@@ -30,7 +30,9 @@ public class MainScreen extends javax.swing.JFrame {
         lbltech.setIcon(icon);
         
         //Populate the Table with entries
-        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
+        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -135,7 +137,7 @@ public class MainScreen extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Product Name", "Type", "Quantity", "Price"
+                "Product Name", "Category", "Quantity", "Price"
             }
         ) {
             Class[] types = new Class [] {
@@ -413,7 +415,6 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelReturns;
     private javax.swing.JPanel jPanelSplash;
     private javax.swing.JScrollPane jScrollOrderHistory;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPaneDescription;
     private javax.swing.JScrollPane jScrollPaneOrder;

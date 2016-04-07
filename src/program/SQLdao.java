@@ -11,7 +11,7 @@ public class SQLdao {
     private final String dbUser = "root";
     private final String dbPass = "password";
     private final String dbURL = "jdbc:mysql://192.168.103.114:3306/production?autoReconnect=true&useSSL=false";
-    
+
     private String[] LogIn = new String[2];
     private ArrayList<String> Inventory = new ArrayList();
     private ArrayList<String> Description = new ArrayList();
@@ -74,24 +74,22 @@ public class SQLdao {
         return Description;
     }
 
-    public ArrayList Checkout(int ProdID, int quantity) {
+    public void Checkout(int ProdID, int quantity) {
         try {
             pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock - '" + quantity + "' WHERE Prod_ID = '" + ProdID + "'");
             rst = pst.executeQuery();
         } catch (SQLException d) {
             JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
         }
-        return Description;
     }
 
-    public ArrayList AddInventory(int ProdID, int quantity) {
+    public void AddInventory(int ProdID, int quantity) {
         try {
             pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock + '" + quantity + "' WHERE Prod_ID = '" + ProdID + "'");
             rst = pst.executeQuery();
         } catch (SQLException d) {
             JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
         }
-        return Description;
     }
 
     public void disconnect() {

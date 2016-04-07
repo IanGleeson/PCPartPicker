@@ -26,8 +26,8 @@ public class Methods {
     static ArrayList<JComponent> checkoutList;
 //----------------------------------------------------------------------------------------------------------
     //returns a set of data from the sql Server - this is interpreted into a table model in buildTableModel()
-    public ResultSet displayAllProducts(){
-            return dao.displayAllProducts();
+    public ArrayList displayAllProducts(){
+            return dao.getInventory();
     }
 //----------------------------------------------------------------------------------------------------------
 // needs a method to remove these -
@@ -88,12 +88,12 @@ public class Methods {
     }
 //----------------------------------------------------------------------------------------------------------
     
-    public String search(String strSearch) {
-        
-        SQLdao dao = new SQLdao();
-        dao.search(strSearch);
-            return strSearch;
-    }
+//    public String search(String strSearch) {
+//        
+//        SQLdao dao = new SQLdao();
+//        dao.search(strSearch);
+//            return strSearch;
+//    }
 //----------------------------------------------------------------------------------------------------------
     //Adds new
     public ArrayList order(ArrayList<String> orderList) {
