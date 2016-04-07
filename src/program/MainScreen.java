@@ -7,8 +7,10 @@ import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
 import static program.Methods.checkoutList;
 
@@ -17,7 +19,9 @@ public class MainScreen extends javax.swing.JFrame {
     Methods meth;
     SQLdao dao;
     ArrayList<String> orderList;
-    
+    Component[] componentArr;
+    String User;
+
     public MainScreen(String User) throws SQLException {
 
         dao = new SQLdao();
@@ -33,7 +37,7 @@ public class MainScreen extends javax.swing.JFrame {
         this.setIconImage(ii.getImage());
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/tech.jpg"));
         lbltech.setIcon(icon);
-        
+
         //Populate the Table with entries
         //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
         
@@ -91,11 +95,6 @@ public class MainScreen extends javax.swing.JFrame {
         lblSearch.setText("Search");
         jPanelInventory.add(lblSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 16, 47, -1));
 
-        txtSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchActionPerformed(evt);
-            }
-        });
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSearchKeyPressed(evt);
@@ -343,7 +342,7 @@ public class MainScreen extends javax.swing.JFrame {
 //        orderList.clear();
 //        meth.order(orderList);
 //        txtaDescription.setText(orderList.toString());
-        
+
         pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
         
         jTblData.getValueAt(jTblData.getSelectedRow(), jTblData.getSelectedColumn());
@@ -394,17 +393,13 @@ public class MainScreen extends javax.swing.JFrame {
 
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-        meth.checkoutProd(checkoutList);
+        componentArr = pnlOrder.getComponents();
+        meth.checkoutProd(componentArr);
     }//GEN-LAST:event_btnProceedActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         // returns selected items to returned items table in the SQL universe :P
     }//GEN-LAST:event_btnReturnActionPerformed
-
-    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
-        // TODO add your handling code here:
-        meth.search(txtSearch.getText());
-    }//GEN-LAST:event_txtSearchActionPerformed
 
     private void btnWalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWalletActionPerformed
         Wallet w = new Wallet();

@@ -57,7 +57,7 @@ public class SQLdao {
         }
         return Inventory;
     }
-
+//----------------------------------------------------------------------------------------------------------
     public String getDescription(String ProdName) {
         String Description = "";
         try {
@@ -72,7 +72,7 @@ public class SQLdao {
         }
         return Description;
     }
-
+//----------------------------------------------------------------------------------------------------------
     public void Checkout(String ProdName, int quantity) {
         try {
             connect();
@@ -106,6 +106,7 @@ public class SQLdao {
     public double getBalance(String User) {
         double balance = 0.00;
         try {
+            connect();
             pst = conn.prepareStatement("SELECT Wallet FROM production.customers WHERE Username = '" + User + "'");
             rst = pst.executeQuery();
             while (rst.next()) {
@@ -116,7 +117,7 @@ public class SQLdao {
         }
         return balance;
     }
-
+//----------------------------------------------------------------------------------------------------------
     public void AddInventory(String ProdName, int quantity) {
         try {
             connect();
@@ -126,7 +127,7 @@ public class SQLdao {
             d.printStackTrace();
         }
     }
-
+//----------------------------------------------------------------------------------------------------------
     public void disconnect() {
         try {
             pst.close();
