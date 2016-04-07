@@ -24,40 +24,61 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace min="123" pref="123" max="-2" attributes="0"/>
+              <Component id="lblInformation" min="-2" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblUsername" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblRetypePassword" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblFullName" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="123" pref="123" max="-2" attributes="0"/>
-                      <Component id="lblInformation" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnRegister" min="-2" pref="99" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="209" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblUsername" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRetypePassword" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFullName" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblAddress" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="txtUsername" max="32767" attributes="0"/>
                               <Component id="txtPassword" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtRetypePassword" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtFullName" alignment="0" pref="99" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="txtAddress" min="-2" pref="197" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="txtEmail" min="-2" pref="99" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cboxEmail" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lblUsernameErr" pref="197" max="32767" attributes="0"/>
+                              <Component id="lblPasswordErr" max="32767" attributes="0"/>
+                              <Component id="lblFullNameErr" max="32767" attributes="0"/>
+                              <Component id="lblRetypePasswordErr" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="btnRegister" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                          <EmptySpace min="119" pref="131" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="txtEmail" min="-2" pref="99" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="cboxEmail" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="lblEmailErr" min="-2" pref="191" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="txtAddress" min="-2" pref="230" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="lblAddressErr" min="-2" pref="191" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -69,39 +90,59 @@
               <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblUsername" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtUsername" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtUsername" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblUsernameErr" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
                   <Component id="txtPassword" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPasswordErr" min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblRetypePassword" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtRetypePassword" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblFullName" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtFullName" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtAddress" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cboxEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblRetypePassword" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRetypePassword" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblFullName" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFullName" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFullNameErr" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtAddress" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cboxEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnRegister" min="-2" pref="48" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblEmailErr" min="-2" pref="20" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="lblAddressErr" min="-2" pref="20" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
+                  <Component id="lblRetypePasswordErr" min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnRegister" min="-2" pref="48" max="-2" attributes="0"/>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace pref="43" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -211,6 +252,18 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegisterActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblUsernameErr">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPasswordErr">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAddressErr">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFullNameErr">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblRetypePasswordErr">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEmailErr">
     </Component>
   </SubComponents>
 </Form>
