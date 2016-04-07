@@ -32,11 +32,15 @@ public class Methods {
 //----------------------------------------------------------------------------------------------------------
 // needs a method to remove these -
 //returns checkbox to be added to panel
+    String[] ordersString = {"Monitor", "Mouse", "Keyboard"};
+    static int stringValue;
     static int y = 50;
     static int x = 50;
     
     public JCheckBox returnCheckBox(){
-        JCheckBox checkBox = new JCheckBox("Testing");
+        if(stringValue == 3) stringValue = 0;
+        JCheckBox checkBox = new JCheckBox(ordersString[stringValue]);
+        stringValue++;
         checkBox.setSelected(true);
         checkBox.setBounds(x, y, 130, 35);
         y += 50;
@@ -44,6 +48,8 @@ public class Methods {
     }
 //----------------------------------------------------------------------------------------------------------
     //returns spinner to be added to panel
+    String[] ordersInt = {"1", "3", "2"};
+    static int intValue;
     public JSpinner returnSpinner(){
         
         //setting spinner values---> starting value / min value / max value / increment value
@@ -51,6 +57,15 @@ public class Methods {
         JSpinner spinner = new JSpinner(sm);
         spinner.setEditor(new JSpinner.DefaultEditor(spinner));
         //value = (int)spinner.getValue();
+        if(intValue == 3) intValue = 0;
+//        for (int i = 0; i < ordersInt.length; i++) {
+//            value = Integer.parseInt(ordersInt[i]);
+//            if(value == ordersInt.length){
+//                value = 0;
+//            } 
+//        }
+        spinner.setValue(Integer.parseInt(ordersInt[intValue]));
+        intValue++;
         spinner.setBounds(x + 220, y - 49, 50, 30);
         return spinner;
     }  

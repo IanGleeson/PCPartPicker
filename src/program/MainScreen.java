@@ -323,15 +323,17 @@ public class MainScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-       
-        //
-        orderList.clear();
-        //Add selected order to the runnung arraylist
-        meth.order(orderList);
-        //Add to Returns
-        //Add to Orders
-        //sets the description for the product 
-        txtaDescription.setText(orderList.toString());
+//        orderList.clear();
+//        meth.order(orderList);
+//        txtaDescription.setText(orderList.toString());
+        
+        pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
+
+        pnlOrder.add(meth.returnCheckBox());
+        pnlOrder.add(meth.returnSpinner());
+
+        pnlOrder.repaint();
+        pnlOrder.revalidate();
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
@@ -374,13 +376,7 @@ public class MainScreen extends javax.swing.JFrame {
 
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-        pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
-
-        pnlOrder.add(meth.returnCheckBox());
-        pnlOrder.add(meth.returnSpinner());
-
-        pnlOrder.repaint();
-        pnlOrder.revalidate();
+        
     }//GEN-LAST:event_btnProceedActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
