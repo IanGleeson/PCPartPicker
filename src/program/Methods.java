@@ -28,10 +28,10 @@ public class Methods {
     String soldItem;
     int soldItemQuantity;
 //----------------------------------------------------------------------------------------------------------
-    //returns a set of data from the sql Server - this is interpreted into a table model in buildTableModel()
-//    public ResultSet displayAllProducts(){
-//            return dao.displayAllProducts();
-//    }
+   // returns a set of data from the sql Server - this is interpreted into a table model in buildTableModel()
+    public ResultSet displayAllProducts(){
+            return dao.displayAllProducts();
+    }
 //----------------------------------------------------------------------------------------------------------
 // needs a method to remove these -
 //returns checkbox to be added to panel
@@ -98,10 +98,10 @@ public class Methods {
     }
 //----------------------------------------------------------------------------------------------------------
     
-//    public String search(String strSearch) {
-//        dao.search(strSearch);
-//            return strSearch;
-//    }
+    public String search(String strSearch) {
+        dao.search(strSearch);
+            return strSearch;
+    }
 //----------------------------------------------------------------------------------------------------------
     //Adds new
     public ArrayList order(ArrayList<String> orderList) {

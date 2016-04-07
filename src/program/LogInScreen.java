@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 public class LogInScreen extends javax.swing.JFrame {
 
     SQLdao dao = new SQLdao();
+    MainScreen ms;
 
     public LogInScreen() {
         initComponents();
@@ -72,14 +73,14 @@ public class LogInScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
-        MainScreen ms;
         try {
-            ms = new MainScreen();
+            ms = new MainScreen(JtxtLogIn.getText());
             ms.setVisible(true);
             this.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
+            
 
         //LogIn();
     }//GEN-LAST:event_jButtonLogInActionPerformed
@@ -99,11 +100,10 @@ public class LogInScreen extends javax.swing.JFrame {
 
     private void LogIn() {
         try {
-            dao.connect();
             if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
                 String[] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
                 if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(new String(JtxtPassword.getPassword()))) {
-                    MainScreen ms = new MainScreen();
+                    MainScreen ms = new MainScreen(JtxtLogIn.getText());
                     ms.setVisible(true);
                     this.setVisible(false);
                 }
