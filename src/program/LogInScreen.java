@@ -103,7 +103,7 @@ public class LogInScreen extends javax.swing.JFrame {
             if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
                 String[] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
                 if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(new String(JtxtPassword.getPassword()))) {
-                    MainScreen ms = new MainScreen(JtxtLogIn.getText());
+                    ms = new MainScreen(JtxtLogIn.getText());
                     ms.setVisible(true);
                     this.setVisible(false);
                 }

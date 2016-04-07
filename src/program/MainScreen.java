@@ -4,6 +4,8 @@ import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -27,7 +29,6 @@ public class MainScreen extends javax.swing.JFrame {
         orderList = new ArrayList();
 
         initComponents();
-        
         lblUser.setText(User);
         
         //Icon Graphical code
@@ -37,8 +38,7 @@ public class MainScreen extends javax.swing.JFrame {
         lbltech.setIcon(icon);
 
         //Populate the Table with entries
-        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
-        
+        jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
     }
 
     @SuppressWarnings("unchecked")
@@ -352,16 +352,12 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            if (!txtSearch.getText().equals("")) {
-                //Updates the table based on the query
-                //meth.search(txtSearch.getText());
-                txtaDescription.setText("This is a description");
-                //txtaDescription.setText(meth.search(rst))
-            } else {
-                JOptionPane.showMessageDialog(null, "Please enter something to search for!");
-            }
+        try {
+            dao.search(txtSearch.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_txtSearchKeyPressed
 
     private void btnSignoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignoutActionPerformed

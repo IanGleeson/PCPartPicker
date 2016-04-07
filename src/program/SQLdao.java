@@ -58,6 +58,7 @@ public class SQLdao {
         return Inventory;
     }
 //----------------------------------------------------------------------------------------------------------
+
     public String getDescription(String ProdName) {
         String Description = "";
         try {
@@ -73,10 +74,21 @@ public class SQLdao {
         return Description;
     }
 //----------------------------------------------------------------------------------------------------------
+
     public void Checkout(String ProdName, int quantity) {
         try {
             connect();
             pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock - '" + quantity + "' WHERE ProdName = '" + ProdName + "'");
+            pst.executeUpdate();
+        } catch (SQLException d) {
+            d.printStackTrace();
+        }
+    }
+    
+    public void AddUser(String user, char[] pass, String fullname, String address, String email) {
+        try {
+            connect();
+            pst = conn.prepareStatement("INSERT INTO customers VALUES (user)");
             pst.executeUpdate();
         } catch (SQLException d) {
             d.printStackTrace();
@@ -102,7 +114,7 @@ public class SQLdao {
             d.printStackTrace();
         }
     }
-    
+
     public double getBalance(String User) {
         double balance = 0.00;
         try {
@@ -118,6 +130,7 @@ public class SQLdao {
         return balance;
     }
 //----------------------------------------------------------------------------------------------------------
+
     public void AddInventory(String ProdName, int quantity) {
         try {
             connect();
@@ -128,6 +141,7 @@ public class SQLdao {
         }
     }
 //----------------------------------------------------------------------------------------------------------
+
     public void disconnect() {
         try {
             pst.close();
@@ -150,16 +164,12 @@ public class SQLdao {
         return rst;
     }
 
-    public ArrayList search(String query) {
-        try {
-            connect();
-            pst = conn.prepareStatement("SELECT * FROM production.inventory WHERE prodName LIKE " + "'" + query + "%'");
-            rst = pst.executeQuery();
-            while (rst.next()) {
-                SearchResults.add(rst.getString("Description"));
-            }
-        } catch (SQLException d) {
-            JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
+    public ArrayList search(String query) throws SQLException {
+        connect();
+        pst = conn.prepareStatement("SELECT * FROM production.inventory WHERE prodName LIKE " + "'" + query + "%'");
+        rst = pst.executeQuery();
+        while (rst.next()) {
+            SearchResults.add(rst.getString("Description"));
         }
         return SearchResults;
     }
