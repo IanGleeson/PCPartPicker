@@ -102,26 +102,6 @@ public class SQLdao {
             d.printStackTrace();
         }
     }
-
-    public void plusBalance(int quantity, String User) {
-        try {
-            connect();
-            pst = conn.prepareStatement("UPDATE customers SET Wallet = Wallet + '" + quantity + "' WHERE Username = '" + User + "'");
-            pst.executeUpdate();
-        } catch (SQLException d) {
-            d.printStackTrace();
-        }
-    }
-
-    public void minusBalance(int quantity, String User) {
-        try {
-            connect();
-            pst = conn.prepareStatement("UPDATE customers SET Wallet = Wallet - '" + quantity + "' WHERE Username = '" + User + "'");
-            pst.executeUpdate();
-        } catch (SQLException d) {
-            d.printStackTrace();
-        }
-    }
     
     public double getBalance(String User) {
         double balance = 0.00;
