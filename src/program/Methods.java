@@ -26,7 +26,7 @@ public class Methods {
     public ResultSet displayAllProducts(){
        
         SQLdao dao = new SQLdao();
-            return dao.displayAllProducts();
+            return dao.getInventory();
        
    }
 //----------------------------------------------------------------------------------------------------------

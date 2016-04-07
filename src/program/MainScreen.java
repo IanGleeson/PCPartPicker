@@ -7,7 +7,6 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.UIManager;
 
 public class MainScreen extends javax.swing.JFrame {
 
@@ -30,7 +29,7 @@ public class MainScreen extends javax.swing.JFrame {
         lbltech.setIcon(icon);
         
         //Populate the Table with entries
-        jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
+        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
     }
 
     @SuppressWarnings("unchecked")
