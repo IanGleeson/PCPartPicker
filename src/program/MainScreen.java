@@ -1,10 +1,12 @@
 package program;
 
+import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
@@ -13,7 +15,8 @@ public class MainScreen extends javax.swing.JFrame {
 
     Methods meth;
     ArrayList<String> orderList;
-
+    ArrayList<JComponent> checkoutList;
+    
     public MainScreen() throws SQLException {
 
         meth = new Methods();
@@ -30,7 +33,7 @@ public class MainScreen extends javax.swing.JFrame {
         lbltech.setIcon(icon);
         
         //Populate the Table with entries
-        jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
+        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
     }
 
     @SuppressWarnings("unchecked")
@@ -377,7 +380,7 @@ public class MainScreen extends javax.swing.JFrame {
 
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-        
+        //meth.sold();
     }//GEN-LAST:event_btnProceedActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
