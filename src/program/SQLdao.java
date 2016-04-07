@@ -103,6 +103,40 @@ public class SQLdao {
         }
     }
 
+    public void plusBalance(int quantity, String User) {
+        try {
+            connect();
+            pst = conn.prepareStatement("UPDATE customers SET Wallet = Wallet + '" + quantity + "' WHERE Username = '" + User + "'");
+            pst.executeUpdate();
+        } catch (SQLException d) {
+            d.printStackTrace();
+        }
+    }
+
+    public void minusBalance(int quantity, String User) {
+        try {
+            connect();
+            pst = conn.prepareStatement("UPDATE customers SET Wallet = Wallet - '" + quantity + "' WHERE Username = '" + User + "'");
+            pst.executeUpdate();
+        } catch (SQLException d) {
+            d.printStackTrace();
+        }
+    }
+    
+    public double getBalance(String User) {
+        double balance = 0.00;
+        try {
+            pst = conn.prepareStatement("SELECT Wallet FROM production.customers WHERE Username = '" + User + "'");
+            rst = pst.executeQuery();
+            while (rst.next()) {
+                balance = rst.getDouble("Wallet");
+            }
+        } catch (SQLException d) {
+            d.printStackTrace();
+        }
+        return balance;
+    }
+
     public void AddInventory(String ProdName, int quantity) {
         try {
             connect();
