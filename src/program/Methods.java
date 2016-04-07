@@ -91,7 +91,7 @@ public class Methods {
                 soldItemQuantity = (int) ((JSpinner) c).getValue();
             count++;
             if (count == 2) {
-            dao.Checkout(soldItem, soldItemQuantity);
+            dao.checkout(soldItem, soldItemQuantity);
             count = 0;
             }
         }

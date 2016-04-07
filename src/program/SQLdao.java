@@ -75,7 +75,7 @@ public class SQLdao {
     }
 //----------------------------------------------------------------------------------------------------------
 
-    public void Checkout(String ProdName, int quantity) {
+    public void checkout(String ProdName, int quantity) {
         try {
             connect();
             pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock - '" + quantity + "' WHERE ProdName = '" + ProdName + "'");
@@ -85,17 +85,29 @@ public class SQLdao {
         }
     }
     
-    public void AddUser(String user, char[] pass, String fullname, String address, String email) {
+    public void addUser(String user, char[] pass, String fullname, String address, String email) {
         try {
             connect();
-            pst = conn.prepareStatement("INSERT INTO customers VALUES (user)");
+            String statement = String.format("INSERT INTO customers VALUES (%s, %s, %s, %s, %s)", user, new String(pass), fullname, address, email);
+            pst = conn.prepareStatement(statement);
+            pst.executeUpdate();
+        } catch (SQLException d) {
+            d.printStackTrace();
+        }
+    }
+    
+    public void addInventory(String name, String category, String description, int inStock, double price) {
+        try {
+            connect();
+            String statement = String.format("INSERT INTO inventory VALUES (%s, %s, %s, %d, %f)", name, category, description, inStock, price);
+            pst = conn.prepareStatement(statement);
             pst.executeUpdate();
         } catch (SQLException d) {
             d.printStackTrace();
         }
     }
 
-    public void plusBalance(int quantity, String User) {
+    public void plusBalance(double quantity, String User) {
         try {
             connect();
             pst = conn.prepareStatement("UPDATE customers SET Wallet = Wallet + '" + quantity + "' WHERE Username = '" + User + "'");
@@ -105,7 +117,7 @@ public class SQLdao {
         }
     }
 
-    public void minusBalance(int quantity, String User) {
+    public void minusBalance(double quantity, String User) {
         try {
             connect();
             pst = conn.prepareStatement("UPDATE customers SET Wallet = Wallet - '" + quantity + "' WHERE Username = '" + User + "'");
@@ -131,7 +143,7 @@ public class SQLdao {
     }
 //----------------------------------------------------------------------------------------------------------
 
-    public void AddInventory(String ProdName, int quantity) {
+    public void addToStock(String ProdName, int quantity) {
         try {
             connect();
             pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock + '" + quantity + "' WHERE ProdName = '" + ProdName + "'");

@@ -90,10 +90,8 @@
               <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblUsername" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtUsername" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblUsernameErr" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="lblUsernameErr" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="txtUsername" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">

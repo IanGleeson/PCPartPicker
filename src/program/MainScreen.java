@@ -1,18 +1,14 @@
 package program;
 
 import java.awt.Component;
-import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JCheckBox;
-import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
-import static program.Methods.checkoutList;
 
 public class MainScreen extends javax.swing.JFrame {
 
@@ -138,7 +134,7 @@ public class MainScreen extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Product Name", "Category", "Quantity", "Price"
+                "Product Name", "Category", "In Stock", "Price"
             }
         ) {
             Class[] types = new Class [] {
@@ -362,9 +358,9 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void btnSignoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignoutActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        super.setVisible(true);
-
+        LogInScreen lg = new LogInScreen();
+        lg.setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_btnSignoutActionPerformed
 
