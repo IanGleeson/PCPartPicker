@@ -59,7 +59,7 @@ public class SQLdao {
         }
         return Inventory;
     }
-
+//----------------------------------------------------------------------------------------------------------
     public String getDescription(String ProdName) {
         String Description = "";
         try {
@@ -73,7 +73,7 @@ public class SQLdao {
         }
         return Description;
     }
-
+//----------------------------------------------------------------------------------------------------------
     public void Checkout(String ProdName, int quantity) {
         try {
             pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock - '" + quantity + "' WHERE Prod_ID = '" + ProdName + "'");
@@ -82,7 +82,7 @@ public class SQLdao {
             JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+//----------------------------------------------------------------------------------------------------------
     public void AddInventory(String ProdName, int quantity) {
         try {
             pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock + '" + quantity + "' WHERE Prod_ID = '" + ProdName + "'");
@@ -91,7 +91,7 @@ public class SQLdao {
             JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+//----------------------------------------------------------------------------------------------------------
     public void disconnect() {
         try {
             pst.close();
@@ -101,7 +101,6 @@ public class SQLdao {
             JOptionPane.showMessageDialog(null, this, "Error disconnecting from database.", JOptionPane.ERROR_MESSAGE);
         }
     }
-
 //We using mainscreen table search for this?
 //    public ArrayList search(String query) {
 //        try {
