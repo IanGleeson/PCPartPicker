@@ -57,7 +57,7 @@ public class MainScreen extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lblOrderHistory = new javax.swing.JLabel();
         jPanelOrder = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPaneOrder = new javax.swing.JScrollPane();
         pnlOrder = new javax.swing.JPanel();
         btnProceed = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
@@ -236,9 +236,9 @@ public class MainScreen extends javax.swing.JFrame {
 
         jTabbedPanes.addTab("Returns", jPanelReturns);
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setToolTipText("");
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPaneOrder.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPaneOrder.setToolTipText("");
+        jScrollPaneOrder.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         javax.swing.GroupLayout pnlOrderLayout = new javax.swing.GroupLayout(pnlOrder);
         pnlOrder.setLayout(pnlOrderLayout);
@@ -251,7 +251,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addGap(0, 345, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setViewportView(pnlOrder);
+        jScrollPaneOrder.setViewportView(pnlOrder);
 
         btnProceed.setText("Proceed");
         btnProceed.addActionListener(new java.awt.event.ActionListener() {
@@ -275,7 +275,7 @@ public class MainScreen extends javax.swing.JFrame {
                 .addContainerGap(321, Short.MAX_VALUE)
                 .addGroup(jPanelOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOrderLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPaneOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(118, 118, 118))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOrderLayout.createSequentialGroup()
                         .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -287,7 +287,7 @@ public class MainScreen extends javax.swing.JFrame {
             jPanelOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelOrderLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPaneOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addGroup(jPanelOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -406,6 +406,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPaneDescription;
+    private javax.swing.JScrollPane jScrollPaneOrder;
     private javax.swing.JTabbedPane jTabbedPanes;
     private javax.swing.JTable jTblData;
     private javax.swing.JLabel lblCategory;
