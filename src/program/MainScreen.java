@@ -16,14 +16,16 @@ public class MainScreen extends javax.swing.JFrame {
     SQLdao dao;
     ArrayList<String> orderList;
     
-    public MainScreen() throws SQLException {
+    public MainScreen(String User) throws SQLException {
 
         dao = new SQLdao();
         meth = new Methods();
         orderList = new ArrayList();
 
         initComponents();
-
+        
+        lblUser.setText(User);
+        
         //Icon Graphical code
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());

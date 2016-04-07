@@ -21,18 +21,13 @@ public class SQLdao {
     private Connection conn;
 //----------------------------------------------------------------------------------------------------------
     
-    public void connect() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
+    private Connection connect() throws SQLException {
             conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
-        } catch (SQLException c) {
-            JOptionPane.showMessageDialog(null, this, "Could not connect to database.", JOptionPane.ERROR_MESSAGE);
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-            Logger.getLogger(SQLdao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        return conn;
     }
 //----------------------------------------------------------------------------------------------------------
     public String[] logIn(String user, char[] pass) throws SQLException {
+        connect();
         pst = conn.prepareStatement("SELECT Username, Password FROM production.customers WHERE USERNAME LIKE '" + user
                 + "' AND PASSWORD LIKE '" + new String(pass) + "'");
         rst = pst.executeQuery();
@@ -45,7 +40,8 @@ public class SQLdao {
 //----------------------------------------------------------------------------------------------------------
     public ArrayList getInventory() {
         try {
-            pst = conn.prepareStatement("SELECT ProdID, ProdName, Category, InStock, Price FROM production.inventory");
+            connect();
+            pst = conn.prepareStatement("SELECT Prod_ID, ProdName, Category, InStock, Price FROM production.inventory");
             rst = pst.executeQuery();
             while (rst.next()) {
                 Inventory.add(rst.getString("ProdID"));
@@ -63,6 +59,7 @@ public class SQLdao {
     public String getDescription(String ProdName) {
         String Description = "";
         try {
+            connect();
             pst = conn.prepareStatement("SELECT Description FROM production.inventory WHERE prod_ID LIKE '" + ProdName + "'");
             rst = pst.executeQuery();
             while (rst.next()) {
@@ -76,8 +73,9 @@ public class SQLdao {
 
     public void Checkout(String ProdName, int quantity) {
         try {
+            connect();
             pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock - '" + quantity + "' WHERE ProdName = '" + ProdName + "'");
-            rst = pst.executeQuery();
+            pst.executeUpdate();
         } catch (SQLException d) {
             d.printStackTrace();
             //JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
@@ -86,8 +84,9 @@ public class SQLdao {
 
     public void AddInventory(String ProdName, int quantity) {
         try {
+            connect();
             pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock + '" + quantity + "' WHERE ProdName = '" + ProdName + "'");
-            rst = pst.executeQuery();
+            pst.executeUpdate();
         } catch (SQLException d) {
             JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
         }
