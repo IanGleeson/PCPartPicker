@@ -93,11 +93,6 @@ public class MainScreen extends javax.swing.JFrame {
         lblSearch.setText("Search");
         jPanelInventory.add(lblSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 16, 47, -1));
 
-        txtSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchActionPerformed(evt);
-            }
-        });
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSearchKeyPressed(evt);
@@ -403,11 +398,6 @@ public class MainScreen extends javax.swing.JFrame {
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         // returns selected items to returned items table in the SQL universe :P
     }//GEN-LAST:event_btnReturnActionPerformed
-
-    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
-        // TODO add your handling code here:
-        meth.search(txtSearch.getText());
-    }//GEN-LAST:event_txtSearchActionPerformed
 
     private void btnWalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWalletActionPerformed
         Wallet w = new Wallet();

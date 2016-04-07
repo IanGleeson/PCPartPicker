@@ -106,6 +106,7 @@ public class SQLdao {
     public double getBalance(String User) {
         double balance = 0.00;
         try {
+            connect();
             pst = conn.prepareStatement("SELECT Wallet FROM production.customers WHERE Username = '" + User + "'");
             rst = pst.executeQuery();
             while (rst.next()) {
