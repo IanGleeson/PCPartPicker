@@ -340,7 +340,7 @@ public class MainScreen extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             if (!txtSearch.getText().equals("")) {
                 //Updates the table based on the query
-                meth.search(txtSearch.getText());
+                //meth.search(txtSearch.getText());
                 txtaDescription.setText("This is a description");
                 //txtaDescription.setText(meth.search(rst))
             } else {
