@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -33,7 +32,9 @@ public class MainScreen extends javax.swing.JFrame {
         lbltech.setIcon(icon);
         
         //Populate the Table with entries
-        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
+        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -138,7 +139,7 @@ public class MainScreen extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Product Name", "Type", "Quantity", "Price"
+                "Product Name", "Category", "Quantity", "Price"
             }
         ) {
             Class[] types = new Class [] {

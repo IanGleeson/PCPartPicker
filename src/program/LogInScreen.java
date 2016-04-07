@@ -29,13 +29,13 @@ public class LogInScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(JtxtLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 89, 139, -1));
 
-        JtxtLogIn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JtxtLogInActionPerformed(evt);
+        JtxtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JtxtPasswordKeyPressed(evt);
             }
         });
-        getContentPane().add(JtxtLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 89, 139, -1));
         getContentPane().add(JtxtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 135, 139, -1));
 
         jLabelHeader.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -69,30 +69,8 @@ public class LogInScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
-        try {
-            dao.connect();
-            if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
-                String[] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
-                if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(new String(JtxtPassword.getPassword()))) {
-                    System.out.print("LogIn Successful!");
-                    MainScreen ms = new MainScreen();
-                    ms.setVisible(true);
-                    this.setVisible(false);
-                }
-            }
-        } catch (NullPointerException e) {
-            //e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Please enter a valid username and password", "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (SQLException d) {
-            JOptionPane.showMessageDialog(null, "Error accessing database", "Error", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            JtxtPassword.setText("");
-        }
+        LogIn();
     }//GEN-LAST:event_jButtonLogInActionPerformed
-
-    private void JtxtLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtxtLogInActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JtxtLogInActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         //Test method to bypass login 
@@ -100,6 +78,30 @@ public class LogInScreen extends javax.swing.JFrame {
         this.setVisible(false);
         reg.setVisible(true);
     }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void JtxtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JtxtPasswordKeyPressed
+        LogIn();
+    }//GEN-LAST:event_JtxtPasswordKeyPressed
+
+    private void LogIn() {
+        try {
+            dao.connect();
+            if (JtxtLogIn.getText() != null && JtxtPassword.getPassword() != null) {
+                String[] LogIn = dao.logIn(JtxtLogIn.getText(), JtxtPassword.getPassword());
+                if (LogIn[0].equals(JtxtLogIn.getText()) && LogIn[1].equals(new String(JtxtPassword.getPassword()))) {
+                    MainScreen ms = new MainScreen();
+                    ms.setVisible(true);
+                    this.setVisible(false);
+                }
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid username and password", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException d) {
+            JOptionPane.showMessageDialog(null, "Error accessing database", "Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            JtxtPassword.setText("");
+        }
+    }
 
     public static void main(String args[]) {
         try {
