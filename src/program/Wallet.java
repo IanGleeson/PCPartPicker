@@ -6,6 +6,7 @@
 
 package program;
 
+import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +20,7 @@ public class Wallet extends javax.swing.JFrame {
      */
     public Wallet() {
         initComponents();
+        this.setSize(450, 300);
     }
 
     /**
@@ -40,7 +42,7 @@ public class Wallet extends javax.swing.JFrame {
         btnOK = new javax.swing.JButton();
         lblAmountToAdd = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAdd5.setText("Add € 5");
         btnAdd5.addActionListener(new java.awt.event.ActionListener() {
@@ -48,6 +50,7 @@ public class Wallet extends javax.swing.JFrame {
                 btnAdd5ActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAdd5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 31, 79, -1));
 
         btnAdd10.setText("Add € 10");
         btnAdd10.addActionListener(new java.awt.event.ActionListener() {
@@ -55,6 +58,7 @@ public class Wallet extends javax.swing.JFrame {
                 btnAdd10ActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAdd10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 65, 79, -1));
 
         btnAdd25.setText("Add € 25");
         btnAdd25.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +66,7 @@ public class Wallet extends javax.swing.JFrame {
                 btnAdd25ActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAdd25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 107, 79, -1));
 
         btnAdd50.setText("Add € 50");
         btnAdd50.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +74,7 @@ public class Wallet extends javax.swing.JFrame {
                 btnAdd50ActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAdd50, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 149, 79, -1));
 
         btnAdd100.setText("Add € 100");
         btnAdd100.addActionListener(new java.awt.event.ActionListener() {
@@ -76,11 +82,14 @@ public class Wallet extends javax.swing.JFrame {
                 btnAdd100ActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAdd100, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 191, -1, -1));
 
         lblBalance.setText("Current Balance: ");
+        getContentPane().add(lblBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 31, -1, -1));
 
         lblWallet.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblWallet.setText("Wallet");
+        getContentPane().add(lblWallet, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 6, -1, -1));
 
         btnOK.setText("OK");
         btnOK.addActionListener(new java.awt.event.ActionListener() {
@@ -88,62 +97,10 @@ public class Wallet extends javax.swing.JFrame {
                 btnOKActionPerformed(evt);
             }
         });
+        getContentPane().add(btnOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 128, 87, 66));
 
         lblAmountToAdd.setText("Amount to Add: ");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAdd100, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAdd50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAdd25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAdd10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAdd5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblAmountToAdd)
-                        .addComponent(lblBalance)))
-                .addGap(99, 99, 99))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addComponent(lblWallet)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblWallet)
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblBalance)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAdd10)
-                            .addComponent(lblAmountToAdd))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAdd25)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAdd50)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAdd100))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(btnAdd5))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        getContentPane().add(lblAmountToAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 65, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -162,23 +119,23 @@ public class Wallet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOKActionPerformed
 
     private void btnAdd5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd5ActionPerformed
-        // TODO add your handling code here:
+        lblAmountToAdd.setText("Amount to Add: " + (AmountToAdd+=5));
     }//GEN-LAST:event_btnAdd5ActionPerformed
 
     private void btnAdd10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd10ActionPerformed
-        // TODO add your handling code here:
+        lblAmountToAdd.setText("Amount to Add: " + (AmountToAdd+=10));
     }//GEN-LAST:event_btnAdd10ActionPerformed
 
     private void btnAdd25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd25ActionPerformed
-        // TODO add your handling code here:
+        lblAmountToAdd.setText("Amount to Add: " + (AmountToAdd+=25));
     }//GEN-LAST:event_btnAdd25ActionPerformed
 
     private void btnAdd50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd50ActionPerformed
-        // TODO add your handling code here:
+        lblAmountToAdd.setText("Amount to Add: " + (AmountToAdd+=50));
     }//GEN-LAST:event_btnAdd50ActionPerformed
 
     private void btnAdd100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd100ActionPerformed
-        // TODO add your handling code here:
+        lblAmountToAdd.setText("Amount to Add: " + (AmountToAdd+=100));
     }//GEN-LAST:event_btnAdd100ActionPerformed
 
     /**

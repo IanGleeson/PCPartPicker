@@ -30,7 +30,7 @@ public class MainScreen extends javax.swing.JFrame {
         lbltech.setIcon(icon);
         
         //Populate the Table with entries
-        jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
+        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
     }
 
     @SuppressWarnings("unchecked")
