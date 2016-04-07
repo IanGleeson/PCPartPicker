@@ -114,18 +114,18 @@ public class SQLdao {
           return rst;
     }
 //We using mainscreen table search for this?
-//    public ArrayList search(String query) {
-//        try {
-//            pst = conn.prepareStatement("SELECT * FROM production.inventory WHERE prodName LIKE " + "'" + query + "%'");
-//            rst = pst.executeQuery();
-//            while (rst.next()) {
-//                SearchResults.add(rst.getString("Description"));
-//            }
-//        } catch (SQLException d) {
-//            JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
-//        }
-//        return SearchResults;
-//    }
+    public ArrayList search(String query) {
+        try {
+            pst = conn.prepareStatement("SELECT * FROM production.inventory WHERE prodName LIKE " + "'" + query + "%'");
+            rst = pst.executeQuery();
+            while (rst.next()) {
+                SearchResults.add(rst.getString("Description"));
+            }
+        } catch (SQLException d) {
+            JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
+        }
+        return SearchResults;
+    }
 //----------------------------------------------------------------------------------------------------------
     
 }

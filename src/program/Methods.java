@@ -103,10 +103,10 @@ public class Methods {
     }
 //----------------------------------------------------------------------------------------------------------
     
-//    public String search(String strSearch) {
-//        dao.search(strSearch);
-//            return strSearch;
-//    }
+    public String search(String strSearch) {
+        dao.search(strSearch);
+            return strSearch;
+    }
 //----------------------------------------------------------------------------------------------------------
     //Adds new
     public ArrayList order(ArrayList<String> orderList) {
