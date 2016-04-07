@@ -18,6 +18,7 @@ public class MainScreen extends javax.swing.JFrame {
     SQLdao dao;
     ArrayList<String> orderList;
     Component[] componentArr;
+    String User;
 
     public MainScreen() throws SQLException {
 
