@@ -63,7 +63,7 @@ public class MainScreen extends javax.swing.JFrame {
         lblUser = new javax.swing.JLabel();
         btnSignout = new javax.swing.JButton();
         lblWallet = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnWallet = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -315,9 +315,14 @@ public class MainScreen extends javax.swing.JFrame {
         lblWallet.setText("€0.00");
         getContentPane().add(lblWallet, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 40, 30));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/10AML4VB_alt.jpg"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 50, 50));
+        btnWallet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/10AML4VB_alt.jpg"))); // NOI18N
+        btnWallet.setBorderPainted(false);
+        btnWallet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWalletActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnWallet, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 50, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -387,6 +392,11 @@ public class MainScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
 
+    private void btnWalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWalletActionPerformed
+        Wallet w = new Wallet();
+        w.setVisible(true);
+    }//GEN-LAST:event_btnWalletActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
@@ -394,8 +404,8 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JButton btnProceed;
     private javax.swing.JButton btnReturn;
     private javax.swing.JButton btnSignout;
+    private javax.swing.JButton btnWallet;
     private javax.swing.JComboBox cboxCategory;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelInventory;
     private javax.swing.JPanel jPanelOrder;
