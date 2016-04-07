@@ -32,14 +32,11 @@ public class MainScreen extends javax.swing.JFrame {
         //Icon Graphical code
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());
-
-        //Main Graphical Stuff
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/tech.jpg"));
         lbltech.setIcon(icon);
 
         //Populate the Table with entries
-        jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
-        
+        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
         
     }
 
@@ -417,8 +414,9 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnWalletActionPerformed
 
     private void jTblDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblDataMouseClicked
-        if (jTblData.getValueAt(jTblData.getSelectedRow(), 1) != null) {
-            txtaDescription.setText(dao.getDescription((String) jTblData.getValueAt(jTblData.getSelectedRow(), 1)));
+        //populates description
+        if(jTblData.getValueAt(jTblData.getSelectedRow(), 1) != null){
+            txtaDescription.setText(dao.getDescription((String)jTblData.getValueAt(jTblData.getSelectedRow(), 1)));
         }
     }//GEN-LAST:event_jTblDataMouseClicked
 

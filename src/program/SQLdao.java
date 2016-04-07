@@ -20,12 +20,13 @@ public class SQLdao {
     private ResultSet rst;
     private Connection conn;
 //----------------------------------------------------------------------------------------------------------
-    
+
     private Connection connect() throws SQLException {
-            conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
+        conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
         return conn;
     }
 //----------------------------------------------------------------------------------------------------------
+
     public String[] logIn(String user, char[] pass) throws SQLException {
         connect();
         pst = conn.prepareStatement("SELECT Username, Password FROM production.customers WHERE USERNAME LIKE '" + user
@@ -38,6 +39,7 @@ public class SQLdao {
         return LogIn;
     }
 //----------------------------------------------------------------------------------------------------------
+
     public ArrayList getInventory() {
         try {
             connect();
@@ -78,8 +80,61 @@ public class SQLdao {
             pst.executeUpdate();
         } catch (SQLException d) {
             d.printStackTrace();
-            //JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    public void plusBalance(int quantity, String User) {
+        try {
+            connect();
+            pst = conn.prepareStatement("UPDATE customers SET Wallet = Wallet + '" + quantity + "' WHERE Username = '" + User + "'");
+            pst.executeUpdate();
+        } catch (SQLException d) {
+            d.printStackTrace();
+        }
+    }
+
+    public void minusBalance(int quantity, String User) {
+        try {
+            connect();
+            pst = conn.prepareStatement("UPDATE customers SET Wallet = Wallet - '" + quantity + "' WHERE Username = '" + User + "'");
+            pst.executeUpdate();
+        } catch (SQLException d) {
+            d.printStackTrace();
+        }
+    }
+
+    public void plusBalance(int quantity, String User) {
+        try {
+            connect();
+            pst = conn.prepareStatement("UPDATE customers SET Wallet = Wallet + '" + quantity + "' WHERE Username = '" + User + "'");
+            pst.executeUpdate();
+        } catch (SQLException d) {
+            d.printStackTrace();
+        }
+    }
+
+    public void minusBalance(int quantity, String User) {
+        try {
+            connect();
+            pst = conn.prepareStatement("UPDATE customers SET Wallet = Wallet - '" + quantity + "' WHERE Username = '" + User + "'");
+            pst.executeUpdate();
+        } catch (SQLException d) {
+            d.printStackTrace();
+        }
+    }
+    
+    public double getBalance(String User) {
+        double balance = 0.00;
+        try {
+            pst = conn.prepareStatement("SELECT Wallet FROM production.customers WHERE Username = '" + User + "'");
+            rst = pst.executeQuery();
+            while (rst.next()) {
+                balance = rst.getDouble("Wallet");
+            }
+        } catch (SQLException d) {
+            d.printStackTrace();
+        }
+        return balance;
     }
 //----------------------------------------------------------------------------------------------------------
     public void AddInventory(String ProdName, int quantity) {
@@ -88,7 +143,7 @@ public class SQLdao {
             pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock + '" + quantity + "' WHERE ProdName = '" + ProdName + "'");
             pst.executeUpdate();
         } catch (SQLException d) {
-            JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
+            d.printStackTrace();
         }
     }
 //----------------------------------------------------------------------------------------------------------
@@ -102,19 +157,21 @@ public class SQLdao {
         }
     }
 
-    public ResultSet displayAllProducts(){
-        
+    public ResultSet displayAllProducts() {
+
         try {
-            pst = conn.prepareStatement("SELECT ProdID, ProdName, Category, InStock, Price FROM production.inventory");
+            connect();
+            pst = conn.prepareStatement("SELECT Prod_ID, ProdName, Category, InStock, Price FROM production.inventory");
             rst = pst.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(SQLdao.class.getName()).log(Level.SEVERE, null, ex);
         }
-          return rst;
+        return rst;
     }
-//We using mainscreen table search for this?
+
     public ArrayList search(String query) {
         try {
+            connect();
             pst = conn.prepareStatement("SELECT * FROM production.inventory WHERE prodName LIKE " + "'" + query + "%'");
             rst = pst.executeQuery();
             while (rst.next()) {
@@ -126,5 +183,5 @@ public class SQLdao {
         return SearchResults;
     }
 //----------------------------------------------------------------------------------------------------------
-    
+
 }

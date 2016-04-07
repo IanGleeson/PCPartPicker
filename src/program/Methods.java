@@ -35,7 +35,7 @@ public class Methods {
 //----------------------------------------------------------------------------------------------------------
 // needs a method to remove these -
 //returns checkbox to be added to panel
-        String[] ordersString = {"GTX 960", "Radeon 380 r9", "UM212E"};
+    String[] ordersString = {"GTX 960", "Radeon 380 r9", "UM212E"};
     static int stringValue;
     static int y = 50;
     static int x = 50;
