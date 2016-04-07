@@ -76,16 +76,17 @@ public class SQLdao {
 //----------------------------------------------------------------------------------------------------------
     public void Checkout(String ProdName, int quantity) {
         try {
-            pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock - '" + quantity + "' WHERE Prod_ID = '" + ProdName + "'");
+            pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock - '" + quantity + "' WHERE ProdName = '" + ProdName + "'");
             rst = pst.executeQuery();
         } catch (SQLException d) {
-            JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
+            d.printStackTrace();
+            //JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
         }
     }
 //----------------------------------------------------------------------------------------------------------
     public void AddInventory(String ProdName, int quantity) {
         try {
-            pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock + '" + quantity + "' WHERE Prod_ID = '" + ProdName + "'");
+            pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock + '" + quantity + "' WHERE ProdName = '" + ProdName + "'");
             rst = pst.executeQuery();
         } catch (SQLException d) {
             JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);

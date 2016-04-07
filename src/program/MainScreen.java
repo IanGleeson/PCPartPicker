@@ -15,7 +15,6 @@ public class MainScreen extends javax.swing.JFrame {
     Methods meth;
     SQLdao dao;
     ArrayList<String> orderList;
-    ArrayList<JComponent> checkoutList;
     
     public MainScreen() throws SQLException {
 
