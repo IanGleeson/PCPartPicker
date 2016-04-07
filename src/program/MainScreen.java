@@ -15,8 +15,11 @@ public class MainScreen extends javax.swing.JFrame {
     Methods meth;
     SQLdao dao;
     ArrayList<String> orderList;
-    Component[] componentArr;
+    Component[] ProceedComponentArr;
     String User;
+    String itemName;
+    int itemQuantity;
+    Component[] itemsForOrder;
 
     public MainScreen(String User) throws SQLException {
 
@@ -333,16 +336,23 @@ public class MainScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-//        orderList.clear();
-//        meth.order(orderList);
-//        txtaDescription.setText(orderList.toString());
 
         pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
-        
-        jTblData.getValueAt(jTblData.getSelectedRow(), jTblData.getSelectedColumn());
-        pnlOrder.add(meth.returnCheckBox());
-        pnlOrder.add(meth.returnSpinner());
-
+        itemsForOrder = jTblData.getComponents();
+        int count = 0;
+        //loop through components and save theyre values into variables to be passed to SqlDao method
+        for (Component c : itemsForOrder) {
+            if (c instanceof JCheckBox) 
+                itemName = ((JCheckBox) c).getText();
+             else if (c instanceof JSpinner) 
+                itemQuantity = (int) ((JSpinner) c).getValue();
+            count++;
+            if (count == 2) {
+                pnlOrder.add(meth.returnCheckBox(itemName));
+                pnlOrder.add(meth.returnSpinner(itemQuantity));
+            count = 0;
+            }
+        }
         pnlOrder.repaint();
         pnlOrder.revalidate();
     }//GEN-LAST:event_btnOrderActionPerformed
@@ -383,8 +393,8 @@ public class MainScreen extends javax.swing.JFrame {
 
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-        componentArr = pnlOrder.getComponents();
-        meth.checkoutProd(componentArr);
+        ProceedComponentArr = pnlOrder.getComponents();
+        meth.checkoutProd(ProceedComponentArr);
     }//GEN-LAST:event_btnProceedActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
