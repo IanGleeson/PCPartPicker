@@ -1,38 +1,42 @@
 package program;
 
+import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.UIManager;
+import static program.Methods.checkoutList;
 
 public class MainScreen extends javax.swing.JFrame {
 
     Methods meth;
+    SQLdao dao;
     ArrayList<String> orderList;
+    
+    public MainScreen(String User) throws SQLException {
 
-    public MainScreen() throws SQLException {
-
+        dao = new SQLdao();
         meth = new Methods();
         orderList = new ArrayList();
 
         initComponents();
-
+        
+        lblUser.setText(User);
+        
         //Icon Graphical code
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());
-
-        //Main Graphical Stuff
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/tech.jpg"));
         lbltech.setIcon(icon);
         
         //Populate the Table with entries
-        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts())); 
+        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -137,14 +141,14 @@ public class MainScreen extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Product Name", "Type", "Quantity", "Price"
+                "Product Name", "Category", "Quantity", "Price"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -157,6 +161,11 @@ public class MainScreen extends javax.swing.JFrame {
         });
         jTblData.setColumnSelectionAllowed(true);
         jTblData.getTableHeader().setReorderingAllowed(false);
+        jTblData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTblDataMouseClicked(evt);
+            }
+        });
         jScrollPane6.setViewportView(jTblData);
         jTblData.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
@@ -299,7 +308,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         jTabbedPanes.addTab("Order", jPanelOrder);
 
-        getContentPane().add(jTabbedPanes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 830, 570));
+        getContentPane().add(jTabbedPanes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 830, 570));
 
         lblUser.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblUser.setText("Username");
@@ -336,7 +345,8 @@ public class MainScreen extends javax.swing.JFrame {
 //        txtaDescription.setText(orderList.toString());
         
         pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
-
+        
+        jTblData.getValueAt(jTblData.getSelectedRow(), jTblData.getSelectedColumn());
         pnlOrder.add(meth.returnCheckBox());
         pnlOrder.add(meth.returnSpinner());
 
@@ -348,7 +358,7 @@ public class MainScreen extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             if (!txtSearch.getText().equals("")) {
                 //Updates the table based on the query
-                meth.search(txtSearch.getText());
+                //meth.search(txtSearch.getText());
                 txtaDescription.setText("This is a description");
                 //txtaDescription.setText(meth.search(rst))
             } else {
@@ -384,7 +394,7 @@ public class MainScreen extends javax.swing.JFrame {
 
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-            
+        meth.checkoutProd(checkoutList);
     }//GEN-LAST:event_btnProceedActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
@@ -393,12 +403,20 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
+        meth.search(txtSearch.getText());
     }//GEN-LAST:event_txtSearchActionPerformed
 
     private void btnWalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWalletActionPerformed
         Wallet w = new Wallet();
         w.setVisible(true);
     }//GEN-LAST:event_btnWalletActionPerformed
+
+    private void jTblDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblDataMouseClicked
+        //populates description
+        if(jTblData.getValueAt(jTblData.getSelectedRow(), 1) != null){
+            txtaDescription.setText(dao.getDescription((String)jTblData.getValueAt(jTblData.getSelectedRow(), 1)));
+        }
+    }//GEN-LAST:event_jTblDataMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -415,7 +433,6 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelReturns;
     private javax.swing.JPanel jPanelSplash;
     private javax.swing.JScrollPane jScrollOrderHistory;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPaneDescription;
     private javax.swing.JScrollPane jScrollPaneOrder;
