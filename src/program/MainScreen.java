@@ -20,7 +20,7 @@ public class MainScreen extends javax.swing.JFrame {
     Component[] componentArr;
     String User;
 
-    public MainScreen() throws SQLException {
+    public MainScreen(String User) throws SQLException {
 
         dao = new SQLdao();
         meth = new Methods();
