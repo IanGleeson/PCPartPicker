@@ -133,7 +133,7 @@
                       <Table columnCount="4" rowCount="26">
                         <Column editable="false" title="Product Name" type="java.lang.String"/>
                         <Column editable="false" title="Category" type="java.lang.String"/>
-                        <Column editable="true" title="Quantity" type="java.lang.String"/>
+                        <Column editable="false" title="Quantity" type="java.lang.String"/>
                         <Column editable="false" title="Price" type="java.lang.String"/>
                       </Table>
                     </Property>
@@ -166,6 +166,9 @@
                       <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTblDataMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
