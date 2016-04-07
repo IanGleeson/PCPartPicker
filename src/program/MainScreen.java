@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import static program.Methods.checkoutList;
 
 public class MainScreen extends javax.swing.JFrame {
 
@@ -299,7 +300,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         jTabbedPanes.addTab("Order", jPanelOrder);
 
-        getContentPane().add(jTabbedPanes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 830, 570));
+        getContentPane().add(jTabbedPanes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 830, 570));
 
         lblUser.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblUser.setText("Username");
@@ -384,7 +385,7 @@ public class MainScreen extends javax.swing.JFrame {
 
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-        //meth.sold();
+        meth.checkoutProd(checkoutList);
     }//GEN-LAST:event_btnProceedActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
@@ -415,7 +416,6 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelReturns;
     private javax.swing.JPanel jPanelSplash;
     private javax.swing.JScrollPane jScrollOrderHistory;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPaneDescription;
     private javax.swing.JScrollPane jScrollPaneOrder;

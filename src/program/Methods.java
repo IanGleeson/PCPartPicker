@@ -23,12 +23,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Methods {
     SQLdao dao = new SQLdao();
-    static ArrayList<JComponent> checkoutList;
+    static ArrayList<JComponent> checkoutList = new ArrayList<>();
+    String soldItem;
+    int soldItemQuantity;
 //----------------------------------------------------------------------------------------------------------
     //returns a set of data from the sql Server - this is interpreted into a table model in buildTableModel()
-    public ResultSet displayAllProducts(){
-            return dao.displayAllProducts();
-    }
+//    public ResultSet displayAllProducts(){
+//            return dao.displayAllProducts();
+//    }
 //----------------------------------------------------------------------------------------------------------
 // needs a method to remove these -
 //returns checkbox to be added to panel
@@ -80,20 +82,25 @@ public class Methods {
     //sends bought items to be taken out from inventory
     public void checkoutProd(ArrayList<JComponent> checkoutList){
         
-    }
-//----------------------------------------------------------------------------------------------------------
-    //sends bought items to be taken out from inventory
-    public void sold(){
-        checkoutProd(checkoutList);
+        for(JComponent c : checkoutList){
+            if(c instanceof JCheckBox){
+                
+                soldItem = ((JCheckBox)c).getText();
+            }
+            else if(c instanceof JSpinner){
+                
+                soldItemQuantity = (int)((JSpinner)c).getValue();
+            }
+             dao.Checkout(soldItem, soldItemQuantity);
+             System.out.println("sent across " + soldItem + " " +  soldItemQuantity);
+        }
     }
 //----------------------------------------------------------------------------------------------------------
     
-    public String search(String strSearch) {
-        
-        SQLdao dao = new SQLdao();
-        dao.search(strSearch);
-            return strSearch;
-    }
+//    public String search(String strSearch) {
+//        dao.search(strSearch);
+//            return strSearch;
+//    }
 //----------------------------------------------------------------------------------------------------------
     //Adds new
     public ArrayList order(ArrayList<String> orderList) {

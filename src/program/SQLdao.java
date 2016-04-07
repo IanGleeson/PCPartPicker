@@ -20,7 +20,8 @@ public class SQLdao {
     private PreparedStatement pst;
     private ResultSet rst;
     private Connection conn;
-
+//----------------------------------------------------------------------------------------------------------
+    
     public void connect() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -32,7 +33,7 @@ public class SQLdao {
             Logger.getLogger(SQLdao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+//----------------------------------------------------------------------------------------------------------
     public String[] logIn(String user, char[] pass) throws SQLException {
         pst = conn.prepareStatement("SELECT Username, Password FROM production.customers WHERE USERNAME LIKE '" + user
                 + "' AND PASSWORD LIKE '" + new String(pass) + "'");
@@ -43,7 +44,7 @@ public class SQLdao {
         }
         return LogIn;
     }
-
+//----------------------------------------------------------------------------------------------------------
     public ArrayList getInventory() {
         try {
             pst = conn.prepareStatement("SELECT ProdID, ProdName, Category, InStock, Price FROM production.inventory");
@@ -60,7 +61,7 @@ public class SQLdao {
         }
         return Inventory;
     }
-
+//----------------------------------------------------------------------------------------------------------
     public ArrayList getDescription(String ProdID) {
         try {
             Description.clear();
@@ -74,17 +75,16 @@ public class SQLdao {
         }
         return Description;
     }
-    
-    public ArrayList Checkout(String ProdID, int quantity) {
+//----------------------------------------------------------------------------------------------------------    
+    public void Checkout(String ProdID, int quantity) {
         try {
             pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock - '" + quantity + "' WHERE Prod_ID = '" + ProdID +"'");
             rst = pst.executeQuery();
         } catch (SQLException d) {
             JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
         }
-        return Description;
     }
-
+//----------------------------------------------------------------------------------------------------------
     //We using mainscreen table search for this?
     //Not Really Sure how this method is supposed to Work
 //    public ArrayList search(String query) {
@@ -99,7 +99,7 @@ public class SQLdao {
 //        }
 //        return SearchResults;
 //    }
-
+//----------------------------------------------------------------------------------------------------------
     public void disconnect() {
         try {
             pst.close();
