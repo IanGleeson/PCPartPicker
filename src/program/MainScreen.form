@@ -136,7 +136,6 @@
                         <Column editable="false" title="Price" type="java.lang.String"/>
                       </Table>
                     </Property>
-                    <Property name="cellSelectionEnabled" type="boolean" value="false"/>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="3">
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">

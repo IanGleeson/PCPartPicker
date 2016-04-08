@@ -15,7 +15,6 @@ public class MainScreen extends javax.swing.JFrame {
 
     Methods meth;
     SQLdao dao;
-    ArrayList<String> orderList;
     Component[] ProceedComponentArr;
     String User;
     String itemName;
@@ -27,7 +26,6 @@ public class MainScreen extends javax.swing.JFrame {
 
         dao = new SQLdao();
         meth = new Methods();
-        orderList = new ArrayList();
 
         initComponents();
         lblUser.setText(User);
@@ -379,16 +377,13 @@ public class MainScreen extends javax.swing.JFrame {
         int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to clear the order?",
                 "Warning", JOptionPane.WARNING_MESSAGE);
         if (result == JOptionPane.OK_OPTION) {
-            //removing CheckBoxes and Spinners from panel
+            //clearing CheckBoxes and Spinners from panel
             pnlOrder.removeAll();
             meth.y = 50;
             meth.x = 50;
             pnlOrder.repaint();
             pnlOrder.revalidate();
             JOptionPane.showMessageDialog(this, "Order basket has been emptied!");
-            orderList.clear();
-            orderList.add("Order empty!");
-            pnlOrder.removeAll();
         }
     }//GEN-LAST:event_btnClearActionPerformed
 
@@ -396,6 +391,13 @@ public class MainScreen extends javax.swing.JFrame {
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
         ProceedComponentArr = pnlOrder.getComponents();
         meth.checkoutProd(ProceedComponentArr);
+        //clearing CheckBoxes and Spinners from panel
+        pnlOrder.removeAll();
+            meth.y = 50;
+            meth.x = 50;
+            pnlOrder.repaint();
+            pnlOrder.revalidate();
+            JOptionPane.showMessageDialog(this, "Thank you for your purchase!");
         //ProceedComponentArr.clear();
     }//GEN-LAST:event_btnProceedActionPerformed
 
@@ -406,11 +408,10 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReturnActionPerformed
 
     private void btnWalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWalletActionPerformed
+        //Wallet is closed
         w = new Wallet(User, this);
         w.setVisible(true);
-        if (w.walletClosed()) { //Wallet is closed
-            w.changeBalance(this);
-        }
+         
     }//GEN-LAST:event_btnWalletActionPerformed
 
     private void jTblDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblDataMouseClicked
@@ -438,26 +439,6 @@ public class MainScreen extends javax.swing.JFrame {
             rowIndex++;
         }
     }
-
-    public final void displayInventoryTable() throws SQLException{
-        ResultSet rst = dao.displayAllProducts();
-        int rowIndex = 0;
-        while(rst.next()){
-            //Object ID = rst.getString("ProdID");
-            Object productName = rst.getString("ProdName");
-            Object category = rst.getString("Category");
-            Object inStock = rst.getString("InStock");
-            Object price = rst.getString("Price");
-            
-            jTblData.getModel().setValueAt(productName, rowIndex, 0);
-            jTblData.getModel().setValueAt(category, rowIndex, 1);
-            jTblData.getModel().setValueAt(inStock, rowIndex, 2);
-            jTblData.getModel().setValueAt(price, rowIndex, 3);
-            
-            rowIndex++;
-        }
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnOrder;
