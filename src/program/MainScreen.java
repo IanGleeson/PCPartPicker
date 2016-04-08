@@ -53,25 +53,6 @@ public class MainScreen extends javax.swing.JFrame {
         lblWallet.setText(java.text.NumberFormat.getCurrencyInstance().format(dao.getBalance(User)));
     }
     
-    public final void displayInventoryTable() throws SQLException{
-        ResultSet rst = dao.displayAllProducts();
-        int rowIndex = 0;
-        while(rst.next()){
-            //Object ID = rst.getString("ProdID");
-            Object productName = rst.getString("ProdName");
-            Object category = rst.getString("Category");
-            Object inStock = rst.getString("InStock");
-            Object price = rst.getString("Price");
-            
-            jTblData.getModel().setValueAt(productName, rowIndex, 0);
-            jTblData.getModel().setValueAt(category, rowIndex, 1);
-            jTblData.getModel().setValueAt(inStock, rowIndex, 2);
-            jTblData.getModel().setValueAt(price, rowIndex, 3);
-            
-            rowIndex++;
-        }
-    }
-    
     //events------------------------------------------------------------------
     
     @SuppressWarnings("unchecked")
