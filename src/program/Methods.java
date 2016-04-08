@@ -26,7 +26,7 @@ public class Methods {
     SQLdao dao = new SQLdao();
     static ArrayList<JComponent> checkoutList = new ArrayList<>();
     String soldItem;
-    int soldItemQuantity;
+    int soldItemQuantity = 1;
 //----------------------------------------------------------------------------------------------------------
    // returns a set of data from the sql Server - this is interpreted into a table model in buildTableModel()
     public ResultSet displayAllProducts(){

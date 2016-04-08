@@ -19,8 +19,7 @@ public class MainScreen extends javax.swing.JFrame {
     Component[] ProceedComponentArr;
     String User;
     String itemName;
-    int itemQuantity;
-    Component[] itemsForOrder;
+    ArrayList<String> itemsForOrder = new ArrayList<>();
 
     public MainScreen(String User) throws SQLException {
 
@@ -39,12 +38,11 @@ public class MainScreen extends javax.swing.JFrame {
 
         displayInventoryTable();
     }
-    
-    
-    public void setWallet(double setW){
+
+    public void setWallet(double setW) {
         lblWallet.setText(java.text.NumberFormat.getCurrencyInstance().format(dao.getBalance(User) + setW));
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -66,7 +64,7 @@ public class MainScreen extends javax.swing.JFrame {
         jPanelReturns = new javax.swing.JPanel();
         btnReturn = new javax.swing.JButton();
         jScrollOrderHistory = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
+        pnlReturns = new javax.swing.JPanel();
         lblOrderHistory = new javax.swing.JLabel();
         jPanelOrder = new javax.swing.JPanel();
         jScrollPaneOrder = new javax.swing.JScrollPane();
@@ -201,18 +199,18 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pnlReturnsLayout = new javax.swing.GroupLayout(pnlReturns);
+        pnlReturns.setLayout(pnlReturnsLayout);
+        pnlReturnsLayout.setHorizontalGroup(
+            pnlReturnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 382, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnlReturnsLayout.setVerticalGroup(
+            pnlReturnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 323, Short.MAX_VALUE)
         );
 
-        jScrollOrderHistory.setViewportView(jPanel1);
+        jScrollOrderHistory.setViewportView(pnlReturns);
 
         lblOrderHistory.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblOrderHistory.setText("Order History");
@@ -341,22 +339,11 @@ public class MainScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-
         pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
-        itemsForOrder = jTblData.getComponents();
-        int count = 0;
-        //loop through components and save theyre values into variables to be passed to SqlDao method
-        for (Component c : itemsForOrder) {
-            if (c instanceof JCheckBox) 
-                itemName = ((JCheckBox) c).getText();
-             else if (c instanceof JSpinner) 
-                itemQuantity = (int) ((JSpinner) c).getValue();
-            count++;
-            if (count == 2) {
-                pnlOrder.add(meth.returnCheckBox(itemName));
-                pnlOrder.add(meth.returnSpinner(itemQuantity));
-            count = 0;
-            }
+        //Selected items name is passed to order tab with a quantity of 1
+        for (int row : jTblData.getSelectedRows()) {
+            pnlOrder.add(meth.returnCheckBox((String) jTblData.getValueAt(row, 0)));
+            pnlOrder.add(meth.returnSpinner(1));
         }
         pnlOrder.repaint();
         pnlOrder.revalidate();
@@ -368,7 +355,7 @@ public class MainScreen extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_txtSearchKeyPressed
 
     private void btnSignoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignoutActionPerformed
@@ -405,38 +392,40 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         // returns selected items to returned items table in the SQL universe :P
+        //pnlReturns.add(meth.returnCheckBox(dao.ordersString()));
+        //pnlReturns.add(meth.returnSpinner(dao.ordersInt()));
     }//GEN-LAST:event_btnReturnActionPerformed
 
     private void btnWalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWalletActionPerformed
         Wallet w = new Wallet(User, this);
         w.setVisible(true);
-        if(w.walletClosed()){ //Wallet is closed
+        if (w.walletClosed()) { //Wallet is closed
             w.changeBalance(this);
         }
     }//GEN-LAST:event_btnWalletActionPerformed
 
     private void jTblDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblDataMouseClicked
         //populates description
-        if(jTblData.getValueAt(jTblData.getSelectedRow(), 1) != null){
-            txtaDescription.setText(dao.getDescription((String)jTblData.getValueAt(jTblData.getSelectedRow(), 1)));
+        if (jTblData.getValueAt(jTblData.getSelectedRow(), 1) != null) {
+            txtaDescription.setText(dao.getDescription((String) jTblData.getValueAt(jTblData.getSelectedRow(), 1)));
         }
     }//GEN-LAST:event_jTblDataMouseClicked
 
-    public final void displayInventoryTable() throws SQLException{
+    public final void displayInventoryTable() throws SQLException {
         ResultSet rst = dao.displayAllProducts();
         int rowIndex = 0;
-        while(rst.next()){
+        while (rst.next()) {
             //Object ID = rst.getString("ProdID");
             Object productName = rst.getString("ProdName");
             Object category = rst.getString("Category");
             Object inStock = rst.getString("InStock");
             Object price = rst.getString("Price");
-            
+
             jTblData.getModel().setValueAt(productName, rowIndex, 0);
             jTblData.getModel().setValueAt(category, rowIndex, 1);
             jTblData.getModel().setValueAt(inStock, rowIndex, 2);
             jTblData.getModel().setValueAt(price, rowIndex, 3);
-            
+
             rowIndex++;
         }
     }
@@ -449,7 +438,6 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JButton btnSignout;
     private javax.swing.JButton btnWallet;
     private javax.swing.JComboBox cboxCategory;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelInventory;
     private javax.swing.JPanel jPanelOrder;
     private javax.swing.JPanel jPanelReturns;
@@ -468,6 +456,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel lblWallet;
     private javax.swing.JLabel lbltech;
     private javax.swing.JPanel pnlOrder;
+    private javax.swing.JPanel pnlReturns;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextArea txtaDescription;
     // End of variables declaration//GEN-END:variables
