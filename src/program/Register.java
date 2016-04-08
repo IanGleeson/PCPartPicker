@@ -10,6 +10,7 @@ import java.util.Arrays;
 public class Register extends javax.swing.JFrame {
     
     private SQLdao Rdao;
+    private MainScreen ms;
     
     public Register() {
         initComponents();
@@ -236,6 +237,9 @@ public class Register extends javax.swing.JFrame {
         //Code to Add new user to user table.
         if(okCheck){
             Rdao.addUser(txtUsername.getText(), passRetypePassword.getPassword(), txtFullName.getText(), txtAddress.getText(), txtEmail.getText()+cboxEmail.getSelectedItem());
+            ms = new MainScreen(txtUsername.getText());
+            ms.setVisible(true);
+            this.dispose();
         }
         ///////////////////////////
     }//GEN-LAST:event_btnRegisterActionPerformed

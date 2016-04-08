@@ -28,6 +28,7 @@ public class Wallet extends javax.swing.JFrame {
         this.setSize(450, 300);
         Wdao = new SQLdao();
         tempUser = User;
+        lblBalance.setText("Current Balance €" + Double.toString(Wdao.getBalance(User)));
     }
 
     /**
