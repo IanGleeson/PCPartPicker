@@ -14,6 +14,7 @@ public class LogInScreen extends javax.swing.JFrame {
 
     public LogInScreen() {
         initComponents();
+        this.setTitle("PC Parts Picker");
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());
     }
@@ -77,7 +78,7 @@ public class LogInScreen extends javax.swing.JFrame {
             ms = new MainScreen(JtxtLogIn.getText());
             ms.setVisible(true);
             this.setVisible(false);
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
             

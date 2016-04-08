@@ -1,15 +1,20 @@
 package program;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
  * @author dsd03
  */
 public class Register extends javax.swing.JFrame {
-
+    
+    private SQLdao Rdao;
+    
     public Register() {
         initComponents();
+        this.setTitle("PC Parts Picker");
+        Rdao = new SQLdao();
     }
 
     @SuppressWarnings("unchecked")
@@ -63,10 +68,6 @@ public class Register extends javax.swing.JFrame {
                 btnRegisterActionPerformed(evt);
             }
         });
-
-        passPassword.setText("jPasswordField1");
-
-        passRetypePassword.setText("jPasswordField2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,7 +192,7 @@ public class Register extends javax.swing.JFrame {
             okCheck = true;
         }
         //Retype Password Check
-        if(passRetypePassword.getPassword().equals(passPassword.getPassword())){
+        if(Arrays.toString(passPassword.getPassword()).equals(Arrays.toString(passRetypePassword.getPassword()))){
             lblRetypePasswordErr.setText("");
             okCheck = true;
         }
@@ -231,10 +232,12 @@ public class Register extends javax.swing.JFrame {
             okCheck = true;
         }
         
-        
+        ///////////////////////////
+        //Code to Add new user to user table.
         if(okCheck){
-            //Code to Add new user to user table.
+            Rdao.addUser(txtUsername.getText(), passRetypePassword.getPassword(), txtFullName.getText(), txtAddress.getText(), txtEmail.getText()+cboxEmail.getSelectedItem());
         }
+        ///////////////////////////
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     /**

@@ -19,30 +19,61 @@ public class MainScreen extends javax.swing.JFrame {
     Component[] ProceedComponentArr;
     String User;
     String itemName;
-    ArrayList<String> itemsForOrder = new ArrayList<>();
+    int itemQuantity;
+    Component[] itemsForOrder;
+    Wallet w;
 
-    public MainScreen(String User) throws SQLException {
+    public MainScreen(String User) {
 
         dao = new SQLdao();
         meth = new Methods();
         orderList = new ArrayList();
 
         initComponents();
+        this.setTitle("PC Parts Picker");
         lblUser.setText(User);
         lblWallet.setText(java.text.NumberFormat.getCurrencyInstance().format(dao.getBalance(User)));
+        
         //Icon Graphical code
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/tech.jpg"));
         lbltech.setIcon(icon);
 
-        displayInventoryTable();
+        try {
+            displayInventoryTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
-    public void setWallet(double setW) {
-        lblWallet.setText(java.text.NumberFormat.getCurrencyInstance().format(dao.getBalance(User) + setW));
+    
+    //methods------------------------------------------------------------------------------------------------
+    
+    public void setWallet(){
+        lblWallet.setText(java.text.NumberFormat.getCurrencyInstance().format(dao.getBalance(User)));
     }
-
+    
+    public final void displayInventoryTable() throws SQLException{
+        ResultSet rst = dao.displayAllProducts();
+        int rowIndex = 0;
+        while(rst.next()){
+            //Object ID = rst.getString("ProdID");
+            Object productName = rst.getString("ProdName");
+            Object category = rst.getString("Category");
+            Object inStock = rst.getString("InStock");
+            Object price = rst.getString("Price");
+            
+            jTblData.getModel().setValueAt(productName, rowIndex, 0);
+            jTblData.getModel().setValueAt(category, rowIndex, 1);
+            jTblData.getModel().setValueAt(inStock, rowIndex, 2);
+            jTblData.getModel().setValueAt(price, rowIndex, 3);
+            
+            rowIndex++;
+        }
+    }
+    
+    //events------------------------------------------------------------------
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -158,7 +189,7 @@ public class MainScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTblData.setColumnSelectionAllowed(true);
+        jTblData.setCellSelectionEnabled(false);
         jTblData.getTableHeader().setReorderingAllowed(false);
         jTblData.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -181,6 +212,7 @@ public class MainScreen extends javax.swing.JFrame {
         lblDescription.setText("Description:");
         jPanelInventory.add(lblDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 92, -1, -1));
 
+        txtaDescription.setEditable(false);
         txtaDescription.setColumns(20);
         txtaDescription.setLineWrap(true);
         txtaDescription.setRows(5);
@@ -397,7 +429,7 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReturnActionPerformed
 
     private void btnWalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWalletActionPerformed
-        Wallet w = new Wallet(User, this);
+        w = new Wallet(User, this);
         w.setVisible(true);
         if (w.walletClosed()) { //Wallet is closed
             w.changeBalance(this);
