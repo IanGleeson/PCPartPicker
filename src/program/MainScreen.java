@@ -378,9 +378,11 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void btnSignoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignoutActionPerformed
         // TODO add your handling code here:
-        LogInScreen lg = new LogInScreen();
-        lg.setVisible(true);
-        this.dispose();
+//        LogInScreen lg = new LogInScreen();
+//        lg.setVisible(true);
+//        this.dispose();
+        double x = 1.0;
+        dao.addInventory("test", "test1", "test2", 8, x);
 
     }//GEN-LAST:event_btnSignoutActionPerformed
 

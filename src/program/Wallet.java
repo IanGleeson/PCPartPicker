@@ -7,6 +7,8 @@
 package program;
 
 import java.awt.Dimension;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +21,8 @@ public class Wallet extends javax.swing.JFrame {
     private String tempUser;
     private boolean closed = false;
     private MainScreen ms;
+    private Pattern p;
+    private Matcher m;
     /**
      * Creates new form Wallet
      * @param User
@@ -28,6 +32,7 @@ public class Wallet extends javax.swing.JFrame {
         this.setSize(450, 300);
         Wdao = new SQLdao();
         tempUser = User;
+        p = Pattern.compile("[\\d]\\d\\.\\d\\d");
     }
 
     /**
@@ -131,7 +136,10 @@ public class Wallet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOKActionPerformed
 
     private void btnAdd5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd5ActionPerformed
-        lblAmountToAdd.setText("Amount to Add: €" + (AmountToAdd+=5));
+        AmountToAdd+=5;
+        m = p.matcher(Double.toString(AmountToAdd));
+        m.find();
+        lblAmountToAdd.setText("Amount to Add: €" + Double.parseDouble(m.group()));
     }//GEN-LAST:event_btnAdd5ActionPerformed
 
     private void btnAdd10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd10ActionPerformed

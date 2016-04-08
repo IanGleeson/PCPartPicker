@@ -77,7 +77,7 @@ public class LogInScreen extends javax.swing.JFrame {
             ms = new MainScreen(JtxtLogIn.getText());
             ms.setVisible(true);
             this.setVisible(false);
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(LogInScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
             
