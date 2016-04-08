@@ -14,13 +14,20 @@ import javax.swing.JOptionPane;
  * @author dsd03
  */
 public class Wallet extends javax.swing.JFrame {
-    int AmountToAdd = 0;
+    double AmountToAdd = 0;
+    SQLdao Wdao;
+    String tempUser;
+    boolean closed = false;
+    MainScreen ms;
     /**
      * Creates new form Wallet
+     * @param User
      */
-    public Wallet() {
+    public Wallet(String User, MainScreen ms) {
         initComponents();
         this.setSize(450, 300);
+        Wdao = new SQLdao();
+        tempUser = User;
     }
 
     /**
@@ -38,10 +45,11 @@ public class Wallet extends javax.swing.JFrame {
         btnAdd50 = new javax.swing.JButton();
         btnAdd100 = new javax.swing.JButton();
         lblBalance = new javax.swing.JLabel();
-        lblWallet = new javax.swing.JLabel();
+        lblWalletTitle = new javax.swing.JLabel();
         btnOK = new javax.swing.JButton();
         lblAmountToAdd = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAdd5.setText("Add € 5");
@@ -87,9 +95,9 @@ public class Wallet extends javax.swing.JFrame {
         lblBalance.setText("Current Balance: ");
         getContentPane().add(lblBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 31, -1, -1));
 
-        lblWallet.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lblWallet.setText("Wallet");
-        getContentPane().add(lblWallet, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 6, -1, -1));
+        lblWalletTitle.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblWalletTitle.setText("Wallet");
+        getContentPane().add(lblWalletTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 6, -1, -1));
 
         btnOK.setText("OK");
         btnOK.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +113,14 @@ public class Wallet extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void changeBalance(MainScreen ms){
+        ms.setWallet(AmountToAdd);
+    }
+    
+    public boolean walletClosed(){
+        return closed;
+    }
+    
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
     int result = JOptionPane.showConfirmDialog(this,
     "Would you like to add the amount to wallet?",
@@ -112,9 +128,8 @@ public class Wallet extends javax.swing.JFrame {
     JOptionPane.YES_NO_OPTION);
     
     if(result == JOptionPane.YES_OPTION){
-        // Add the Amount int to the users wallet in table.
+        changeBalance(ms);
         this.setVisible(false);
-        //Must Set lblWallet to updated amount from user wallet in table.
     }
     }//GEN-LAST:event_btnOKActionPerformed
 
@@ -141,37 +156,6 @@ public class Wallet extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Wallet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Wallet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Wallet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Wallet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Wallet().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd10;
@@ -182,6 +166,6 @@ public class Wallet extends javax.swing.JFrame {
     private javax.swing.JButton btnOK;
     private javax.swing.JLabel lblAmountToAdd;
     private javax.swing.JLabel lblBalance;
-    private javax.swing.JLabel lblWallet;
+    private javax.swing.JLabel lblWalletTitle;
     // End of variables declaration//GEN-END:variables
 }

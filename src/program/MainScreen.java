@@ -30,7 +30,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         initComponents();
         lblUser.setText(User);
-        
+        lblWallet.setText(java.text.NumberFormat.getCurrencyInstance().format(dao.getBalance(User)));
         //Icon Graphical code
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());
@@ -39,7 +39,12 @@ public class MainScreen extends javax.swing.JFrame {
 
         displayInventoryTable();
     }
-
+    
+    
+    public void setWallet(double setW){
+        lblWallet.setText(java.text.NumberFormat.getCurrencyInstance().format(dao.getBalance(User) + setW));
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -402,8 +407,11 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReturnActionPerformed
 
     private void btnWalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWalletActionPerformed
-        Wallet w = new Wallet();
+        Wallet w = new Wallet(User, this);
         w.setVisible(true);
+        if(w.walletClosed()){ //Wallet is closed
+            w.changeBalance(this);
+        }
     }//GEN-LAST:event_btnWalletActionPerformed
 
     private void jTblDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblDataMouseClicked
