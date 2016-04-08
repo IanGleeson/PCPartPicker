@@ -21,6 +21,7 @@ public class MainScreen extends javax.swing.JFrame {
     String itemName;
     int itemQuantity;
     Component[] itemsForOrder;
+    Wallet w;
 
     public MainScreen(String User) {
 
@@ -48,8 +49,8 @@ public class MainScreen extends javax.swing.JFrame {
     
     //methods------------------------------------------------------------------------------------------------
     
-    public void setWallet(double setW){
-        lblWallet.setText(java.text.NumberFormat.getCurrencyInstance().format(dao.getBalance(User) + setW));
+    public void setWallet(){
+        lblWallet.setText(java.text.NumberFormat.getCurrencyInstance().format(dao.getBalance(User)));
     }
     
     public final void displayInventoryTable() throws SQLException{
@@ -436,11 +437,8 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReturnActionPerformed
 
     private void btnWalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWalletActionPerformed
-        Wallet w = new Wallet(User, this);
+        w = new Wallet(User, this);
         w.setVisible(true);
-        if(w.walletClosed()){ //Wallet is closed
-            w.changeBalance(this);
-        }
     }//GEN-LAST:event_btnWalletActionPerformed
 
     private void jTblDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblDataMouseClicked
