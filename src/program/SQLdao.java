@@ -40,30 +40,32 @@ public class SQLdao {
     }
 //----------------------------------------------------------------------------------------------------------
 
-    public ArrayList getInventory() {
-        try {
-            connect();
-            pst = conn.prepareStatement("SELECT Prod_ID, ProdName, Category, InStock, Price FROM production.inventory");
-            rst = pst.executeQuery();
-            while (rst.next()) {
-                Inventory.add(rst.getString("ProdID"));
-                Inventory.add(rst.getString("ProdName"));
-                Inventory.add(rst.getString("Category"));
-                Inventory.add(rst.getString("InStock"));
-                Inventory.add(rst.getString("Price"));
-            }
-        } catch (SQLException d) {
-            JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
-        }
-        return Inventory;
-    }
+//displayInventory works better
+    
+//    public ArrayList getInventory() {
+//        try {
+//            connect();
+//            pst = conn.prepareStatement("SELECT Prod_ID, ProdName, Category, InStock, Price FROM production.inventory");
+//            rst = pst.executeQuery();
+//            while (rst.next()) {
+//                Inventory.add(rst.getString("ProdID"));
+//                Inventory.add(rst.getString("ProdName"));
+//                Inventory.add(rst.getString("Category"));
+//                Inventory.add(rst.getString("InStock"));
+//                Inventory.add(rst.getString("Price"));
+//            }
+//        } catch (SQLException d) {
+//            JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
+//        }
+//        return Inventory;
+//    }
 //----------------------------------------------------------------------------------------------------------
 
     public String getDescription(String ProdName) {
         String Description = "";
         try {
             connect();
-            pst = conn.prepareStatement("SELECT Description FROM production.inventory WHERE prod_ID LIKE '" + ProdName + "'");
+            pst = conn.prepareStatement("SELECT Description FROM production.inventory WHERE ProdName LIKE '" + ProdName + "'");
             rst = pst.executeQuery();
             while (rst.next()) {
                 Description = rst.getString("Description");
@@ -88,7 +90,7 @@ public class SQLdao {
     public void addUser(String user, char[] pass, String fullname, String address, String email) {
         try {
             connect();
-            String statement = String.format("INSERT INTO customers VALUES %s, %s, %s, %s, %s", user, new String(pass), fullname, address, email);
+            String statement = String.format("INSERT INTO customers (Username,Password,FullName,Address,Email) VALUES %s, %s, %s, %s, %s", user, new String(pass), fullname, address, email);
             pst = conn.prepareStatement(statement);
             pst.executeUpdate();
         } catch (SQLException d) {
@@ -99,7 +101,7 @@ public class SQLdao {
     public void addInventory(String name, String category, String description, int inStock, double price) {
         try {
             connect();
-            String statement = String.format("INSERT INTO inventory VALUES (%s, %s, %s, %d, %f)", name, category, description, inStock, price);
+            String statement = String.format("INSERT INTO inventory (ProdName,Category,Description,InStock,Price) VALUES (%s,%s,%s,%d,%f)", name, category, description, inStock, price);
             pst = conn.prepareStatement(statement);
             pst.executeUpdate();
         } catch (SQLException d) {
@@ -147,6 +149,16 @@ public class SQLdao {
         try {
             connect();
             pst = conn.prepareStatement("UPDATE inventory SET InStock = InStock + '" + quantity + "' WHERE ProdName = '" + ProdName + "'");
+            pst.executeUpdate();
+        } catch (SQLException d) {
+            d.printStackTrace();
+        }
+    }
+    
+    public void returnItem(String ProdName, int quantity) {
+        try {
+            connect();
+            pst = conn.prepareStatement("INSERT INTO returns VALUES");
             pst.executeUpdate();
         } catch (SQLException d) {
             d.printStackTrace();

@@ -13,6 +13,7 @@ public class Register extends javax.swing.JFrame {
     
     public Register() {
         initComponents();
+        this.setTitle("PC Parts Picker");
         Rdao = new SQLdao();
     }
 
