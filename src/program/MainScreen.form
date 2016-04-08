@@ -132,7 +132,7 @@
                       <Table columnCount="4" rowCount="26">
                         <Column editable="false" title="Product Name" type="java.lang.String"/>
                         <Column editable="false" title="Category" type="java.lang.String"/>
-                        <Column editable="false" title="Quantity" type="java.lang.String"/>
+                        <Column editable="false" title="In Stock" type="java.lang.String"/>
                         <Column editable="false" title="Price" type="java.lang.String"/>
                       </Table>
                     </Property>

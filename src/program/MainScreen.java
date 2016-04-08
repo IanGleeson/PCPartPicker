@@ -1,26 +1,26 @@
 package program;
 
 import java.awt.Component;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
-import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
-import static program.Methods.checkoutList;
 
 public class MainScreen extends javax.swing.JFrame {
 
     Methods meth;
     SQLdao dao;
     ArrayList<String> orderList;
-    Component[] componentArr;
+    Component[] ProceedComponentArr;
     String User;
+    String itemName;
+    int itemQuantity;
+    Component[] itemsForOrder;
 
     public MainScreen(String User) throws SQLException {
 
@@ -29,7 +29,6 @@ public class MainScreen extends javax.swing.JFrame {
         orderList = new ArrayList();
 
         initComponents();
-        
         lblUser.setText(User);
         lblWallet.setText(java.text.NumberFormat.getCurrencyInstance().format(dao.getBalance(User)));
         //Icon Graphical code
@@ -39,8 +38,7 @@ public class MainScreen extends javax.swing.JFrame {
         lbltech.setIcon(icon);
 
         //Populate the Table with entries
-        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
-        
+        jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
     }
     
     
@@ -145,7 +143,7 @@ public class MainScreen extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Product Name", "Category", "Quantity", "Price"
+                "Product Name", "Category", "In Stock", "Price"
             }
         ) {
             Class[] types = new Class [] {
@@ -344,38 +342,41 @@ public class MainScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-//        orderList.clear();
-//        meth.order(orderList);
-//        txtaDescription.setText(orderList.toString());
 
         pnlOrder.setLayout(null); // <---No layout manager - uses absolute positioning system
-        
-        jTblData.getValueAt(jTblData.getSelectedRow(), jTblData.getSelectedColumn());
-        pnlOrder.add(meth.returnCheckBox());
-        pnlOrder.add(meth.returnSpinner());
-
+        itemsForOrder = jTblData.getComponents();
+        int count = 0;
+        //loop through components and save theyre values into variables to be passed to SqlDao method
+        for (Component c : itemsForOrder) {
+            if (c instanceof JCheckBox) 
+                itemName = ((JCheckBox) c).getText();
+             else if (c instanceof JSpinner) 
+                itemQuantity = (int) ((JSpinner) c).getValue();
+            count++;
+            if (count == 2) {
+                pnlOrder.add(meth.returnCheckBox(itemName));
+                pnlOrder.add(meth.returnSpinner(itemQuantity));
+            count = 0;
+            }
+        }
         pnlOrder.repaint();
         pnlOrder.revalidate();
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            if (!txtSearch.getText().equals("")) {
-                //Updates the table based on the query
-                //meth.search(txtSearch.getText());
-                txtaDescription.setText("This is a description");
-                //txtaDescription.setText(meth.search(rst))
-            } else {
-                JOptionPane.showMessageDialog(null, "Please enter something to search for!");
-            }
+        try {
+            dao.search(txtSearch.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_txtSearchKeyPressed
 
     private void btnSignoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignoutActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        super.setVisible(true);
-
+        LogInScreen lg = new LogInScreen();
+        lg.setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_btnSignoutActionPerformed
 
@@ -398,8 +399,8 @@ public class MainScreen extends javax.swing.JFrame {
 
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-        componentArr = pnlOrder.getComponents();
-        meth.checkoutProd(componentArr);
+        ProceedComponentArr = pnlOrder.getComponents();
+        meth.checkoutProd(ProceedComponentArr);
     }//GEN-LAST:event_btnProceedActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed

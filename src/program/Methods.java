@@ -33,74 +33,47 @@ public class Methods {
             return dao.displayAllProducts();
     }
 //----------------------------------------------------------------------------------------------------------
-// needs a method to remove these -
 //returns checkbox to be added to panel
-    String[] ordersString = {"GTX 960", "Radeon 380 r9", "UM212E"};
-    static int stringValue;
     static int y = 50;
     static int x = 50;
-
-    public JCheckBox returnCheckBox() {
-        if (stringValue == 3) {
-            stringValue = 0;
-        }
-        JCheckBox checkBox = new JCheckBox(ordersString[stringValue]);
-        stringValue++;
+    public JCheckBox returnCheckBox(String itemName) {
+        
+        //setting checkBox name and position + checked state
+        JCheckBox checkBox = new JCheckBox(itemName);
         checkBox.setSelected(true);
         checkBox.setBounds(x, y, 130, 35);
         y += 50;
-        checkoutList.add(checkBox);
         return checkBox;
     }
 //----------------------------------------------------------------------------------------------------------
     //returns spinner to be added to panel
-    String[] ordersInt = {"1", "3", "2"};
     static int intValue;
-
-    public JSpinner returnSpinner() {
+    public JSpinner returnSpinner(int itemQuatity) {
 
         //setting spinner values---> starting value / min value / max value / increment value
         SpinnerModel sm = new SpinnerNumberModel(1, 1, 99, 1);
         JSpinner spinner = new JSpinner(sm);
         spinner.setEditor(new JSpinner.DefaultEditor(spinner));
-        //value = (int)spinner.getValue();
-        if (intValue == 3) {
-            intValue = 0;
-        }
-//        for (int i = 0; i < ordersInt.length; i++) {
-//            value = Integer.parseInt(ordersInt[i]);
-//            if(value == ordersInt.length){
-//                value = 0;
-//            } 
-//        }
-        spinner.setValue(Integer.parseInt(ordersInt[intValue]));
-        intValue++;
+        spinner.setValue(itemQuatity);
         spinner.setBounds(x + 220, y - 49, 50, 30);
-        checkoutList.add(spinner);
         return spinner;
     }  
 //----------------------------------------------------------------------------------------------------------
     //sends bought items to be taken out from inventory
-    public void checkoutProd(Component[] componentArr){
+    public void checkoutProd(Component[] ProceedComponentArr){
         int count = 0;
         //loop through components and save theyre values into variables to be passed to SqlDao method
-        for (Component c : componentArr) {
+        for (Component c : ProceedComponentArr) {
             if (c instanceof JCheckBox) 
                 soldItem = ((JCheckBox) c).getText();
              else if (c instanceof JSpinner) 
                 soldItemQuantity = (int) ((JSpinner) c).getValue();
             count++;
             if (count == 2) {
-            dao.Checkout(soldItem, soldItemQuantity);
+            dao.checkout(soldItem, soldItemQuantity);
             count = 0;
             }
         }
-    }
-//----------------------------------------------------------------------------------------------------------
-    
-    public String search(String strSearch) {
-        dao.search(strSearch);
-            return strSearch;
     }
 //----------------------------------------------------------------------------------------------------------
     //Adds new
