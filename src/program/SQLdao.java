@@ -88,7 +88,7 @@ public class SQLdao {
     public void addUser(String user, char[] pass, String fullname, String address, String email) {
         try {
             connect();
-            String statement = String.format("INSERT INTO customers VALUES (%s, %s, %s, %s, %s)", user, new String(pass), fullname, address, email);
+            String statement = String.format("INSERT INTO customers VALUES %s, %s, %s, %s, %s", user, new String(pass), fullname, address, email);
             pst = conn.prepareStatement(statement);
             pst.executeUpdate();
         } catch (SQLException d) {

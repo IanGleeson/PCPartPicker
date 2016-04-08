@@ -22,7 +22,7 @@ public class MainScreen extends javax.swing.JFrame {
     int itemQuantity;
     Component[] itemsForOrder;
 
-    public MainScreen(String User) throws SQLException {
+    public MainScreen(String User) {
 
         dao = new SQLdao();
         meth = new Methods();
@@ -37,7 +37,11 @@ public class MainScreen extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/tech.jpg"));
         lbltech.setIcon(icon);
 
-        displayInventoryTable();
+        try {
+            displayInventoryTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
