@@ -30,10 +30,8 @@ public class MainScreen extends javax.swing.JFrame {
         orderList = new ArrayList();
 
         initComponents();
-        this.setTitle("PC Parts Picker");
         lblUser.setText(User);
         lblWallet.setText(java.text.NumberFormat.getCurrencyInstance().format(dao.getBalance(User)));
-        
         //Icon Graphical code
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());
@@ -47,7 +45,6 @@ public class MainScreen extends javax.swing.JFrame {
         }
     }
     
-    //methods------------------------------------------------------------------------------------------------
     
     public void setWallet(){
         lblWallet.setText(java.text.NumberFormat.getCurrencyInstance().format(dao.getBalance(User)));
@@ -170,7 +167,7 @@ public class MainScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTblData.setCellSelectionEnabled(false);
+        jTblData.setColumnSelectionAllowed(true);
         jTblData.getTableHeader().setReorderingAllowed(false);
         jTblData.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -193,7 +190,6 @@ public class MainScreen extends javax.swing.JFrame {
         lblDescription.setText("Description:");
         jPanelInventory.add(lblDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 92, -1, -1));
 
-        txtaDescription.setEditable(false);
         txtaDescription.setColumns(20);
         txtaDescription.setLineWrap(true);
         txtaDescription.setRows(5);
@@ -373,10 +369,10 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void btnSignoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignoutActionPerformed
         // TODO add your handling code here:
-        LogInScreen lg = new LogInScreen();
-        lg.setVisible(true);
-        this.dispose();
-
+//        LogInScreen lg = new LogInScreen();
+//        lg.setVisible(true);
+//        this.dispose();
+        dao.addInventory("hi", "there", "bob", 8, 2.0);
     }//GEN-LAST:event_btnSignoutActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -439,6 +435,25 @@ public class MainScreen extends javax.swing.JFrame {
             jTblData.getModel().setValueAt(inStock, rowIndex, 2);
             jTblData.getModel().setValueAt(price, rowIndex, 3);
 
+            rowIndex++;
+        }
+    }
+
+    public final void displayInventoryTable() throws SQLException{
+        ResultSet rst = dao.displayAllProducts();
+        int rowIndex = 0;
+        while(rst.next()){
+            //Object ID = rst.getString("ProdID");
+            Object productName = rst.getString("ProdName");
+            Object category = rst.getString("Category");
+            Object inStock = rst.getString("InStock");
+            Object price = rst.getString("Price");
+            
+            jTblData.getModel().setValueAt(productName, rowIndex, 0);
+            jTblData.getModel().setValueAt(category, rowIndex, 1);
+            jTblData.getModel().setValueAt(inStock, rowIndex, 2);
+            jTblData.getModel().setValueAt(price, rowIndex, 3);
+            
             rowIndex++;
         }
     }
