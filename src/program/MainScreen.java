@@ -165,7 +165,6 @@ public class MainScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTblData.setColumnSelectionAllowed(true);
         jTblData.getTableHeader().setReorderingAllowed(false);
         jTblData.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -188,6 +187,7 @@ public class MainScreen extends javax.swing.JFrame {
         lblDescription.setText("Description:");
         jPanelInventory.add(lblDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 92, -1, -1));
 
+        txtaDescription.setEditable(false);
         txtaDescription.setColumns(20);
         txtaDescription.setLineWrap(true);
         txtaDescription.setRows(5);
@@ -210,11 +210,11 @@ public class MainScreen extends javax.swing.JFrame {
         pnlReturns.setLayout(pnlReturnsLayout);
         pnlReturnsLayout.setHorizontalGroup(
             pnlReturnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
+            .addGap(0, 378, Short.MAX_VALUE)
         );
         pnlReturnsLayout.setVerticalGroup(
             pnlReturnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 323, Short.MAX_VALUE)
+            .addGap(0, 319, Short.MAX_VALUE)
         );
 
         jScrollOrderHistory.setViewportView(pnlReturns);
