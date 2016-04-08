@@ -10,6 +10,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class MainScreen extends javax.swing.JFrame {
 
@@ -38,7 +39,10 @@ public class MainScreen extends javax.swing.JFrame {
         lbltech.setIcon(icon);
 
         //Populate the Table with entries
-        jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
+        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
+//        DefaultTableModel tb = new DefaultTableModel(dao.getInventory());
+//        jTblData = new JTable(tb);
+        
     }
     
     
@@ -401,6 +405,7 @@ public class MainScreen extends javax.swing.JFrame {
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
         ProceedComponentArr = pnlOrder.getComponents();
         meth.checkoutProd(ProceedComponentArr);
+        //ProceedComponentArr.clear();
     }//GEN-LAST:event_btnProceedActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
