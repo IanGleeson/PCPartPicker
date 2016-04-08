@@ -1,6 +1,7 @@
 package program;
 
 import java.awt.Component;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -9,8 +10,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 public class MainScreen extends javax.swing.JFrame {
 
@@ -38,11 +37,7 @@ public class MainScreen extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/tech.jpg"));
         lbltech.setIcon(icon);
 
-        //Populate the Table with entries
-        //jTblData = new JTable(meth.buildTableModel(meth.displayAllProducts()));
-//        DefaultTableModel tb = new DefaultTableModel(dao.getInventory());
-//        jTblData = new JTable(tb);
-        
+        displayInventoryTable();
     }
     
     
@@ -427,6 +422,24 @@ public class MainScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTblDataMouseClicked
 
+    public final void displayInventoryTable() throws SQLException{
+        ResultSet rst = dao.displayAllProducts();
+        int rowIndex = 0;
+        while(rst.next()){
+            //Object ID = rst.getString("ProdID");
+            Object productName = rst.getString("ProdName");
+            Object category = rst.getString("Category");
+            Object inStock = rst.getString("InStock");
+            Object price = rst.getString("Price");
+            
+            jTblData.getModel().setValueAt(productName, rowIndex, 0);
+            jTblData.getModel().setValueAt(category, rowIndex, 1);
+            jTblData.getModel().setValueAt(inStock, rowIndex, 2);
+            jTblData.getModel().setValueAt(price, rowIndex, 3);
+            
+            rowIndex++;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
