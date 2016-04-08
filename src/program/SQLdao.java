@@ -40,27 +40,6 @@ public class SQLdao {
     }
 //----------------------------------------------------------------------------------------------------------
 
-//displayInventory works better
-    
-//    public ArrayList getInventory() {
-//        try {
-//            connect();
-//            pst = conn.prepareStatement("SELECT Prod_ID, ProdName, Category, InStock, Price FROM production.inventory");
-//            rst = pst.executeQuery();
-//            while (rst.next()) {
-//                Inventory.add(rst.getString("ProdID"));
-//                Inventory.add(rst.getString("ProdName"));
-//                Inventory.add(rst.getString("Category"));
-//                Inventory.add(rst.getString("InStock"));
-//                Inventory.add(rst.getString("Price"));
-//            }
-//        } catch (SQLException d) {
-//            JOptionPane.showMessageDialog(null, this, "Error preparing or executing statement.", JOptionPane.ERROR_MESSAGE);
-//        }
-//        return Inventory;
-//    }
-//----------------------------------------------------------------------------------------------------------
-
     public String getDescription(String ProdName) {
         String Description = "";
         try {
@@ -86,7 +65,7 @@ public class SQLdao {
             d.printStackTrace();
         }
     }
-    
+//----------------------------------------------------------------------------------------------------------    
     public void addUser(String user, char[] pass, String fullname, String address, String email) {
         try {
             connect();
@@ -97,7 +76,7 @@ public class SQLdao {
             d.printStackTrace();
         }
     }
-    
+//----------------------------------------------------------------------------------------------------------    
     public void addInventory(String name, String category, String description, int inStock, double price) {
         try {
             connect();
@@ -108,7 +87,7 @@ public class SQLdao {
             d.printStackTrace();
         }
     }
-
+//----------------------------------------------------------------------------------------------------------
     public void plusBalance(double quantity, String User) {
         try {
             connect();
@@ -118,7 +97,7 @@ public class SQLdao {
             d.printStackTrace();
         }
     }
-
+//----------------------------------------------------------------------------------------------------------
     public void minusBalance(double quantity, String User) {
         try {
             connect();
@@ -128,7 +107,7 @@ public class SQLdao {
             d.printStackTrace();
         }
     }
-
+//----------------------------------------------------------------------------------------------------------
     public double getBalance(String User) {
         double balance = 0.00;
         try {
@@ -154,7 +133,7 @@ public class SQLdao {
             d.printStackTrace();
         }
     }
-    
+//----------------------------------------------------------------------------------------------------------    
     public void returnItem(String ProdName, int quantity) {
         try {
             connect();
@@ -175,7 +154,7 @@ public class SQLdao {
             JOptionPane.showMessageDialog(null, this, "Error disconnecting from database.", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+//----------------------------------------------------------------------------------------------------------
     public ResultSet displayAllProducts() {
 
         try {
@@ -187,7 +166,7 @@ public class SQLdao {
         }
         return rst;
     }
-
+//----------------------------------------------------------------------------------------------------------
     public ArrayList search(String query) throws SQLException {
         connect();
         pst = conn.prepareStatement("SELECT * FROM production.inventory WHERE prodName LIKE " + "'" + query + "%'");
