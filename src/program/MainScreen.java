@@ -29,8 +29,10 @@ public class MainScreen extends javax.swing.JFrame {
         orderList = new ArrayList();
 
         initComponents();
+        this.setTitle("PC Parts Picker");
         lblUser.setText(User);
         lblWallet.setText(java.text.NumberFormat.getCurrencyInstance().format(dao.getBalance(User)));
+        
         //Icon Graphical code
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/resources/computerIcon.png"));
         this.setIconImage(ii.getImage());
@@ -44,10 +46,32 @@ public class MainScreen extends javax.swing.JFrame {
         }
     }
     
+    //methods------------------------------------------------------------------------------------------------
     
     public void setWallet(double setW){
         lblWallet.setText(java.text.NumberFormat.getCurrencyInstance().format(dao.getBalance(User) + setW));
     }
+    
+    public final void displayInventoryTable() throws SQLException{
+        ResultSet rst = dao.displayAllProducts();
+        int rowIndex = 0;
+        while(rst.next()){
+            //Object ID = rst.getString("ProdID");
+            Object productName = rst.getString("ProdName");
+            Object category = rst.getString("Category");
+            Object inStock = rst.getString("InStock");
+            Object price = rst.getString("Price");
+            
+            jTblData.getModel().setValueAt(productName, rowIndex, 0);
+            jTblData.getModel().setValueAt(category, rowIndex, 1);
+            jTblData.getModel().setValueAt(inStock, rowIndex, 2);
+            jTblData.getModel().setValueAt(price, rowIndex, 3);
+            
+            rowIndex++;
+        }
+    }
+    
+    //events------------------------------------------------------------------
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -164,7 +188,7 @@ public class MainScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTblData.setColumnSelectionAllowed(true);
+        jTblData.setCellSelectionEnabled(false);
         jTblData.getTableHeader().setReorderingAllowed(false);
         jTblData.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -187,6 +211,7 @@ public class MainScreen extends javax.swing.JFrame {
         lblDescription.setText("Description:");
         jPanelInventory.add(lblDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 92, -1, -1));
 
+        txtaDescription.setEditable(false);
         txtaDescription.setColumns(20);
         txtaDescription.setLineWrap(true);
         txtaDescription.setRows(5);
@@ -421,28 +446,9 @@ public class MainScreen extends javax.swing.JFrame {
     private void jTblDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblDataMouseClicked
         //populates description
         if(jTblData.getValueAt(jTblData.getSelectedRow(), 1) != null){
-            txtaDescription.setText(dao.getDescription((String)jTblData.getValueAt(jTblData.getSelectedRow(), 1)));
+            txtaDescription.setText(dao.getDescription((String)jTblData.getValueAt(jTblData.getSelectedRow(), 0)));
         }
     }//GEN-LAST:event_jTblDataMouseClicked
-
-    public final void displayInventoryTable() throws SQLException{
-        ResultSet rst = dao.displayAllProducts();
-        int rowIndex = 0;
-        while(rst.next()){
-            //Object ID = rst.getString("ProdID");
-            Object productName = rst.getString("ProdName");
-            Object category = rst.getString("Category");
-            Object inStock = rst.getString("InStock");
-            Object price = rst.getString("Price");
-            
-            jTblData.getModel().setValueAt(productName, rowIndex, 0);
-            jTblData.getModel().setValueAt(category, rowIndex, 1);
-            jTblData.getModel().setValueAt(inStock, rowIndex, 2);
-            jTblData.getModel().setValueAt(price, rowIndex, 3);
-            
-            rowIndex++;
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
